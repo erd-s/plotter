@@ -7,6 +7,11 @@ def setup_plotter(nd: NextDraw):
     if not nd.connect():
         quit()
     nd.pen_rate_lower = 40
+    print('Current Settings:')
+    print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
+    print(f'Margin: {MARGIN}"')
+    print(f'Center: {center_x()}, {center_y()}')
+    print(f'Effective Size: {effective_width()}"w x {effective_height()}"h')
     return nd
 
 
@@ -30,6 +35,17 @@ def effective_x_start():
 
 def effective_y_start():
     return MARGIN
+
+
+def center_x():
+    return effective_x_start() + (effective_width() / 2)
+
+
+def center_y():
+    return effective_y_start() + (effective_height() / 2)
+
+def center():
+    return [center_x(), center_y()]
 
 
 def effective_x_end():

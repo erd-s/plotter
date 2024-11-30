@@ -4,13 +4,13 @@ from utils import (
     tear_down_plotter,
 )
 
-from projects.grid import create_grid
+from projects.bursts import create_burst
 
 def run():
     plotter = setup_plotter(NextDraw())
 
     # project to run
-    create_grid(plotter=plotter, grid_size=20)
+    create_burst(plotter=plotter, number_of_lines=40)
 
     tear_down_plotter(plotter)
 
