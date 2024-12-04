@@ -3,6 +3,8 @@ from utils import center_y, center_x
 
 from projects.irregular_cube import create_cube
 from projects.irregular_cube_grid import create_irregular_cube_grid
+from projects.circle import create_circle
+
 from utils import (
     DOC_WIDTH,
     DOC_HEIGHT,
@@ -39,12 +41,13 @@ def run():
     plotter = setup_plotter(NextDraw())
 
     # project to run
-    create_irregular_cube_grid(plotter=plotter, grid_size=4)
+    create_circle(
+        plotter=plotter, origin_x=center_x(), origin_y=center_y(), radius=1, steps=30
+    )
 
     tear_down_plotter(plotter)
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":
-    # dry run
     run()
