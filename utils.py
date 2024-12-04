@@ -1,24 +1,4 @@
 from config import DOC_HEIGHT, DOC_WIDTH, MARGIN
-from nextdraw import NextDraw
-
-
-def setup_plotter(nd: NextDraw):
-    nd.interactive()
-    if not nd.connect():
-        quit()
-    nd.pen_rate_lower = 40
-    print("Current Settings:")
-    print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
-    print(f'Margin: {MARGIN}"')
-    print(f"Center: {center_x()}, {center_y()}")
-    print(f'Effective Size: {effective_width()}"w x {effective_height()}"h')
-    return nd
-
-
-def tear_down_plotter(plotter):
-    plotter.penup()
-    plotter.goto(0, 0)
-    plotter.disconnect()
 
 
 def effective_height():

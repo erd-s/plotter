@@ -1,14 +1,13 @@
 from nextdraw import NextDraw
-from utils import center_x, center_y
 
 
-def create_xy(plotter: NextDraw, max_x, max_y):
+def create_xy(plotter: NextDraw, origin_x, origin_y, height, width):
     plotter.penup()
-    plotter.moveto(center_x() - max_x, center_y())
+    plotter.moveto(origin_x - width, origin_y)
     plotter.pendown()
-    plotter.line(max_x * 2, 0)
+    plotter.line(width, 0)
     plotter.penup()
-    plotter.moveto(center_x(), center_y() - max_y)
+    plotter.moveto(origin_x, origin_y - height)
     plotter.pendown()
-    plotter.line(0, max_y * 2)
+    plotter.line(0, height)
     plotter.penup()

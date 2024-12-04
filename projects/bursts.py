@@ -2,7 +2,7 @@ import random
 import math
 
 from nextdraw import NextDraw
-from .xy import create_xy
+from xy import create_xy
 from utils import center_y, center_x
 
 RADIUS_MIN = 1
