@@ -47,8 +47,9 @@ def create_circle(
     for i in range(steps + 1):
         x = (radius / steps) * i
         y = origin_y - math.sqrt((radius * radius) - (x * x)) - radius
-        print(f'[{x}, {y}]')
+
         path_points.append([origin_x - x - radius, y])
+        print(f'[{origin_x - x - radius}, {y}]')
 
     #
     # quadrant IV
