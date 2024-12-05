@@ -54,10 +54,19 @@ def create_circle(
     #
     # quadrant IV
     print('\nQuadrant IV')
+    x_list = []
+    y_list = []
+    reversed_plot_points = list(reversed(path_points))
     for i in range(steps + 1):
-        x = 0
-        y = 0
-        point = [x, y]
-        print(f'{point}')
+        x = reversed_plot_points[i][0]
+        y = path_points[i][1]
+        x_list.append(x)
+        y_list.insert(0, y)
 
-    # plotter.draw_path(path_points)
+    for i in range(len(x_list)):
+        x = x_list[i]
+        y = y_list[i]
+        print(f'[{x}, {y}]')
+        path_points.append([x, y])
+
+    plotter.draw_path(path_points)
