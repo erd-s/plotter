@@ -7,6 +7,7 @@ from projects.circle import create_circle
 from projects.circle_grid import create_circle_grid
 from projects.grid import create_grid
 from projects.xy import create_xy
+from projects.margin import draw_margin
 
 from utils import (
     DOC_WIDTH,
@@ -44,8 +45,9 @@ def run():
     plotter = setup_plotter(NextDraw())
 
     # project to run
-    # create_circle_grid(plotter=plotter, grid_size=6)
-    create_grid(plotter=plotter, grid_size=6)
+    # draw_margin(plotter)
+    # create_grid(plotter=plotter, grid_size=6)
+    create_circle_grid(plotter=plotter, grid_size=6)
 
     tear_down_plotter(plotter)
 
