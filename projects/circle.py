@@ -27,35 +27,36 @@ def create_circle(
 
     # quadrant II
     print('\nQuadrant II')
-    reversed_path_points = list(reversed(path_points))
-    for i in range(steps + 1):
-        x = reversed_path_points[i][0]
-        y = (reversed_path_points[i][1] * -1) + origin_y + radius
-        point = [x, y]
-        path_points.append(point)
-        print(f'{point}')
-
-    #
-    # # quadrant III
-    print('\nQuadrant III')
-    reversed_path_points = list(reversed(path_points))
     x_list = []
     y_list = []
     for i in range(steps + 1):
-        x = (reversed_path_points[i][0]) - math.sqrt(radius)
-        y = (reversed_path_points[i][1])
+        x = path_points[i][0]
+        x_length = (radius / steps) * i
+        y = origin_y - math.sqrt((radius * radius) - (x_length * x_length)) - radius
         x_list.insert(0, x)
-        y_list.append(y)
+        y_list.insert(0, y)
 
     for i in range(len(x_list)):
-        point = [x_list[i], y_list[i]]
-        path_points.append(point)
-        print(f'{point}')
+        x = x_list[i]
+        y = y_list[i]
+        print(f'[{x}, {y}]')
+        path_points.append([x, y])
 
-    # # quadrant IV
-    # for i in range(steps + 1):
-    #     x = path_points[i][0]
-    #     y = path_points[i][1]
-    #     path_points.append([x, y])
+    # quadrant III
+    print('\nQuadrant III')
+    for i in range(steps + 1):
+        x = (radius / steps) * i
+        y = origin_y - math.sqrt((radius * radius) - (x * x)) - radius
+        print(f'[{x}, {y}]')
+        path_points.append([origin_x - x - radius, y])
+
+    #
+    # quadrant IV
+    print('\nQuadrant IV')
+    for i in range(steps + 1):
+        x = 0
+        y = 0
+        point = [x, y]
+        print(f'{point}')
 
     # plotter.draw_path(path_points)

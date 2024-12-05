@@ -42,7 +42,7 @@ def run():
 
     # project to run
     create_circle(
-        plotter=plotter, origin_x=center_x(), origin_y=center_y(), radius=1, steps=30
+        plotter=plotter, origin_x=center_x(), origin_y=center_y(), radius=1.25, steps=5
     )
 
     tear_down_plotter(plotter)
