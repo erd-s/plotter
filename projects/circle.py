@@ -3,7 +3,13 @@ import math
 
 
 def create_circle(
-    plotter: NextDraw, origin_x: float, origin_y: float, radius: float, steps: int
+    plotter: NextDraw,
+    origin_x: float,
+    origin_y: float,
+    radius: float,
+    steps: int,
+    offset_x: float = 0,
+    offset_y: float = 0,
 ):
     path_points = []
 
@@ -21,8 +27,8 @@ def create_circle(
     for i in range(steps + 1):
         x = (radius / steps) * i
         y = math.sqrt((radius * radius) - (x * x))
-        path_points.append([x + origin_x, y + origin_y])
-        print(f"[{x + origin_x}, {y + origin_y}]")
+        path_points.append([x + origin_x + offset_x, y + origin_y + offset_y])
+        print(f"[{x + origin_x + offset_x}, {y + origin_y + offset_y}]")
 
     # quadrant II
     print("\nQuadrant II")
@@ -31,7 +37,7 @@ def create_circle(
     for i in range(steps + 1):
         x = path_points[i][0]
         x_length = (radius / steps) * i
-        y = origin_y - math.sqrt((radius * radius) - (x_length * x_length))
+        y = origin_y - math.sqrt((radius * radius) - (x_length * x_length)) + offset_y
         x_list.insert(0, x)
         y_list.insert(0, y)
 
@@ -45,9 +51,8 @@ def create_circle(
     print("\nQuadrant III")
     for i in range(steps + 1):
         x = (radius / steps) * i
-        y = origin_y - math.sqrt((radius * radius) - (x * x))
-
-        path_points.append([origin_x - x, y])
+        y = origin_y - math.sqrt((radius * radius) - (x * x)) + offset_y
+        path_points.append([origin_x - x + offset_x, y])
         print(f"[{origin_x - x - radius}, {y}]")
 
     #

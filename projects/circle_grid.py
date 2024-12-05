@@ -7,10 +7,10 @@ from utils import (
     effective_y_start,
 )
 
-from .irregular_cube import create_cube
+from .circle import create_circle
 
 
-def create_irregular_cube_grid(plotter: NextDraw, grid_size: int):
+def create_circle_grid(plotter: NextDraw, grid_size: int):
     square_width = effective_width() / grid_size
     square_height = effective_height() / grid_size
 
@@ -26,12 +26,14 @@ def create_irregular_cube_grid(plotter: NextDraw, grid_size: int):
         square_center_x = plotter.current_pos()[0]
         square_center_y = plotter.current_pos()[1]
 
-        create_cube(
-            plotter,
+        create_circle(
+            plotter=plotter,
             origin_x=square_center_x,
             origin_y=square_center_y,
-            width=square_width * 0.35,
-            height=square_height * 0.35,
+            radius=square_height / 3,
+            steps=30,
+            offset_x=0,
+            offset_y=0,
         )
 
         plotter.moveto(square_center_x, square_center_y)
