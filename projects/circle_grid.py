@@ -1,6 +1,7 @@
 import random
 
 from nextdraw import NextDraw
+import math
 
 from utils import (
     effective_width,
@@ -13,7 +14,7 @@ from .circle import create_circle
 from .xy import create_xy
 
 
-def create_circle_grid(plotter: NextDraw, grid_size: int):
+def create_circle_grid(plotter: NextDraw, grid_size: int, start_index=0):
     square_width = effective_width() / grid_size
     square_height = effective_height() / grid_size
 
@@ -29,25 +30,20 @@ def create_circle_grid(plotter: NextDraw, grid_size: int):
         square_center_x = plotter.current_pos()[0]
         square_center_y = plotter.current_pos()[1]
 
-        for _ in range(5):
-            radius = square_height / 3
-            rand_x_offset = random.uniform(radius * 0.25, radius * 0.5)
-            if random.choice([True, False]):
-                rand_x_offset *= -1
+        if i >= start_index:
+            num_circles = 5
+            for c in range(num_circles):
+                radius = square_width / (num_circles + 1)
+                x_offset = (square_width/-2) + ((c+1)*radius)
+                y_offset = 0
 
-            rand_y_offset = random.uniform(radius * 0.25, radius * 0.5)
-            if random.choice([True, False]):
-                rand_y_offset *= -1
-
-            create_circle(
-                plotter=plotter,
-                origin_x=square_center_x,
-                origin_y=square_center_y,
-                radius=radius,
-                steps=30,
-                offset_x=rand_x_offset,
-                offset_y=rand_y_offset,
-            )
+                create_circle(
+                    plotter=plotter,
+                    origin_x=square_center_x + x_offset,
+                    origin_y=square_center_y + y_offset,
+                    radius=radius,
+                    steps=30
+                )
 
         plotter.moveto(square_center_x, square_center_y)
 

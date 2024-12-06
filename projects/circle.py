@@ -8,8 +8,6 @@ def create_circle(
     origin_y: float,
     radius: float,
     steps: int,
-    offset_x: float = 0,
-    offset_y: float = 0,
 ):
     path_points = []
 
@@ -25,8 +23,8 @@ def create_circle(
     # quadrant I
     for i in range(steps + 1):
         x = (radius / steps) * i
-        y = math.sqrt((radius * radius) - (x * x))
-        path_points.append([x + origin_x + offset_x, y + origin_y + offset_y])
+        y = math.sqrt(abs((radius * radius) - (x * x)))
+        path_points.append([x + origin_x, y + origin_y])
 
     # quadrant II
     x_list = []
@@ -34,7 +32,7 @@ def create_circle(
     for i in range(steps + 1):
         x = path_points[i][0]
         x_length = (radius / steps) * i
-        y = origin_y - math.sqrt((radius * radius) - (x_length * x_length)) + offset_y
+        y = origin_y - math.sqrt(abs((radius * radius) - (x_length * x_length)))
         x_list.insert(0, x)
         y_list.insert(0, y)
 
@@ -46,8 +44,8 @@ def create_circle(
     # quadrant III
     for i in range(steps + 1):
         x = (radius / steps) * i
-        y = origin_y - math.sqrt((radius * radius) - (x * x)) + offset_y
-        path_points.append([origin_x - x + offset_x, y])
+        y = origin_y - math.sqrt(abs((radius * radius) - (x * x)))
+        path_points.append([origin_x - x, y])
 
     # quadrant IV
     x_list = []

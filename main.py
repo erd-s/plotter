@@ -25,6 +25,7 @@ def setup_plotter(nd: NextDraw):
 
     if not nd.connect():
         quit()
+
     nd.options.pen_rate_lower = 5
 
     print("Current Settings:")
@@ -47,7 +48,7 @@ def run():
     # project to run
     # draw_margin(plotter)
     # create_grid(plotter=plotter, grid_size=6)
-    create_circle_grid(plotter=plotter, grid_size=6)
+    create_circle_grid(plotter=plotter, grid_size=6, start_index=18)
 
     tear_down_plotter(plotter)
 
