@@ -47,8 +47,8 @@ def run():
 
     # project to run
     # draw_margin(plotter)
-    # create_grid(plotter=plotter, grid_size=6)
-    create_circle_grid(plotter=plotter, grid_size=6, start_index=18)
+    create_grid(plotter=plotter, grid_size=6)
+    create_circle_grid(plotter=plotter, grid_size=6, circles_per_square=10)
 
     tear_down_plotter(plotter)
 

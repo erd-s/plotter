@@ -14,7 +14,13 @@ from .circle import create_circle
 from .xy import create_xy
 
 
-def create_circle_grid(plotter: NextDraw, grid_size: int, start_index=0):
+def create_circle_grid(
+    plotter: NextDraw,
+    grid_size: int,
+    circles_per_square: int,
+    start_index=0,
+    repeat: int = None,
+):
     square_width = effective_width() / grid_size
     square_height = effective_height() / grid_size
 
@@ -29,12 +35,11 @@ def create_circle_grid(plotter: NextDraw, grid_size: int, start_index=0):
     for i in range(grid_size * grid_size):
         square_center_x = plotter.current_pos()[0]
         square_center_y = plotter.current_pos()[1]
-
+        repetitions = 0
         if i >= start_index:
-            num_circles = 5
-            for c in range(num_circles):
-                radius = square_width / (num_circles + 1)
-                x_offset = (square_width/-2) + ((c+1)*radius)
+            for c in range(circles_per_square):
+                radius = square_width / (circles_per_square + 1)
+                x_offset = (square_width / -2) + ((c + 1) * radius)
                 y_offset = 0
 
                 create_circle(
@@ -42,9 +47,11 @@ def create_circle_grid(plotter: NextDraw, grid_size: int, start_index=0):
                     origin_x=square_center_x + x_offset,
                     origin_y=square_center_y + y_offset,
                     radius=radius,
-                    steps=30
+                    steps=30,
                 )
-
+            repetitions += 1
+        if repeat == repetitions:
+            return
         plotter.moveto(square_center_x, square_center_y)
 
         if (i + 1) % grid_size == 0:
