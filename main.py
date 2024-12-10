@@ -1,14 +1,6 @@
 from nextdraw import NextDraw
-from utils import center_y, center_x
 
-from projects.irregular_cube import create_cube
-from projects.irregular_cube_grid import create_irregular_cube_grid
-from projects.circle import create_circle
-from projects.circle_grid import create_circle_grid
-from projects.grid import create_grid
-from projects.xy import create_xy
-from projects.margin import draw_margin
-
+from projects.circles.circle_grid import CircleGrid
 from utils import (
     DOC_WIDTH,
     DOC_HEIGHT,
@@ -47,8 +39,8 @@ def run():
 
     # project to run
     # draw_margin(plotter)
-    create_grid(plotter=plotter, grid_size=6)
-    create_circle_grid(plotter=plotter, grid_size=6, circles_per_square=10)
+    project = CircleGrid(circles_per_square=1)
+    project.create_object_grid(plotter=plotter, grid_size=5, start_index=0, repeat=None)
 
     tear_down_plotter(plotter)
 

@@ -1,5 +1,6 @@
-from nextdraw import NextDraw
 import math
+
+from nextdraw import NextDraw
 
 
 def create_circle(
