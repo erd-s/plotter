@@ -1,6 +1,8 @@
 from nextdraw import NextDraw
 
-from projects.circles.circle_grid import CircleGrid
+from projects.grid import create_grid
+from projects.circles.burst_grid import BurstGrid
+
 from utils import (
     DOC_WIDTH,
     DOC_HEIGHT,
@@ -39,8 +41,9 @@ def run():
 
     # project to run
     # draw_margin(plotter)
-    project = CircleGrid(circles_per_square=1)
-    project.create_object_grid(plotter=plotter, grid_size=5, start_index=0, repeat=None)
+    # create_grid(plotter=plotter, grid_size=7)
+    project = BurstGrid(lines_per_quadrant=9)
+    project.create_object_grid(plotter=plotter, grid_size=7, start_index=18, iterations=1)
 
     tear_down_plotter(plotter)
 

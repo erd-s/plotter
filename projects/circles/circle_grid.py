@@ -11,7 +11,7 @@ class CircleGrid(ObjectGrid):
         super().__init__()
         self.circles_per_square = circles_per_square
 
-    def __object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: NextDraw):
         for c in range(self.circles_per_square):
             radius = self.square_width / (self.circles_per_square + 1)
             x_offset = (self.square_width / -2) + ((c + 1) * radius)

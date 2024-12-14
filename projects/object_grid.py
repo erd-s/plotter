@@ -22,7 +22,7 @@ class ObjectGrid:
         plotter: NextDraw,
         grid_size: int,
         start_index=0,
-        repeat: int = None,
+        iterations: int = None,
     ):
         self.square_width = effective_width() / grid_size
         self.square_height = effective_height() / grid_size
@@ -35,15 +35,15 @@ class ObjectGrid:
             effective_y_start() + (self.square_height / 2),
         )
 
-        repetitions = 0
+        iteration = 0
         for i in range(grid_size * grid_size):
             self.square_center_x = plotter.current_pos()[0]
             self.square_center_y = plotter.current_pos()[1]
 
             if i >= start_index:
                 self.object_logic(plotter=plotter)
-                repetitions += 1
-            if repeat == repetitions:
+                iteration += 1
+            if iterations == iteration:
                 return
 
             plotter.moveto(self.square_center_x, self.square_center_y)
@@ -55,6 +55,6 @@ class ObjectGrid:
                 # move right
                 plotter.move(self.square_width, 0)
 
-    def __object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: NextDraw):
         # override with object logic
         return

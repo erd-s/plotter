@@ -5,7 +5,7 @@ from projects.object_grid import ObjectGrid
 
 
 class IrregularCubeGrid(ObjectGrid):
-    def __object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: NextDraw):
         create_cube(
             plotter,
             origin_x=self.square_center_x,
