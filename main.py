@@ -2,6 +2,7 @@ from nextdraw import NextDraw
 
 from projects.grid import create_grid
 from projects.circles.burst_grid import BurstGrid
+from projects.margin import draw_margin
 
 from utils import (
     DOC_WIDTH,
@@ -41,9 +42,9 @@ def run():
 
     # project to run
     # draw_margin(plotter)
-    # create_grid(plotter=plotter, grid_size=7)
-    project = BurstGrid(lines_per_quadrant=9)
-    project.create_object_grid(plotter=plotter, grid_size=7, start_index=18, iterations=1)
+    # create_grid(plotter=plotter, grid_size=5)
+    project = BurstGrid(lines_per_quadrant=6)
+    project.create_object_grid(plotter=plotter, grid_size=6)
 
     tear_down_plotter(plotter)
 
