@@ -1,0 +1,29 @@
+from nextdraw import NextDraw
+import math
+from projects.circles.half_circles import create_half_circle
+from projects.object_grid import ObjectGrid
+
+
+class HalfCircleGrid(ObjectGrid):
+    half_circles_per_square: int
+
+    def __init__(self, half_circles_per_square):
+        super().__init__()
+        self.half_circles_per_square = half_circles_per_square
+
+    def object_logic(self, plotter: NextDraw):
+        radius = self.square_width / (self.half_circles_per_square + 1)
+        max_circles_vertically = math.floor(self.square_height / radius)
+
+        for v in range(max_circles_vertically):
+            for c in range(self.half_circles_per_square):
+                x_offset = (self.square_width / -2) + ((c + 1) * radius)
+                y_offset = (v * radius) + (radius / 2)
+
+                create_half_circle(
+                    plotter=plotter,
+                    origin_x=self.square_center_x + x_offset,
+                    origin_y=self.square_center_y - (self.square_height / 2) + y_offset,
+                    radius=radius,
+                    steps=30,
+                )

@@ -3,6 +3,7 @@ import random
 
 from nextdraw import NextDraw
 
+
 def create_burst(
     plotter: NextDraw,
     origin_x: float,
@@ -69,7 +70,9 @@ def create_burst(
 
     # remove duplicate points:
     path_points_uniques = []
-    path_points_uniques = [point for point in path_points if point not in path_points_uniques]
+    path_points_uniques = [
+        point for point in path_points if point not in path_points_uniques
+    ]
     for point in path_points_uniques:
         x = point[0]
         y = point[1]

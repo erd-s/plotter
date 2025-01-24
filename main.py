@@ -1,8 +1,10 @@
 from nextdraw import NextDraw
 
+import time
+
 from projects.grid import create_grid
-from projects.circles.burst_grid import BurstGrid
 from projects.margin import draw_margin
+from projects.circles.half_circles_grid import HalfCircleGrid
 
 from utils import (
     DOC_WIDTH,
@@ -40,14 +42,21 @@ def tear_down_plotter(plotter):
 def run():
     plotter = setup_plotter(NextDraw())
 
-    # project to run
-    # draw_margin(plotter)
-    # create_grid(plotter=plotter, grid_size=5)
-    project = BurstGrid(lines_per_quadrant=6)
-    project.create_object_grid(plotter=plotter, grid_size=6)
+    try:
+        start_time = time.perf_counter()
 
-    tear_down_plotter(plotter)
+        # project to run
+        project = HalfCircleGrid(half_circles_per_square=12)
+        # create_grid(plotter=plotter, grid_size=7)
+        # draw_margin(plotter)
+        project.create_object_grid(plotter=plotter, grid_size=7)
 
+
+        end_time = time.perf_counter()
+        print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
+        tear_down_plotter(plotter)
+    except:
+        tear_down_plotter(plotter)
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":

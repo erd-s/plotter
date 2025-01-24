@@ -37,6 +37,7 @@ class ObjectGrid:
 
         iteration = 0
         for i in range(grid_size * grid_size):
+            print(f"Index: {i}")
             self.square_center_x = plotter.current_pos()[0]
             self.square_center_y = plotter.current_pos()[1]
 
