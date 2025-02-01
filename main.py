@@ -2,9 +2,7 @@ from nextdraw import NextDraw
 
 import time
 
-from projects.grid import create_grid
-from projects.margin import draw_margin
-from projects.circles.half_circles_grid import HalfCircleGrid
+from projects.complete import semis
 
 from utils import (
     DOC_WIDTH,
@@ -44,19 +42,15 @@ def run():
 
     try:
         start_time = time.perf_counter()
-
-        # project to run
-        project = HalfCircleGrid(half_circles_per_square=12)
-        # create_grid(plotter=plotter, grid_size=7)
-        # draw_margin(plotter)
-        project.create_object_grid(plotter=plotter, grid_size=7)
-
-
+        semis.run(plotter)
         end_time = time.perf_counter()
+
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
+
         tear_down_plotter(plotter)
     except:
         tear_down_plotter(plotter)
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":

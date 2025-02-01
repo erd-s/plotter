@@ -16,9 +16,9 @@ class HalfCircleGrid(ObjectGrid):
         max_circles_vertically = math.floor(self.square_height / radius)
 
         for v in range(max_circles_vertically):
-            for c in range(self.half_circles_per_square):
-                x_offset = (self.square_width / -2) + ((c + 1) * radius)
-                y_offset = (v * radius) + (radius / 2)
+            for c in range(self.half_circles_per_square + 1):
+                x_offset = (self.square_width / -2) + ((c + 1) * radius) - (radius)
+                y_offset = (v * radius) + (radius / 1.5)
 
                 create_half_circle(
                     plotter=plotter,
