@@ -40,7 +40,7 @@ def tear_down_plotter(plotter):
 
 def run():
     plotter = setup_plotter(NextDraw())
-    create_text(text="hello, world", x_origin=center_x(), y_origin=(center_y() + (effective_height() / 2) - 0.5))
+    create_text(text="hello, world", x_origin=0, y_origin=0)
 
     try:
         start_time = time.perf_counter()
