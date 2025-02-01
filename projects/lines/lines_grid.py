@@ -6,6 +6,7 @@ from projects.object_grid import ObjectGrid
 
 class LinesGrid(ObjectGrid):
     number_of_lines: int
+
     def __init__(self, number_of_lines):
         super().__init__()
         self.number_of_lines = number_of_lines

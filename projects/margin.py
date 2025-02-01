@@ -1,6 +1,6 @@
 from nextdraw import NextDraw
 
-from utils import effective_x_start, effective_y_start, effective_y_end, effective_x_end
+from utils.positioning import effective_x_start, effective_y_start, effective_y_end, effective_x_end
 
 
 def draw_margin(plotter: NextDraw, delta: float = 0):

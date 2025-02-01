@@ -3,8 +3,9 @@ from nextdraw import NextDraw
 import time
 
 from projects.complete import semis
+from utils.text.text import create_text
 
-from utils import (
+from utils.positioning import (
     DOC_WIDTH,
     DOC_HEIGHT,
     MARGIN,
@@ -39,14 +40,11 @@ def tear_down_plotter(plotter):
 
 def run():
     plotter = setup_plotter(NextDraw())
+    create_text(text="hello, world", x_origin=center_x(), y_origin=(center_y() + (effective_height() / 2) - 0.5))
 
     try:
         start_time = time.perf_counter()
-        semis.run(plotter)
         end_time = time.perf_counter()
-
-        print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
-
         tear_down_plotter(plotter)
     except:
         tear_down_plotter(plotter)
