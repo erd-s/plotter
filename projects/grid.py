@@ -1,6 +1,6 @@
 from nextdraw import NextDraw
 
-from utils import (
+from utils.utils import (
     effective_width,
     effective_height,
     effective_x_start,

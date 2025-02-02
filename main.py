@@ -2,9 +2,9 @@ from nextdraw import NextDraw
 
 import time
 
-from projects.complete import semis
+from projects.complete import *
 
-from utils import (
+from utils.utils import (
     DOC_WIDTH,
     DOC_HEIGHT,
     MARGIN,
@@ -42,7 +42,6 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        semis.run(plotter)
         end_time = time.perf_counter()
 
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")

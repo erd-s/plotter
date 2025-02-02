@@ -11,12 +11,12 @@ def create_lines(
     max_height: float,
     max_width: float,
 ):
-
     start_x = origin_x
     start_y = origin_y + (max_height / 2)
     iterations = 300
 
-    print(f'''
+    print(
+        f"""
         origin_x: {origin_x}
         origin_y: {origin_y}
         start x: {start_x}
@@ -24,7 +24,8 @@ def create_lines(
         max width: {max_width}
         max height: {max_height}
         iterations: {iterations}
-        ''')
+        """
+    )
 
     for _ in range(number_of_lines):
         points = [[start_x, start_y]]
@@ -47,5 +48,3 @@ def create_lines(
         plotter.moveto(points[0][0], points[0][1])
         plotter.pendown()
         plotter.draw_path(points)
-
-

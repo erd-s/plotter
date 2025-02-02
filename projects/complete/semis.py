@@ -2,6 +2,7 @@ from nextdraw import NextDraw
 from projects.circles.half_circles_grid import HalfCircleGrid
 from projects.margin import draw_margin
 
+
 def run(plotter: NextDraw):
     # project to run
     project = HalfCircleGrid(half_circles_per_square=7)
