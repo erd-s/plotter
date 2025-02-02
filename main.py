@@ -3,7 +3,7 @@ from nextdraw import NextDraw
 import time
 
 from projects.complete import semis
-from utils.text.text import create_text
+from utils.text.text import create_text_svg
 
 from utils.positioning import (
     DOC_WIDTH,
@@ -39,15 +39,20 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = setup_plotter(NextDraw())
-    create_text(text="hello, world", x_origin=0, y_origin=0)
+    # run svg plotter
+    svg_plotter = NextDraw()
+    path = create_text_svg(text="02-02-2025")
+    svg_plotter.plot_setup(path)
+    svg_plotter.plot_run()
 
+    # run interactive plotter
     try:
+        interactive_plotter = setup_plotter(NextDraw())
         start_time = time.perf_counter()
         end_time = time.perf_counter()
-        tear_down_plotter(plotter)
+        tear_down_plotter(interactive_plotter)
     except:
-        tear_down_plotter(plotter)
+        tear_down_plotter(interactive_plotter)
 
 
 # Press the green button in the gutter to run the script.
