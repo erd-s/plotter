@@ -1,20 +1,20 @@
-from config import DOC_HEIGHT, DOC_WIDTH, MARGIN
+from config import DOC_HEIGHT, DOC_WIDTH, MARGIN_HORIZONTAL, MARGIN_VERTICAL
 
 
 def effective_height():
-    return DOC_HEIGHT - (2 * MARGIN)
+    return DOC_HEIGHT - (2 * MARGIN_VERTICAL)
 
 
 def effective_width():
-    return DOC_WIDTH - (2 * MARGIN)
+    return DOC_WIDTH - (2 * MARGIN_HORIZONTAL)
 
 
 def effective_x_start():
-    return MARGIN
+    return MARGIN_HORIZONTAL
 
 
 def effective_y_start():
-    return MARGIN
+    return MARGIN_VERTICAL
 
 
 def center_x():
@@ -30,8 +30,16 @@ def center():
 
 
 def effective_x_end():
-    return MARGIN + effective_width()
+    return MARGIN_HORIZONTAL + effective_width()
 
 
 def effective_y_end():
-    return MARGIN + effective_height()
+    return MARGIN_VERTICAL + effective_height()
+
+
+def horizontal_margin():
+    return MARGIN_HORIZONTAL
+
+
+def vertical_margin():
+    return MARGIN_VERTICAL
