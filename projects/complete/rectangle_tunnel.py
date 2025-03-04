@@ -6,8 +6,8 @@ from nextdraw import NextDraw
 
 
 def create_tunnel(plotter: NextDraw):
-    starting_height = 0.25
-    starting_width = 0.25
+    starting_height = 0.2
+    starting_width = 0.2
     print(f"Creating tunnel with height: {starting_height}, width: {starting_width}")
 
     iterations = 40

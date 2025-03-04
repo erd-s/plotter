@@ -5,6 +5,7 @@ import time
 from projects.complete import semis, rectangle_tunnel
 from projects.spiro.petal import create_spiro_petal
 from projects import margin
+from projects.lines import zigzags
 
 from utils.utils import (
     DOC_WIDTH,
@@ -47,7 +48,7 @@ def run():
     try:
         start_time = time.perf_counter()
         # margin.draw_margin(plotter=plotter)
-        rectangle_tunnel.create_tunnel(plotter=plotter)
+        zigzags.run(plotter=plotter, zigs=10)
         end_time = time.perf_counter()
 
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
