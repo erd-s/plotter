@@ -47,8 +47,8 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        # margin.draw_margin(plotter=plotter)
         zigzags.run(plotter=plotter, zigs=10)
+        margin.draw_margin(plotter=plotter)
         end_time = time.perf_counter()
 
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
