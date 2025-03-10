@@ -81,7 +81,7 @@ def run(plotter: NextDraw, zigs: int):
                     break
             else:
                 if current_x + zig_width >= effective_x_end() - 0.2:
-                    plotter.moveto(effective_x_end(), current_y + y_delta)
+                    plotter.lineto(effective_x_end(), current_y + y_delta)
                     plotter.penup()
 
                     # reset to starting x
@@ -92,4 +92,4 @@ def run(plotter: NextDraw, zigs: int):
                     )
                     break
 
-            plotter.move(zig_width, y_delta)
+            plotter.line(zig_width, y_delta)
