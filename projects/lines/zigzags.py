@@ -41,7 +41,6 @@ def run(plotter: NextDraw, zigs: int):
             if current_y + y_delta >= effective_y_end():
                 if current_y - effective_y_end() > 0.1:
                     # end
-                    print("Ending")
                     plotter.penup()
                     end = True
                     break
@@ -69,7 +68,6 @@ def run(plotter: NextDraw, zigs: int):
                     plotter.lineto(effective_x_end(), current_y + y_delta)
 
                     # reset to starting x
-                    print("Moving to starting X, moving down one line")
                     plotter.moveto(
                         effective_x_start(),
                         plotter.current_pos()[1] + line_distance,
