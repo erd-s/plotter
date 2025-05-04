@@ -47,7 +47,7 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        zigzags.run(plotter=plotter, zigs=10)
+        zigzags.run(plotter=plotter, zig_zags=7)
         margin.draw_margin(plotter=plotter)
         end_time = time.perf_counter()
 

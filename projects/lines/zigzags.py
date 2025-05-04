@@ -12,8 +12,9 @@ from utils.utils import (
 )
 
 
-def run(plotter: NextDraw, zigs: int):
+def run(plotter: NextDraw, zig_zags: int):
     density_constant = 5
+    zigs = zig_zags * 2
     zig_width = effective_width() / zigs
     zag_height = effective_height() / density_constant
     line_distance = zag_height / density_constant
@@ -45,7 +46,7 @@ def run(plotter: NextDraw, zigs: int):
                     end = True
                     break
                 else:
-                    if current_x + zig_width >= effective_x_end() - 0.1:
+                    if current_x + zig_width >= effective_x_end() - 0.2:
                         # reset to starting x
                         plotter.moveto(
                             effective_x_start(),
@@ -92,10 +93,10 @@ def run(plotter: NextDraw, zigs: int):
             plotter.line(adjusted_x_delta, adjusted_y_delta)
 
             # zag up
-            plotter.line(adjusted_x_delta, adjusted_y_delta * - 1)
+            plotter.line(adjusted_x_delta, adjusted_y_delta * -1)
 
             # reset
             if i + 1 != density_constant:
-                plotter.move((adjusted_x_delta * - 2), 0)
+                plotter.move((adjusted_x_delta * -2), 0)
 
         plotter.move(zig_width, 0)
