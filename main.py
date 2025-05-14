@@ -2,10 +2,13 @@ from nextdraw import NextDraw
 
 import time
 
+import projects.circles.circle_overlay_grid
 from projects.complete import semis, rectangle_tunnel
 from projects.spiro.petal import create_spiro_petal
 from projects import margin
 from projects.lines import zigzags
+from projects.circles.circle_overlay_grid import CircleOverlayGrid
+from projects.grid import create_grid
 
 from utils.utils import (
     DOC_WIDTH,
@@ -47,10 +50,13 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        zigzags.run(plotter=plotter, zig_zags=7)
-        margin.draw_margin(plotter=plotter)
+        grid_size = 25
+        project = CircleOverlayGrid(density=65)
+        project.create_object_grid(plotter=plotter, grid_size=grid_size)
+        print(
+            f"Density: {(1 - ((project.total_circles + project.total_skips) / project.total_circles)) * 100}%"
+        )
         end_time = time.perf_counter()
-
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
         tear_down_plotter(plotter)
