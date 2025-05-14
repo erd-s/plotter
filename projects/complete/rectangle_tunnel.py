@@ -1,6 +1,6 @@
 import random
 
-from projects.rectangles.rectangle import create_rectangle
+from projects.rectangles.rectangle import create_rectangle_with_bounds
 from utils.utils import *
 from nextdraw import NextDraw
 
@@ -40,7 +40,7 @@ def create_tunnel(plotter: NextDraw):
             continue
 
         try:
-            create_rectangle(
+            create_rectangle_with_bounds(
                 plotter=plotter,
                 height=height,
                 width=width,

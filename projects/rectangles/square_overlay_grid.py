@@ -2,33 +2,33 @@ import random
 
 from nextdraw import NextDraw
 
-from projects.circles.circle import create_circle
+from projects.rectangles.rectangle import create_rectangle
 from projects.object_grid import ObjectGrid
 
 
-class CircleOverlayGrid(ObjectGrid):
+class SquareOverlayGrid(ObjectGrid):
     density: int
     total_skips: int = 0
-    total_circles: int = 0
+    total_squares: int = 0
 
     def __init__(self, density: int):
         super().__init__()
         self.density = density
 
     def object_logic(self, plotter: NextDraw):
-        radius = self.square_width / 4.25
+        width = self.square_width / 3.75
         density = self.density
         random_constant = random.uniform(0, 100)
         skip = random_constant > density
 
         if not skip:
-            self.total_circles += 1
-            create_circle(
+            self.total_squares += 1
+            create_rectangle(
                 plotter=plotter,
-                origin_x=self.square_center_x,
-                origin_y=self.square_center_y,
-                radius=radius,
-                steps=15,
+                height=width,
+                width=width,
+                center_x=self.square_center_x,
+                center_y=self.square_center_y,
             )
         else:
             self.total_skips += 1

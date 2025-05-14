@@ -8,6 +8,7 @@ from projects.spiro.petal import create_spiro_petal
 from projects import margin
 from projects.lines import zigzags
 from projects.circles.circle_overlay_grid import CircleOverlayGrid
+from projects.rectangles.square_overlay_grid import SquareOverlayGrid
 from projects.grid import create_grid
 
 from utils.utils import (
@@ -51,11 +52,11 @@ def run():
     try:
         start_time = time.perf_counter()
         grid_size = 25
-        project = CircleOverlayGrid(density=65)
+        project = SquareOverlayGrid(density=85)
         project.create_object_grid(plotter=plotter, grid_size=grid_size)
         print(
-            f"Density: {round((project.total_circles / (project.total_circles + project.total_skips)), 2) * 100}%"
-            f"Total Circles: {project.total_circles} of {grid_size * grid_size}"
+            f"Density: {round((project.total_squares / (project.total_squares + project.total_skips)), 2) * 100}%"
+            f"Total Squares: {project.total_squares} of {grid_size * grid_size}"
         )
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")

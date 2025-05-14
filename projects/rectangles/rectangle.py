@@ -1,7 +1,7 @@
 from nextdraw import NextDraw
 
 
-def create_rectangle(
+def create_rectangle_with_bounds(
     plotter: NextDraw,
     height: float,
     width: float,
@@ -31,7 +31,6 @@ def create_rectangle(
         ay = y_min
         out_of_bounds = True
 
-    print(f"A: {ax}, {ay}")
     points.append([ax, ay])
 
     if bx < x_min:
@@ -41,7 +40,6 @@ def create_rectangle(
         by = y_max
         out_of_bounds = True
 
-    print(f"B: {bx}, {by}")
     points.append([bx, by])
 
     if cx > x_max:
@@ -51,7 +49,6 @@ def create_rectangle(
         cy = y_max
         out_of_bounds = True
 
-    print(f"C: {cx}, {cy}")
     points.append([cx, cy])
 
     if dx > x_max:
@@ -60,7 +57,6 @@ def create_rectangle(
     if dy < y_min:
         dy = y_min
         out_of_bounds = True
-    print(f"D: {dx}, {dy}")
     points.append([dx, dy])
 
     if ax < x_min:
@@ -70,7 +66,6 @@ def create_rectangle(
         ay = y_min
         out_of_bounds = True
 
-    print(f"A: {ax}, {ay}")
     points.append([ax, ay])
 
     if not out_of_bounds:
@@ -92,3 +87,19 @@ def create_rectangle(
 
             plotter.moveto(xs, ys)
             plotter.lineto(xe, ye)
+
+
+def create_rectangle(
+    plotter: NextDraw, height: float, width: float, center_x: float, center_y: float
+):
+    ax = center_x - (width * 0.5)
+    ay = center_y - (height * 0.5)
+    bx = ax
+    by = center_y + (height * 0.5)
+    cx = center_x + (width * 0.5)
+    cy = by
+    dx = cx
+    dy = ay
+
+    points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
+    plotter.draw_path(points)

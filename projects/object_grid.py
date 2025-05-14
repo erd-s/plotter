@@ -27,8 +27,8 @@ class ObjectGrid:
         self.square_width = effective_width() / grid_size
         self.square_height = effective_height() / grid_size
 
-        print(f'Square Width = {self.square_width}"')
-        print(f'Square Height = {self.square_height}"')
+        print(f'Grid Square Width = {self.square_width}"')
+        print(f'Grid Square Height = {self.square_height}"')
 
         plotter.move(
             effective_x_start() + (self.square_width / 2),
