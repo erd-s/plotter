@@ -39,7 +39,6 @@ class ObjectGrid:
         row = 0
         column = 0
         for i in range(grid_size * grid_size):
-            print(f"Index: {i}")
             self.square_center_x = (
                 effective_x_start()
                 + (self.square_width / 2)

@@ -16,7 +16,7 @@ class CircleOverlayGrid(ObjectGrid):
         self.density = density
 
     def object_logic(self, plotter: NextDraw):
-        radius = self.square_width / 3.3
+        radius = self.square_width / 4.25
         density = 60
         random_constant = random.uniform(0, 100)
         skip = random_constant > density

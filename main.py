@@ -54,7 +54,8 @@ def run():
         project = CircleOverlayGrid(density=65)
         project.create_object_grid(plotter=plotter, grid_size=grid_size)
         print(
-            f"Density: {(1 - ((project.total_circles + project.total_skips) / project.total_circles)) * 100}%"
+            f"Density: {round((project.total_circles / (project.total_circles + project.total_skips)), 2) * 100}%"
+            f"Total Circles: {project.total_circles} of {grid_size * grid_size}"
         )
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
