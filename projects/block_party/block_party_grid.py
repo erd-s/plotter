@@ -53,17 +53,21 @@ class BlockPartyGrid(ObjectGrid):
         elif should_connect_with_above:
             options = ["e", "f", "j"]
         else:
-            options = ["a", "h", "k"]
+            options = ["a", "h", "k", "l"]
 
         if (index + 1) % self.grid_size == 0:
             # can't have an open right on right column
             print("In right column")
-            options = list(filter(lambda o: o not in ("a", "c", "e", "g", "h"), options))
+            options = list(
+                filter(lambda o: o not in ("a", "c", "e", "g", "h"), options)
+            )
 
         if index >= (self.grid_size * self.grid_size) - self.grid_size:
             # can't have an open bottom on bottom row
             print("In bottom row")
-            options = list(filter(lambda o: o not in ("a", "b", "f", "g", "k"), options))
+            options = list(
+                filter(lambda o: o not in ("a", "b", "f", "g", "k"), options)
+            )
 
         option_index = random.randint(0, len(options) - 1)
         selected_option = options[option_index]
@@ -93,5 +97,7 @@ class BlockPartyGrid(ObjectGrid):
                 piece_generator.j()
             case "k":
                 piece_generator.k()
+            case "l":
+                piece_generator.l()
 
         self.pieces.append(selected_option)

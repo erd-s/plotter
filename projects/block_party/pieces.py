@@ -99,12 +99,12 @@ class PieceGenerator:
     grid_point: GridPoint
 
     def __init__(
-        self,
-        plotter: NextDraw,
-        center_x: float,
-        center_y: float,
-        width: float,
-        height: float,
+            self,
+            plotter: NextDraw,
+            center_x: float,
+            center_y: float,
+            width: float,
+            height: float,
     ):
         self.plotter = plotter
         self.grid_point = GridPoint(
@@ -190,5 +190,14 @@ class PieceGenerator:
             self.grid_point.f(),
             self.grid_point.g(),
             self.grid_point.o(),
+        ]
+        self.plotter.draw_path(line_one)
+
+    def l(self):
+        line_one = [
+            self.grid_point.f(),
+            self.grid_point.g(),
+            self.grid_point.j(),
+            self.grid_point.k(),
         ]
         self.plotter.draw_path(line_one)
