@@ -1,7 +1,7 @@
 from nextdraw import NextDraw
 
 import time
-from projects.circles.circle_overlay_grid import CircleOverlayGrid
+from projects.block_party.block_party_grid import BlockPartyGrid
 from projects.margin import draw_margin
 from projects.grid import create_grid
 
@@ -45,10 +45,9 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        # draw_margin(plotter=plotter)
-        project = CircleOverlayGrid(density=100, width_ratio=0.3)
-        project.create_object_grid(plotter=plotter, grid_size=15)
-        # create_grid(plotter=plotter, grid_size=10)
+        project = BlockPartyGrid()
+        project.create_object_grid(plotter=plotter, grid_size=4)
+
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

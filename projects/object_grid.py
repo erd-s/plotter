@@ -13,6 +13,7 @@ class ObjectGrid:
     square_center_y: float
     square_width: float
     square_height: float
+    margin: float = 0
 
     def __init__(self):
         pass
@@ -24,8 +25,8 @@ class ObjectGrid:
         start_index=0,
         iterations: int = None,
     ):
-        self.square_width = effective_width() / grid_size
-        self.square_height = effective_height() / grid_size
+        self.square_width = (effective_width() / grid_size)
+        self.square_height = (effective_height() / grid_size)
 
         print(f'Grid Square Width = {self.square_width}"')
         print(f'Grid Square Height = {self.square_height}"')

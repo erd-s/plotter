@@ -7,6 +7,12 @@ class GridPoint:
     width: float
     height: float
 
+    def __init__(self, center_x: float, center_y: float, width: float, height: float):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.width = width
+        self.height = height
+
     def a(self):
         x = self.center_x - self.width / 2
         y = self.center_y - self.height / 2
@@ -92,6 +98,19 @@ class PieceGenerator:
     plotter: NextDraw
     grid_point: GridPoint
 
+    def __init__(
+        self,
+        plotter: NextDraw,
+        center_x: float,
+        center_y: float,
+        width: float,
+        height: float,
+    ):
+        self.plotter = plotter
+        self.grid_point = GridPoint(
+            center_x=center_x, center_y=center_y, width=width, height=height
+        )
+
     def a(self):
         line_one = [self.grid_point.n(), self.grid_point.f(), self.grid_point.h()]
         line_two = [self.grid_point.o(), self.grid_point.k(), self.grid_point.l()]
@@ -112,7 +131,7 @@ class PieceGenerator:
 
     def d(self):
         line_one = [self.grid_point.e(), self.grid_point.f(), self.grid_point.b()]
-        line_two = [self.grid_point.k(), self.grid_point.k(), self.grid_point.c()]
+        line_two = [self.grid_point.j(), self.grid_point.k(), self.grid_point.c()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
 
