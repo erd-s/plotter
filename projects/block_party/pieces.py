@@ -35,42 +35,42 @@ class GridPoint:
 
     def e(self):
         x = self.center_x - self.width / 2
-        y = self.center_y - self.height / 6
+        y = self.center_y - self.width / 6
         return [x, y]
 
     def f(self):
         x = self.center_x - self.width / 6
-        y = self.center_y - self.height / 6
+        y = self.center_y - self.width / 6
         return [x, y]
 
     def g(self):
         x = self.center_x + self.width / 6
-        y = self.center_y - self.height / 6
+        y = self.center_y - self.width / 6
         return [x, y]
 
     def h(self):
         x = self.center_x + self.width / 2
-        y = self.center_y - self.height / 6
+        y = self.center_y - self.width / 6
         return [x, y]
 
     def i(self):
         x = self.center_x - self.width / 2
-        y = self.center_y + self.height / 6
+        y = self.center_y + self.width / 6
         return [x, y]
 
     def j(self):
         x = self.center_x - self.width / 6
-        y = self.center_y + self.height / 6
+        y = self.center_y + self.width / 6
         return [x, y]
 
     def k(self):
         x = self.center_x + self.width / 6
-        y = self.center_y + self.height / 6
+        y = self.center_y + self.width / 6
         return [x, y]
 
     def l(self):
         x = self.center_x + self.width / 2
-        y = self.center_y + self.height / 6
+        y = self.center_y + self.width / 6
         return [x, y]
 
     def m(self):
