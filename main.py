@@ -1,14 +1,8 @@
 from nextdraw import NextDraw
 
 import time
-
-import projects.circles.circle_overlay_grid
-from projects.complete import semis, rectangle_tunnel
-from projects.spiro.petal import create_spiro_petal
-from projects import margin
-from projects.lines import zigzags
 from projects.circles.circle_overlay_grid import CircleOverlayGrid
-from projects.rectangles.square_overlay_grid import SquareOverlayGrid
+from projects.margin import draw_margin
 from projects.grid import create_grid
 
 from utils.utils import (
@@ -51,13 +45,10 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        grid_size = 25
-        project = SquareOverlayGrid(density=85)
-        project.create_object_grid(plotter=plotter, grid_size=grid_size)
-        print(
-            f"Density: {round((project.total_squares / (project.total_squares + project.total_skips)), 2) * 100}%"
-            f"Total Squares: {project.total_squares} of {grid_size * grid_size}"
-        )
+        # draw_margin(plotter=plotter)
+        project = CircleOverlayGrid(density=100, width_ratio=0.3)
+        project.create_object_grid(plotter=plotter, grid_size=15)
+        # create_grid(plotter=plotter, grid_size=10)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

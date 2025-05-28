@@ -41,62 +41,38 @@ def create_cube(
 
     # vertical lines
     plotter.moveto(point_one[0], point_one[1])
-    plotter.pendown()
     plotter.lineto(point_two[0], point_two[1])
-    plotter.penup()
 
     plotter.moveto(point_three[0], point_three[1])
-    plotter.pendown()
     plotter.lineto(point_four[0], point_four[1])
-    plotter.penup()
 
     plotter.moveto(point_five[0], point_five[1])
-    plotter.pendown()
     plotter.lineto(point_six[0], point_six[1])
-    plotter.penup()
 
     plotter.moveto(point_seven[0], point_seven[1])
-    plotter.pendown()
     plotter.lineto(point_eight[0], point_eight[1])
-    plotter.penup()
 
     # connect vertices
     plotter.moveto(point_one[0], point_one[1])
-    plotter.pendown()
     plotter.lineto(point_three[0], point_three[1])
-    plotter.penup()
 
     plotter.moveto(point_three[0], point_three[1])
-    plotter.pendown()
     plotter.lineto(point_seven[0], point_seven[1])
-    plotter.penup()
 
     plotter.moveto(point_one[0], point_one[1])
-    plotter.pendown()
     plotter.lineto(point_five[0], point_five[1])
-    plotter.penup()
 
     plotter.moveto(point_five[0], point_five[1])
-    plotter.pendown()
     plotter.lineto(point_seven[0], point_seven[1])
-    plotter.penup()
 
     plotter.moveto(point_two[0], point_two[1])
-    plotter.pendown()
     plotter.lineto(point_four[0], point_four[1])
-    plotter.penup()
 
     plotter.moveto(point_four[0], point_four[1])
-    plotter.pendown()
     plotter.lineto(point_eight[0], point_eight[1])
-    plotter.penup()
 
     plotter.moveto(point_two[0], point_two[1])
-    plotter.pendown()
     plotter.lineto(point_six[0], point_six[1])
-    plotter.penup()
 
     plotter.moveto(point_six[0], point_six[1])
-    plotter.pendown()
     plotter.lineto(point_eight[0], point_eight[1])
-    plotter.penup()
