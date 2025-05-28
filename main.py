@@ -1,9 +1,7 @@
 from nextdraw import NextDraw
 
 import time
-from projects.block_party.block_party_grid import BlockPartyGrid
-from projects.margin import draw_margin
-from projects.grid import create_grid
+from projects.complete.block_party import create_block_party
 
 from utils.utils import (
     DOC_WIDTH,
@@ -45,11 +43,7 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        try:
-            project = BlockPartyGrid(grid_size=12)
-            project.create_object_grid(plotter=plotter)
-        except Exception as e:
-            print(e)
+        create_block_party(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

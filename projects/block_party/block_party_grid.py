@@ -27,24 +27,8 @@ class BlockPartyGrid(ObjectGrid):
         if index % self.grid_size != 0:
             left = self.pieces[index - 1]
 
-        print(
-            f"""
-            ---
-            Current Index: {index}
-            Above: {above or "n/a"}
-            Left: {left or "n/a"}
-            """
-        )
-
         should_connect_with_above = above in ("a", "b", "f", "g", "k")
         should_connect_with_left = left in ("a", "c", "e", "g", "h")
-
-        print(
-            f"""
-            Should connect with above: {should_connect_with_above}
-            Should connect with left: {should_connect_with_left}
-            """
-        )
 
         if should_connect_with_left and should_connect_with_above:
             options = ["d", "g"]
@@ -57,22 +41,18 @@ class BlockPartyGrid(ObjectGrid):
 
         if (index + 1) % self.grid_size == 0:
             # can't have an open right on right column
-            print("In right column")
             options = list(
                 filter(lambda o: o not in ("a", "c", "e", "g", "h"), options)
             )
 
         if index >= (self.grid_size * self.grid_size) - self.grid_size:
             # can't have an open bottom on bottom row
-            print("In bottom row")
             options = list(
                 filter(lambda o: o not in ("a", "b", "f", "g", "k"), options)
             )
 
         option_index = random.randint(0, len(options) - 1)
         selected_option = options[option_index]
-
-        print(f"Selected '{selected_option}' from {options} for index: {index}")
 
         match selected_option:
             case "a":

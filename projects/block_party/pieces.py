@@ -6,6 +6,7 @@ class GridPoint:
     center_y: float
     width: float
     height: float
+    thinness_coefficient: int = 2.5
 
     def __init__(self, center_x: float, center_y: float, width: float, height: float):
         self.center_x = center_x
@@ -19,12 +20,12 @@ class GridPoint:
         return [x, y]
 
     def b(self):
-        x = self.center_x - self.width / 6
+        x = self.center_x - self.width / self.thinness_coefficient
         y = self.center_y - self.height / 2
         return [x, y]
 
     def c(self):
-        x = self.center_x + self.width / 6
+        x = self.center_x + self.width / self.thinness_coefficient
         y = self.center_y - self.height / 2
         return [x, y]
 
@@ -35,42 +36,42 @@ class GridPoint:
 
     def e(self):
         x = self.center_x - self.width / 2
-        y = self.center_y - self.width / 6
+        y = self.center_y - self.height / self.thinness_coefficient
         return [x, y]
 
     def f(self):
-        x = self.center_x - self.width / 6
-        y = self.center_y - self.width / 6
+        x = self.center_x - self.width / self.thinness_coefficient
+        y = self.center_y - self.height / self.thinness_coefficient
         return [x, y]
 
     def g(self):
-        x = self.center_x + self.width / 6
-        y = self.center_y - self.width / 6
+        x = self.center_x + self.width / self.thinness_coefficient
+        y = self.center_y - self.height / self.thinness_coefficient
         return [x, y]
 
     def h(self):
         x = self.center_x + self.width / 2
-        y = self.center_y - self.width / 6
+        y = self.center_y - self.height / self.thinness_coefficient
         return [x, y]
 
     def i(self):
         x = self.center_x - self.width / 2
-        y = self.center_y + self.width / 6
+        y = self.center_y + self.height / self.thinness_coefficient
         return [x, y]
 
     def j(self):
-        x = self.center_x - self.width / 6
-        y = self.center_y + self.width / 6
+        x = self.center_x - self.width / self.thinness_coefficient
+        y = self.center_y + self.height / self.thinness_coefficient
         return [x, y]
 
     def k(self):
-        x = self.center_x + self.width / 6
-        y = self.center_y + self.width / 6
+        x = self.center_x + self.width / self.thinness_coefficient
+        y = self.center_y + self.height / self.thinness_coefficient
         return [x, y]
 
     def l(self):
         x = self.center_x + self.width / 2
-        y = self.center_y + self.width / 6
+        y = self.center_y + self.height / self.thinness_coefficient
         return [x, y]
 
     def m(self):
@@ -79,12 +80,12 @@ class GridPoint:
         return [x, y]
 
     def n(self):
-        x = self.center_x - self.width / 6
+        x = self.center_x - self.width / self.thinness_coefficient
         y = self.center_y + self.height / 2
         return [x, y]
 
     def o(self):
-        x = self.center_x + self.width / 6
+        x = self.center_x + self.width / self.thinness_coefficient
         y = self.center_y + self.height / 2
         return [x, y]
 
@@ -99,12 +100,12 @@ class PieceGenerator:
     grid_point: GridPoint
 
     def __init__(
-            self,
-            plotter: NextDraw,
-            center_x: float,
-            center_y: float,
-            width: float,
-            height: float,
+        self,
+        plotter: NextDraw,
+        center_x: float,
+        center_y: float,
+        width: float,
+        height: float,
     ):
         self.plotter = plotter
         self.grid_point = GridPoint(
@@ -199,6 +200,6 @@ class PieceGenerator:
             self.grid_point.g(),
             self.grid_point.k(),
             self.grid_point.j(),
-            self.grid_point.f()
+            self.grid_point.f(),
         ]
         self.plotter.draw_path(line_one)
