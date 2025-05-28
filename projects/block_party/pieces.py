@@ -197,7 +197,8 @@ class PieceGenerator:
         line_one = [
             self.grid_point.f(),
             self.grid_point.g(),
-            self.grid_point.j(),
             self.grid_point.k(),
+            self.grid_point.j(),
+            self.grid_point.f()
         ]
         self.plotter.draw_path(line_one)
