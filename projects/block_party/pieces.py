@@ -131,7 +131,7 @@ class PieceGenerator:
 
     def d(self):
         line_one = [self.grid_point.e(), self.grid_point.f(), self.grid_point.b()]
-        line_two = [self.grid_point.j(), self.grid_point.k(), self.grid_point.c()]
+        line_two = [self.grid_point.i(), self.grid_point.k(), self.grid_point.c()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
 
@@ -160,8 +160,8 @@ class PieceGenerator:
     def h(self):
         line_one = [
             self.grid_point.h(),
-            self.grid_point.e(),
-            self.grid_point.i(),
+            self.grid_point.f(),
+            self.grid_point.j(),
             self.grid_point.l(),
         ]
         self.plotter.draw_path(line_one)
@@ -169,8 +169,8 @@ class PieceGenerator:
     def i(self):
         line_one = [
             self.grid_point.e(),
-            self.grid_point.h(),
-            self.grid_point.l(),
+            self.grid_point.g(),
+            self.grid_point.k(),
             self.grid_point.i(),
         ]
         self.plotter.draw_path(line_one)
@@ -178,8 +178,8 @@ class PieceGenerator:
     def j(self):
         line_one = [
             self.grid_point.b(),
-            self.grid_point.n(),
-            self.grid_point.o(),
+            self.grid_point.j(),
+            self.grid_point.k(),
             self.grid_point.c(),
         ]
         self.plotter.draw_path(line_one)
@@ -187,8 +187,8 @@ class PieceGenerator:
     def k(self):
         line_one = [
             self.grid_point.n(),
-            self.grid_point.b(),
-            self.grid_point.c(),
+            self.grid_point.f(),
+            self.grid_point.g(),
             self.grid_point.o(),
         ]
         self.plotter.draw_path(line_one)

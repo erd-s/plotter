@@ -7,8 +7,8 @@ from projects.object_grid import ObjectGrid
 class LinesGrid(ObjectGrid):
     number_of_lines: int
 
-    def __init__(self, number_of_lines):
-        super().__init__()
+    def __init__(self, grid_size: int, number_of_lines):
+        super().__init__(grid_size=grid_size)
         self.number_of_lines = number_of_lines
 
     def object_logic(self, plotter: NextDraw):

@@ -9,4 +9,4 @@ def run(plotter: NextDraw):
     draw_margin(plotter, delta=-0.5)
     draw_margin(plotter, delta=-0.4)
     draw_margin(plotter, delta=-0.3)
-    project.create_object_grid(plotter=plotter, grid_size=4)
+    project.create_object_grid(plotter=plotter)

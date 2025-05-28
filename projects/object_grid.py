@@ -14,19 +14,16 @@ class ObjectGrid:
     square_width: float
     square_height: float
     margin: float = 0
+    grid_size: int
 
-    def __init__(self):
-        pass
+    def __init__(self, grid_size: int):
+        self.grid_size = grid_size
 
     def create_object_grid(
-        self,
-        plotter: NextDraw,
-        grid_size: int,
-        start_index=0,
-        iterations: int = None,
+        self, plotter: NextDraw, start_index=0, iterations: int = None
     ):
-        self.square_width = (effective_width() / grid_size)
-        self.square_height = (effective_height() / grid_size)
+        self.square_width = effective_width() / self.grid_size
+        self.square_height = effective_height() / self.grid_size
 
         print(f'Grid Square Width = {self.square_width}"')
         print(f'Grid Square Height = {self.square_height}"')
@@ -39,7 +36,7 @@ class ObjectGrid:
         iteration = 0
         row = 0
         column = 0
-        for i in range(grid_size * grid_size):
+        for i in range(self.grid_size * self.grid_size):
             self.square_center_x = (
                 effective_x_start()
                 + (self.square_width / 2)
@@ -58,7 +55,7 @@ class ObjectGrid:
             if iterations == iteration:
                 return
 
-            if (i + 1) % grid_size == 0:
+            if (i + 1) % self.grid_size == 0:
                 # move left and down
                 row += 1
                 column = 0

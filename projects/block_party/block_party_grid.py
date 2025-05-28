@@ -1,3 +1,4 @@
+import random
 from nextdraw import NextDraw
 from projects.block_party.pieces import PieceGenerator
 
@@ -17,37 +18,80 @@ class BlockPartyGrid(ObjectGrid):
         )
         index = len(self.pieces)
 
-        match index:
-            case 0:
+        above = ""
+        left = ""
+
+        if index >= self.grid_size:
+            above = self.pieces[index - self.grid_size]
+
+        if index % self.grid_size != 0:
+            left = self.pieces[index - 1]
+
+        print(
+            f"""
+            ---
+            Current Index: {index}
+            Above: {above or "n/a"}
+            Left: {left or "n/a"}
+            """
+        )
+
+        should_connect_with_above = above in ("a", "b", "f", "g", "k")
+        should_connect_with_left = left in ("a", "c", "e", "g", "h")
+
+        print(
+            f"""
+            Should connect with above: {should_connect_with_above}
+            Should connect with left: {should_connect_with_left}
+            """
+        )
+
+        if should_connect_with_left and should_connect_with_above:
+            options = ["d", "g"]
+        elif should_connect_with_left:
+            options = ["b", "c", "i"]
+        elif should_connect_with_above:
+            options = ["e", "f", "j"]
+        else:
+            options = ["a", "h", "k"]
+
+        if (index + 1) % self.grid_size == 0:
+            # can't have an open right on right column
+            print("In right column")
+            options = list(filter(lambda o: o not in ("a", "c", "e", "g", "h"), options))
+
+        if index >= (self.grid_size * self.grid_size) - self.grid_size:
+            # can't have an open bottom on bottom row
+            print("In bottom row")
+            options = list(filter(lambda o: o not in ("a", "b", "f", "g", "k"), options))
+
+        option_index = random.randint(0, len(options) - 1)
+        selected_option = options[option_index]
+
+        print(f"Selected '{selected_option}' from {options} for index: {index}")
+
+        match selected_option:
+            case "a":
                 piece_generator.a()
-                self.pieces.append("a")
-            case 1:
+            case "b":
                 piece_generator.b()
-                self.pieces.append("b")
-            case 2:
+            case "c":
                 piece_generator.c()
-                self.pieces.append("c")
-            case 3:
+            case "d":
                 piece_generator.d()
-                self.pieces.append("d")
-            case 4:
+            case "e":
                 piece_generator.e()
-                self.pieces.append("e")
-            case 5:
+            case "f":
                 piece_generator.f()
-                self.pieces.append("f")
-            case 6:
+            case "g":
                 piece_generator.g()
-                self.pieces.append("g")
-            case 7:
+            case "h":
                 piece_generator.h()
-                self.pieces.append("h")
-            case 8:
+            case "i":
                 piece_generator.i()
-                self.pieces.append("i")
-            case 9:
+            case "j":
                 piece_generator.j()
-                self.pieces.append("j")
-            case 10:
+            case "k":
                 piece_generator.k()
-                self.pieces.append("k")
+
+        self.pieces.append(selected_option)

@@ -12,8 +12,8 @@ class CircleOverlayGrid(ObjectGrid):
     total_circles: int = 0
     width_ratio: float
 
-    def __init__(self, density: int, width_ratio: float):
-        super().__init__()
+    def __init__(self, grid_size: int, density: int, width_ratio: float):
+        super().__init__(grid_size=grid_size)
         self.density = density
         self.width_ratio = width_ratio
 

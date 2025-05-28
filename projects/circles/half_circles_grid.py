@@ -7,8 +7,8 @@ from projects.object_grid import ObjectGrid
 class HalfCircleGrid(ObjectGrid):
     half_circles_per_square: int
 
-    def __init__(self, half_circles_per_square):
-        super().__init__()
+    def __init__(self, grid_size: int, half_circles_per_square: int):
+        super().__init__(grid_size=grid_size)
         self.half_circles_per_square = half_circles_per_square
 
     def object_logic(self, plotter: NextDraw):

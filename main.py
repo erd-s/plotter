@@ -45,9 +45,11 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        project = BlockPartyGrid()
-        project.create_object_grid(plotter=plotter, grid_size=4)
-
+        try:
+            project = BlockPartyGrid(grid_size=12)
+            project.create_object_grid(plotter=plotter)
+        except Exception as e:
+            print(e)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
