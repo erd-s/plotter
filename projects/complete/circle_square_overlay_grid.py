@@ -2,6 +2,7 @@ from projects.circles.circle_overlay_grid import CircleOverlayGrid
 from projects.rectangles.square_overlay_grid import SquareOverlayGrid
 from nextdraw import NextDraw
 
+
 def create_circle_square_overlay_grid(plotter: NextDraw):
     grid_size = 25
     density = 60
