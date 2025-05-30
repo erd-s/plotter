@@ -2,6 +2,7 @@ from nextdraw import NextDraw
 
 import time
 from projects.complete.block_party import create_block_party
+from projects.margin import draw_margin
 
 from utils.utils import (
     DOC_WIDTH,
@@ -10,8 +11,6 @@ from utils.utils import (
     center_y,
     effective_height,
     effective_width,
-    vertical_margin,
-    horizontal_margin,
 )
 
 
@@ -25,8 +24,6 @@ def setup_plotter(nd: NextDraw):
 
     print("Current Settings:")
     print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
-    print(f'Horizontal Margin: {horizontal_margin()}"')
-    print(f'Vertical Margin: {vertical_margin()}":')
     print(f"Center: {center_x()}, {center_y()}")
     print(f'Effective Size: {effective_width()}"w x {effective_height()}"h')
     return nd
@@ -43,6 +40,7 @@ def run():
 
     try:
         start_time = time.perf_counter()
+        # draw_margin(plotter=plotter)
         create_block_party(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
