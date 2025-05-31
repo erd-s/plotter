@@ -1,10 +1,10 @@
-DOC_HEIGHT = 8.5
-MARGIN_TOP = 0.525
-MARGIN_BOTTOM = 0.25
+DOC_HEIGHT = 8.3
+MARGIN_TOP = 1
+MARGIN_BOTTOM = 1
 
-DOC_WIDTH = 11
-MARGIN_LEFT = 1.1
-MARGIN_RIGHT = 0.1
+DOC_WIDTH = 5.8
+MARGIN_LEFT = 1
+MARGIN_RIGHT = 1
 
 # For 9 x 12
 # Because the plotter drawing area is only 8.5" x 11":
