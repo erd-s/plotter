@@ -55,20 +55,17 @@ class BlockPartyGridPieceIndex(ObjectGrid):
                 piece_generator.l()
                 self.pieces.append("l")
             case 12:
-                piece_generator.k()
-                self.pieces.append("k")
-            case 13:
                 piece_generator.m()
                 self.pieces.append("m")
-            case 14:
+            case 13:
                 piece_generator.n()
                 self.pieces.append("n")
-            case 15:
+            case 14:
                 piece_generator.o()
                 self.pieces.append("o")
-            case 16:
+            case 15:
                 piece_generator.p()
                 self.pieces.append("p")
-            case 17:
+            case 16:
                 piece_generator.q()
                 self.pieces.append("q")

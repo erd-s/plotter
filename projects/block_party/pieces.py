@@ -209,77 +209,33 @@ class PieceGenerator:
         self.plotter.draw_path(line_one)
 
     def m(self):
-        line_one = [
-            self.grid_point.e(),
-            self.grid_point.f(),
-            self.grid_point.b()
-        ]
-        line_two = [
-            self.grid_point.c(),
-            self.grid_point.g(),
-            self.grid_point.h()
-        ]
-        line_three = [
-            self.grid_point.i(),
-            self.grid_point.l()
-        ]
+        line_one = [self.grid_point.e(), self.grid_point.f(), self.grid_point.b()]
+        line_two = [self.grid_point.c(), self.grid_point.g(), self.grid_point.h()]
+        line_three = [self.grid_point.i(), self.grid_point.l()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
         self.plotter.draw_path(line_three)
 
     def n(self):
-        line_one = [
-            self.grid_point.e(),
-            self.grid_point.f(),
-            self.grid_point.b()
-        ]
-        line_two = [
-            self.grid_point.i(),
-            self.grid_point.j(),
-            self.grid_point.n()
-        ]
-        line_three = [
-            self.grid_point.c(),
-            self.grid_point.o()
-        ]
+        line_one = [self.grid_point.e(), self.grid_point.f(), self.grid_point.b()]
+        line_two = [self.grid_point.i(), self.grid_point.j(), self.grid_point.n()]
+        line_three = [self.grid_point.c(), self.grid_point.o()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
         self.plotter.draw_path(line_three)
 
     def o(self):
-        line_one = [
-            self.grid_point.e(),
-            self.grid_point.h()
-        ]
-        line_two = [
-            self.grid_point.i(),
-            self.grid_point.j(),
-            self.grid_point.n()
-        ]
-        line_three = [
-            self.grid_point.o(),
-            self.grid_point.k(),
-            self.grid_point.l()
-        ]
+        line_one = [self.grid_point.e(), self.grid_point.h()]
+        line_two = [self.grid_point.i(), self.grid_point.j(), self.grid_point.n()]
+        line_three = [self.grid_point.o(), self.grid_point.k(), self.grid_point.l()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
         self.plotter.draw_path(line_three)
 
     def p(self):
-        line_one = [
-            self.grid_point.b(),
-            self.grid_point.n()
-        ]
-        line_two = [
-            self.grid_point.c(),
-            self.grid_point.g(),
-            self.grid_point.h()
-        ]
-        line_three = [
-            self.grid_point.o(),
-            self.grid_point.k(),
-            self.grid_point.l()
-        ]
+        line_one = [self.grid_point.b(), self.grid_point.n()]
+        line_two = [self.grid_point.c(), self.grid_point.g(), self.grid_point.h()]
+        line_three = [self.grid_point.o(), self.grid_point.k(), self.grid_point.l()]
         self.plotter.draw_path(line_one)
         self.plotter.draw_path(line_two)
         self.plotter.draw_path(line_three)

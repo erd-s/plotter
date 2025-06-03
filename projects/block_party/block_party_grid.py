@@ -27,29 +27,47 @@ class BlockPartyGrid(ObjectGrid):
         if index % self.grid_size != 0:
             left = self.pieces[index - 1]
 
-        should_connect_with_above = above in ("a", "b", "f", "g", "k")
-        should_connect_with_left = left in ("a", "c", "e", "g", "h")
+        open_bottom = ["a", "b", "f", "g", "k", "n", "o", "p", "q"]
+        closed_bottom = ["c", "d", "e", "h", "i", "j", "l", "m"]
+        open_right = ["a", "c", "e", "g", "h", "m", "o", "p", "q"]
+        closed_right = ["b", "d", "f", "i", "j", "k", "l", "n"]
+        open_top = ["d", "e", "f", "g", "j", "m", "n", "p", "q"]
+        closed_top = ["a", "b", "c", "h", "i", "k", "l", "o"]
+        open_left = ["b", "c", "d", "g", "i", "m", "n", "o", "q"]
+        closed_left = ["a", "e", "f", "h", "j", "k", "l", "p"]
+
+        open_top_open_left = [item for item in open_top if item in open_left]
+        open_left_closed_top = [item for item in open_left if item in closed_top]
+        open_top_closed_left = [item for item in open_top if item in closed_left]
+        closed_top_closed_left = [item for item in closed_top if item in closed_left]
+        closed_bottom_closed_right = [
+            item for item in closed_bottom if item in closed_right
+        ]
+        should_connect_with_above = above in open_bottom
+        should_connect_with_left = left in open_right
 
         if should_connect_with_left and should_connect_with_above:
-            options = ["d", "g"]
+            options = open_top_open_left
         elif should_connect_with_left:
-            options = ["b", "c", "i"]
+            options = open_left_closed_top
         elif should_connect_with_above:
-            options = ["e", "f", "j"]
+            options = open_top_closed_left
         else:
-            options = ["a", "h", "k", "l"]
+            options = closed_top_closed_left
 
-        if (index + 1) % self.grid_size == 0:
+        is_in_right_column = (index + 1) % self.grid_size == 0
+        is_in_bottom_row = index >= (self.grid_size * self.grid_size) - self.grid_size
+        is_last = is_in_right_column and is_in_bottom_row
+
+        if is_last:
+            # cant have open right or open bottom in last index
+            options = list(filter(lambda o: (o in closed_bottom_closed_right), options))
+        elif is_in_right_column:
             # can't have an open right on right column
-            options = list(
-                filter(lambda o: o not in ("a", "c", "e", "g", "h"), options)
-            )
-
-        if index >= (self.grid_size * self.grid_size) - self.grid_size:
+            options = list(filter(lambda o: o not in open_right, options))
+        elif is_in_bottom_row:
             # can't have an open bottom on bottom row
-            options = list(
-                filter(lambda o: o not in ("a", "b", "f", "g", "k"), options)
-            )
+            options = list(filter(lambda o: o not in open_bottom, options))
 
         option_index = random.randint(0, len(options) - 1)
         selected_option = options[option_index]
@@ -79,5 +97,15 @@ class BlockPartyGrid(ObjectGrid):
                 piece_generator.k()
             case "l":
                 piece_generator.l()
+            case "m":
+                piece_generator.m()
+            case "n":
+                piece_generator.n()
+            case "o":
+                piece_generator.o()
+            case "p":
+                piece_generator.p()
+            case "q":
+                piece_generator.q()
 
         self.pieces.append(selected_option)

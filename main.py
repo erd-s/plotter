@@ -2,6 +2,7 @@ from nextdraw import NextDraw
 
 import time
 from projects.block_party.block_party_grid_piece_index import BlockPartyGridPieceIndex
+from projects.block_party.block_party_grid import BlockPartyGrid
 from projects.grid import create_grid
 
 from utils.utils import (
@@ -40,14 +41,15 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        create_grid(plotter=plotter, grid_size=5)
-        # project = BlockPartyGridPieceIndex(grid_size=5)
-        # project.create_object_grid(plotter=plotter)
+
+        project = BlockPartyGrid(grid_size=15)
+        project.create_object_grid(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
         tear_down_plotter(plotter)
-    except:
+    except Exception as e:
+        print(e)
         tear_down_plotter(plotter)
 
 
