@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
+from config import DOC_WIDTH, DOC_HEIGHT
 
 
 class VisualizedPlotter:
@@ -19,7 +20,8 @@ class VisualizedPlotter:
         self.ax = ax
         return True
 
-    def disconnect(self):
+    @staticmethod
+    def disconnect():
         plt.show()
 
     def goto(self, x_target, y_target):
