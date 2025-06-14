@@ -1,1 +1,3 @@
 nextdraw-api @ https://software-download.bantamtools.com/nd/api/nextdraw_api.zip
+matplotlib
+numpy

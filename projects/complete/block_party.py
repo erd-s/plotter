@@ -4,8 +4,9 @@ from projects.margin import draw_margin
 
 
 def create_block_party(plotter: NextDraw):
-    # 18-20 for 9x12
-    # 15 for A5
+    # 20 for 9x12 w/ fat Prismacolor Marker
+    # 15 for A5 .12 pt pen
+    # 30-35 for A5 .05 pt pen
     project = BlockPartyGrid(grid_size=18)
     project.create_object_grid(plotter=plotter)
     draw_margin(plotter=plotter, delta=-0.05)
