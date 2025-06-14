@@ -1,4 +1,11 @@
-from config import DOC_HEIGHT, DOC_WIDTH, MARGIN_TOP, MARGIN_BOTTOM, MARGIN_LEFT, MARGIN_RIGHT
+from config import (
+    DOC_HEIGHT,
+    DOC_WIDTH,
+    MARGIN_TOP,
+    MARGIN_BOTTOM,
+    MARGIN_LEFT,
+    MARGIN_RIGHT,
+)
 
 
 def effective_height():

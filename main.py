@@ -1,6 +1,7 @@
 from nextdraw import NextDraw
-
 import time
+from utils.visualizer import VisualizedPlotter
+from projects.complete.block_party import create_block_party
 
 from utils.utils import (
     DOC_WIDTH,
@@ -38,6 +39,7 @@ def run():
 
     try:
         start_time = time.perf_counter()
+        create_block_party(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
