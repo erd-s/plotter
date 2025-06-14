@@ -1,6 +1,6 @@
 import random
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 from projects.rectangles.rectangle import create_rectangle
 from projects.object_grid import ObjectGrid
@@ -17,7 +17,7 @@ class SquareOverlayGrid(ObjectGrid):
         self.density = density
         self.width_ratio = width_ratio
 
-    def object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: PlotterInterface):
         width = self.square_width * self.width_ratio
         density = self.density
         random_constant = random.uniform(0, 100)

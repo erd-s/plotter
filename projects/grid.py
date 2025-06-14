@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 from utils.utils import (
     effective_width,
@@ -10,7 +10,7 @@ from utils.utils import (
 )
 
 
-def create_grid(plotter: NextDraw, grid_size: int):
+def create_grid(plotter: PlotterInterface, grid_size: int):
     square_width = effective_width() / grid_size
     square_height = effective_height() / grid_size
 

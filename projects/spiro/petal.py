@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 from utils.utils import (
     effective_width,
     effective_height,
@@ -9,7 +9,7 @@ from utils.utils import (
 )
 
 
-def create_spiro_petal(plotter: NextDraw, steps: int):
+def create_spiro_petal(plotter: PlotterInterface, steps: int):
     x_increment = effective_width() / steps
     y_increment = effective_height() / steps
 

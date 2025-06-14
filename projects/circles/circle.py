@@ -1,10 +1,10 @@
 import math
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 def create_circle(
-    plotter: NextDraw,
+    plotter: PlotterInterface,
     origin_x: float,
     origin_y: float,
     radius: float,

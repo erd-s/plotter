@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 from projects.lines.lines import create_lines
 from projects.object_grid import ObjectGrid
@@ -11,7 +11,7 @@ class LinesGrid(ObjectGrid):
         super().__init__(grid_size=grid_size)
         self.number_of_lines = number_of_lines
 
-    def object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: PlotterInterface):
         create_lines(
             plotter=plotter,
             number_of_lines=self.number_of_lines,

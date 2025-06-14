@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 from utils.utils import (
     effective_width,
@@ -20,7 +20,7 @@ class ObjectGrid:
         self.grid_size = grid_size
 
     def create_object_grid(
-        self, plotter: NextDraw, start_index=0, iterations: int = None
+        self, plotter: PlotterInterface, start_index=0, iterations: int = None
     ):
         self.square_width = effective_width() / self.grid_size
         self.square_height = effective_height() / self.grid_size
@@ -70,6 +70,6 @@ class ObjectGrid:
                 column += 1
                 plotter.moveto(next_square_center_x, self.square_center_y)
 
-    def object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: PlotterInterface):
         # override with object logic
         return

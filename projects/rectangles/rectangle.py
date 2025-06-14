@@ -1,8 +1,8 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 def create_rectangle_with_bounds(
-    plotter: NextDraw,
+    plotter: PlotterInterface,
     height: float,
     width: float,
     center_x: float,
@@ -90,7 +90,11 @@ def create_rectangle_with_bounds(
 
 
 def create_rectangle(
-    plotter: NextDraw, height: float, width: float, center_x: float, center_y: float
+    plotter: PlotterInterface,
+    height: float,
+    width: float,
+    center_x: float,
+    center_y: float,
 ):
     ax = center_x - (width * 0.5)
     ay = center_y - (height * 0.5)

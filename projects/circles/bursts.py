@@ -1,11 +1,11 @@
 import math
 import random
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 def create_burst(
-    plotter: NextDraw,
+    plotter: PlotterInterface,
     origin_x: float,
     origin_y: float,
     radius: float,

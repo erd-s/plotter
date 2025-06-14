@@ -2,10 +2,10 @@ import random
 
 from projects.rectangles.rectangle import create_rectangle_with_bounds
 from utils.utils import *
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
-def create_tunnel(plotter: NextDraw):
+def create_tunnel(plotter: PlotterInterface):
     starting_height = 0.2
     starting_width = 0.2
     print(f"Creating tunnel with height: {starting_height}, width: {starting_width}")

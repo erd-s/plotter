@@ -1,10 +1,10 @@
 import random
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 def create_lines(
-    plotter: NextDraw,
+    plotter: PlotterInterface,
     number_of_lines: int,
     origin_x: float,
     origin_y: float,

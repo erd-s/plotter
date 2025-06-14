@@ -1,16 +1,26 @@
-import matplotlib.pyplot as plt
-from nextdraw import NextDraw
+from matplotlib import pyplot as plt
+from matplotlib.axes import Axes
 
 
-class VisualizedPlotter(NextDraw):
+class VisualizedPlotter:
     current_x: float = 0
     current_y: float = 0
     path = []
+    ax: Axes = []
 
-    def disconnect(self):
+    def plot(self):
         x_list = [x[0] for x in self.path]
         y_list = [y[1] for y in self.path]
-        plt.show(x_list, y_list)
+        self.ax.plot(x_list, y_list)
+        self.path = []
+
+    def connect(self):
+        _, ax = plt.subplots()
+        self.ax = ax
+        return True
+
+    def disconnect(self):
+        plt.show()
 
     def goto(self, x_target, y_target):
         self.current_x = x_target
@@ -33,10 +43,12 @@ class VisualizedPlotter(NextDraw):
     def moveto(self, x_target, y_target):
         self.current_x = x_target
         self.current_y = y_target
+        self.plot()
 
     def move(self, x_delta, y_delta):
         self.current_x += x_delta
         self.current_y += y_delta
+        self.plot()
 
     def draw_path(self, vertex_list):
         for path in vertex_list:
@@ -45,6 +57,7 @@ class VisualizedPlotter(NextDraw):
         last_point = vertex_list[-1]
         self.current_x = last_point[0]
         self.current_y = last_point[1]
+        self.plot()
 
     def turtle_pos(self):
         return self.current_pos()
@@ -73,14 +86,16 @@ class VisualizedPlotter(NextDraw):
     def delay(self, time_ms):
         pass
 
-    def current_pen(self):
+    @staticmethod
+    def current_pen():
         return False
 
-    def turtle_pen(self):
+    @staticmethod
+    def turtle_pen():
         return False
 
     def interactive(self):
         pass
 
-    def connect(self):
+    def load_config(self, config_ref):
         pass

@@ -1,10 +1,14 @@
 import random
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 def create_cube(
-    plotter: NextDraw, origin_x: float, origin_y: float, width: float, height: float
+    plotter: PlotterInterface,
+    origin_x: float,
+    origin_y: float,
+    width: float,
+    height: float,
 ):
     # vertices
     start_x_one = random.uniform(0.6, 1) * width * -1

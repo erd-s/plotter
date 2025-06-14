@@ -1,7 +1,7 @@
-from nextdraw import NextDraw
-import time
-from utils.visualizer import VisualizedPlotter
+from utils.plotter_interface import PlotterInterface
+from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from projects.complete.block_party import create_block_party
+import time
 
 from utils.utils import (
     DOC_WIDTH,
@@ -13,13 +13,11 @@ from utils.utils import (
 )
 
 
-def setup_plotter(nd: NextDraw):
+def setup_plotter(nd: PlotterInterface):
     nd.interactive()
 
     if not nd.connect():
         quit()
-
-    nd.options.pen_rate_lower = 5
 
     print("Current Settings:")
     print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
@@ -35,7 +33,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = setup_plotter(NextDraw())
+    plotter = setup_plotter(VisualizedPlotter())
 
     try:
         start_time = time.perf_counter()

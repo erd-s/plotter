@@ -1,6 +1,6 @@
 import random
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 from projects.circles.bursts import create_burst
 from projects.circles.circle import create_circle
@@ -14,7 +14,7 @@ class BurstGrid(ObjectGrid):
         super().__init__()
         self.lines_per_quadrant = lines_per_quadrant
 
-    def object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: PlotterInterface):
         radius = (
             (
                 self.square_height

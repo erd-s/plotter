@@ -1,7 +1,7 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
-def create_xy(plotter: NextDraw, origin_x, origin_y, height, width):
+def create_xy(plotter: PlotterInterface, origin_x, origin_y, height, width):
     print(
         f"""
     Creating XY

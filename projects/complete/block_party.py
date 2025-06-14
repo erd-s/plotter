@@ -1,9 +1,9 @@
 from projects.block_party.block_party_grid import BlockPartyGrid
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 from projects.margin import draw_margin
 
 
-def create_block_party(plotter: NextDraw):
+def create_block_party(plotter: PlotterInterface):
     # 20 for 9x12 w/ fat Prismacolor Marker
     # 15 for A5 .12 pt pen
     # 30-35 for A5 .05 pt pen

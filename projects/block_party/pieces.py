@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 
 
 class GridPoint:
@@ -96,12 +96,12 @@ class GridPoint:
 
 
 class PieceGenerator:
-    plotter: NextDraw
+    plotter: PlotterInterface
     grid_point: GridPoint
 
     def __init__(
         self,
-        plotter: NextDraw,
+        plotter: PlotterInterface,
         center_x: float,
         center_y: float,
         width: float,

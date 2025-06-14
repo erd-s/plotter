@@ -1,7 +1,7 @@
 import math
 import time
 
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 from utils.utils import (
     effective_height,
     effective_width,
@@ -12,7 +12,7 @@ from utils.utils import (
 )
 
 
-def run(plotter: NextDraw, zig_zags: int):
+def run(plotter: PlotterInterface, zig_zags: int):
     density_constant = 5
     zigs = zig_zags * 2
     zig_width = effective_width() / zigs

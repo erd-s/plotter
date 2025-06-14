@@ -1,4 +1,4 @@
-from nextdraw import NextDraw
+from utils.plotter_interface import PlotterInterface
 from projects.block_party.pieces import PieceGenerator
 
 from projects.object_grid import ObjectGrid
@@ -7,7 +7,7 @@ from projects.object_grid import ObjectGrid
 class BlockPartyGridPieceIndex(ObjectGrid):
     pieces = []
 
-    def object_logic(self, plotter: NextDraw):
+    def object_logic(self, plotter: PlotterInterface):
         piece_generator = PieceGenerator(
             plotter=plotter,
             center_x=self.square_center_x,
