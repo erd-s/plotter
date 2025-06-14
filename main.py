@@ -42,7 +42,8 @@ def run():
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
         tear_down_plotter(plotter)
-    except:
+    except Exception as e:
+        print(e)
         tear_down_plotter(plotter)
 
 
