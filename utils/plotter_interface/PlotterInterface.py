@@ -4,7 +4,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from nextdraw import NextDraw
 
 VISUALIZED_PLOTTER = VisualizedPlotter()
-# PEN_PLOTTER = NextDraw()
+PEN_PLOTTER = NextDraw()
 
 
 class PlotterInterface(Protocol):

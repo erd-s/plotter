@@ -1,4 +1,7 @@
-from utils.plotter_interface.PlotterInterface import VISUALIZED_PLOTTER, PlotterInterface
+from utils.plotter_interface.PlotterInterface import (
+    VISUALIZED_PLOTTER,
+    PlotterInterface,
+)
 from projects.complete.block_party import create_block_party
 import time
 

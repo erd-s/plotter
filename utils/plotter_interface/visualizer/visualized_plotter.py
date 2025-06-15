@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 
+
 class VisualizedPlotter:
     current_x: float = 0
     current_y: float = 0
