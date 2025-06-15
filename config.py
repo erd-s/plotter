@@ -12,13 +12,13 @@ MARGIN_RIGHT = 0.25
 # - Left margin must be 1 larger than right margin
 
 # Example:
-DOC_HEIGHT = 8.5
-MARGIN_TOP = 0.6
-MARGIN_BOTTOM = 0
-
-DOC_WIDTH = 11
-MARGIN_LEFT = 1
-MARGIN_RIGHT = 0
+# DOC_HEIGHT = 8.5
+# MARGIN_TOP = 0.6
+# MARGIN_BOTTOM = 0
+#
+# DOC_WIDTH = 11
+# MARGIN_LEFT = 1
+# MARGIN_RIGHT = 0
 
 # Example for fatter pen on 9x12 if metal base is not shifted:
 # DOC_HEIGHT = 8.5

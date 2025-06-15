@@ -1,5 +1,6 @@
 from utils.plotter_interface.PlotterInterface import (
     VISUALIZED_PLOTTER,
+    PEN_PLOTTER,
     PlotterInterface,
 )
 from projects.complete.block_party import create_block_party
@@ -35,7 +36,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter_interface = VISUALIZED_PLOTTER
+    plotter_interface = PEN_PLOTTER
     plotter = setup_plotter(plotter_interface)
 
     try:
