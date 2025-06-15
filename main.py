@@ -1,5 +1,4 @@
-from utils.plotter_interface import PlotterInterface
-from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
+from utils.plotter_interface.PlotterInterface import VISUALIZED_PLOTTER, PlotterInterface
 from projects.complete.block_party import create_block_party
 import time
 
@@ -33,7 +32,8 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = setup_plotter(VisualizedPlotter())
+    plotter_interface = VISUALIZED_PLOTTER
+    plotter = setup_plotter(plotter_interface)
 
     try:
         start_time = time.perf_counter()

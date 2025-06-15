@@ -1,8 +1,13 @@
 from typing import Protocol
 from abc import abstractmethod
+from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
+from nextdraw import NextDraw
+
+VISUALIZED_PLOTTER = VisualizedPlotter()
+# PEN_PLOTTER = NextDraw()
 
 
-class Plotter(Protocol):
+class PlotterInterface(Protocol):
     @abstractmethod
     def disconnect(self): ...
     @abstractmethod

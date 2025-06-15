@@ -1,7 +1,5 @@
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
-from config import DOC_WIDTH, DOC_HEIGHT
-
 
 class VisualizedPlotter:
     current_x: float = 0
