@@ -3,8 +3,9 @@ from utils.plotter_interface.PlotterInterface import (
     PEN_PLOTTER,
     PlotterInterface,
 )
-from projects.complete.block_party import create_block_party
+
 import time
+from projects.complete.concentric_circles import create_concentric_circles
 
 from utils.utils import (
     DOC_WIDTH,
@@ -13,6 +14,10 @@ from utils.utils import (
     center_y,
     effective_height,
     effective_width,
+    effective_x_start,
+    effective_x_end,
+    effective_y_start,
+    effective_y_end,
 )
 
 
@@ -36,13 +41,13 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter_interface = PEN_PLOTTER
+    plotter_interface = VISUALIZED_PLOTTER
     plotter = setup_plotter(plotter_interface)
 
     try:
         start_time = time.perf_counter()
-        create_block_party(plotter=plotter)
         end_time = time.perf_counter()
+        create_concentric_circles(plotter)
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
         tear_down_plotter(plotter)

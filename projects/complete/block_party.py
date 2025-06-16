@@ -3,6 +3,7 @@ from utils.plotter_interface import PlotterInterface
 from projects.margin import draw_margin
 from config import DOC_HEIGHT, DOC_WIDTH
 
+
 def create_block_party(plotter: PlotterInterface):
     # 20 for 9x12 w/ fat Prismacolor Marker
     # 15 for A5 .12 pt pen

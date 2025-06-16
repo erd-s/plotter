@@ -10,8 +10,8 @@ from projects.object_grid import ObjectGrid
 class BurstGrid(ObjectGrid):
     lines_per_quadrant: int
 
-    def __init__(self, lines_per_quadrant: int):
-        super().__init__()
+    def __init__(self, lines_per_quadrant: int, grid_size: int):
+        super().__init__(grid_size=grid_size)
         self.lines_per_quadrant = lines_per_quadrant
 
     def object_logic(self, plotter: PlotterInterface):
@@ -41,7 +41,6 @@ class BurstGrid(ObjectGrid):
             origin_x=self.square_center_x,
             origin_y=self.square_center_y,
             radius=inside_circle_radius,
-            steps=30,
         )
 
         outside_circle_radius = random.uniform(radius * 0.8, radius * 0.9)
@@ -51,5 +50,4 @@ class BurstGrid(ObjectGrid):
             origin_x=self.square_center_x,
             origin_y=self.square_center_y,
             radius=outside_circle_radius,
-            steps=30,
         )

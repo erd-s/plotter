@@ -8,9 +8,9 @@ def create_circle(
     origin_x: float,
     origin_y: float,
     radius: float,
-    steps: int,
 ):
     path_points = []
+    steps = int(radius * 50)
 
     # quadrant I
     for i in range(steps + 1):

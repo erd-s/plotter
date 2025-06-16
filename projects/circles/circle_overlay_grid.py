@@ -30,7 +30,6 @@ class CircleOverlayGrid(ObjectGrid):
                 origin_x=self.square_center_x,
                 origin_y=self.square_center_y,
                 radius=radius,
-                steps=15,
             )
         else:
             self.total_skips += 1
