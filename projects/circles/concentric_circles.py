@@ -20,6 +20,7 @@ class ConcentricCircles:
     effective_end_x: float
     effective_start_y: float
     effective_end_y: float
+    radius: float
     direction: Direction
 
     def __init__(
@@ -33,6 +34,7 @@ class ConcentricCircles:
         effective_end_x: float,
         effective_start_y: float,
         effective_end_y: float,
+        radius: float,
         direction: Direction,
     ):
         self.plotter = plotter
@@ -44,11 +46,12 @@ class ConcentricCircles:
         self.effective_end_x = effective_end_x
         self.effective_start_y = effective_start_y
         self.effective_end_y = effective_end_y
+        self.radius = radius
         self.direction = direction
 
     def create_concentric_circles(self):
-        circle_distance = 0.05
-        radius = 0.05
+        circle_distance = self.radius
+        radius = self.radius
         origin_x = self.center_x
         origin_y = self.center_y
 
@@ -81,8 +84,8 @@ class ConcentricCircles:
             circle_start_y = origin_y - radius
             circle_end_y = origin_y + radius
             out_of_bounds = (
-                circle_start_x < self.effective_start_x
-                or circle_end_x > self.effective_end_x
-                or circle_start_y < self.effective_start_y
-                or circle_end_y > self.effective_end_y
+                circle_start_x < self.effective_start_x + 0.1
+                or circle_end_x > self.effective_end_x - 0.1
+                or circle_start_y < self.effective_start_y + 0.1
+                or circle_end_y > self.effective_end_y - 0.1
             )

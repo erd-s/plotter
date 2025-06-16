@@ -41,13 +41,13 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter_interface = VISUALIZED_PLOTTER
+    plotter_interface = PEN_PLOTTER
     plotter = setup_plotter(plotter_interface)
 
     try:
         start_time = time.perf_counter()
-        end_time = time.perf_counter()
         create_concentric_circles(plotter)
+        end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
         tear_down_plotter(plotter)
