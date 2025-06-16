@@ -5,20 +5,10 @@ from utils.plotter_interface.PlotterInterface import (
 )
 
 import time
-from projects.complete.concentric_circles import create_concentric_circles
+from projects.waves.waves import SineWave
+import traceback
 
-from utils.utils import (
-    DOC_WIDTH,
-    DOC_HEIGHT,
-    center_x,
-    center_y,
-    effective_height,
-    effective_width,
-    effective_x_start,
-    effective_x_end,
-    effective_y_start,
-    effective_y_end,
-)
+import utils
 
 
 def setup_plotter(nd: PlotterInterface):
@@ -28,9 +18,9 @@ def setup_plotter(nd: PlotterInterface):
         quit()
 
     print("Current Settings:")
-    print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
-    print(f"Center: {center_x()}, {center_y()}")
-    print(f'Effective Size: {effective_width()}"w x {effective_height()}"h')
+    print(f'Page Size: {utils.DOC_WIDTH}"w x {utils.DOC_HEIGHT}"h')
+    print(f"Center: {utils.center_x()}, {utils.center_y()}")
+    print(f'Effective Size: {utils.effective_width()}"w x {utils.effective_height()}"h')
     return nd
 
 
@@ -46,13 +36,25 @@ def run():
 
     try:
         start_time = time.perf_counter()
-        end_time = time.perf_counter()
-        create_concentric_circles(plotter)
-        print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
+        project = SineWave()
+        lines = 70
+        for i in range(lines):
+            project.create_wave(
+                plotter=plotter,
+                start_x=utils.effective_x_start(),
+                end_x=utils.effective_x_end(),
+                start_y=utils.effective_x_start(),
+                end_y=utils.effective_y_end(),
+                y_position=(utils.effective_height() / lines) * i
+            )
+
+        end_time = time.perf_counter()
+        print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
         tear_down_plotter(plotter)
     except Exception as e:
         print(e)
+        print(traceback.format_exc())
         tear_down_plotter(plotter)
 
 

@@ -68,7 +68,7 @@ def create_concentric_circles(plotter):
     )
     project.create_concentric_circles()
     radius = 0.05
-    while radius < 0.5:
+    while radius < 0.6:
         create_circle(
             plotter=plotter, origin_x=center_x(), origin_y=center_y(), radius=radius
         )
