@@ -1,4 +1,5 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
+from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from nextdraw import NextDraw
 
@@ -29,17 +30,14 @@ def setup_plotter(nd: PlotterInterface):
     print(f'Page Size: {DOC_WIDTH}"w x {DOC_HEIGHT}"h')
     print(f"Center: {center_x()}, {center_y()}")
     print(f'Effective Size: {effective_width()}"w x {effective_height()}"h')
-    return nd
 
 
 def tear_down_plotter(plotter):
-    plotter.penup()
-    plotter.goto(0, 0)
     plotter.disconnect()
 
 
 def run():
-    visualized_plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -47,10 +45,8 @@ def run():
         y_max=effective_y_end(),
     )
 
-    plotter_interface = visualized_plotter
-    plotter = setup_plotter(plotter_interface)
-
     try:
+        setup_plotter(plotter)
         start_time = time.perf_counter()
         create_concentric_circles(plotter)
         end_time = time.perf_counter()

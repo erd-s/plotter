@@ -8,7 +8,7 @@ from utils.utils import (
 )
 
 
-def draw_margin(plotter: PlotterInterface, delta: float = 0):
+def draw_margin(plotter: PlotterInterface, delta: float = 0.01):
     points = [
         [effective_x_start() + delta, effective_y_start() + delta],
         [effective_x_end() - delta, effective_y_start() + delta],

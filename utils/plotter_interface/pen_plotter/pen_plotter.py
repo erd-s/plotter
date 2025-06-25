@@ -7,7 +7,6 @@ class PenPlotter(PlotterInterface):
 
     def __init__(
         self,
-        plotter: NextDraw,
         clip_to_bounds: bool,
         x_min: float,
         x_max: float,
@@ -21,9 +20,11 @@ class PenPlotter(PlotterInterface):
             y_min=y_min,
             y_max=y_max,
         )
-        self.plotter = plotter
+        self.plotter = NextDraw()
 
     def disconnect(self):
+        self.plotter.penup()
+        self.plotter.goto(0, 0)
         self.plotter.disconnect()
 
     def goto(self, x_target, y_target):
@@ -159,9 +160,12 @@ class PenPlotter(PlotterInterface):
                 if self.x_min < x < self.x_max and self.y_min < y < self.y_max:
                     # both in bounds
                     path_to_draw.append([x, y])
+                    if i + 1 == len(vertex_list):
+                        self.plotter.draw_path(path_to_draw)
                 elif len(path_to_draw) > 1:
-                    self.plotter.draw_path([path_to_draw])
+                    self.plotter.draw_path(path_to_draw)
                     self.draw_path(vertex_list[i:])
+                    break
         else:
             self.plotter.draw_path(vertex_list)
 
