@@ -14,6 +14,7 @@ class VisualizedPlotter(PlotterInterface):
         x_list = [x[0] for x in self.path]
         y_list = [y[1] for y in self.path]
         self.ax.plot(x_list, y_list, linestyle=line_style, color=color)
+        print(f"plotting path: {self.path}")
         self.path = []
 
     def connect(self):
@@ -72,24 +73,19 @@ class VisualizedPlotter(PlotterInterface):
 
     def draw_path(self, vertex_list):
         if self.clip_to_bounds:
-            clipped = False
             for i, point in enumerate(vertex_list):
                 x, y = point[0], point[1]
                 if self.x_min < x < self.x_max and self.y_min < y < self.y_max:
                     # both in bounds
-                    if clipped:
-                        # splice to disconnect between paths
+                    self.path.append([round(x, 5), round(y, 5)])
+                    if i + 1 == len(vertex_list):
+                        self.__plot()
+                else:
+                    if len(self.path) >= 1:
                         last_point = self.path[-1]
                         self.current_x = last_point[0]
                         self.current_y = last_point[1]
                         self.__plot()
-                        splice = vertex_list[i:]
-                        self.draw_path(splice)
-                        return
-                    else:
-                        self.path.append(point)
-                else:
-                    clipped = True
         else:
             self.path += vertex_list
             last_point = self.path[-1]

@@ -25,9 +25,8 @@ def create_concentric_circles(plotter):
         effective_height() if orientation == "portrait" else effective_width()
     ) / 150
 
-
     middle_radius = radius
-    while middle_radius < effective_height() + 2:
+    while middle_radius < effective_height():
         create_circle(
             plotter=plotter,
             origin_x=center_x(),
