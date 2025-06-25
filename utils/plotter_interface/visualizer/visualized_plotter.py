@@ -40,35 +40,96 @@ class VisualizedPlotter(PlotterInterface):
         plt.show()
 
     def goto(self, x_target, y_target):
-        self.current_x = x_target
-        self.current_y = y_target
+        if self.clip_to_bounds:
+            x = x_target
+            if x < self.x_min:
+                x = self.x_min
+            elif x > self.x_max:
+                x = self.x_max
+
+            y = y_target
+            if y < self.y_min:
+                y = self.y_min
+            elif y > self.y_max:
+                y = self.y_max
+
+            self.current_x = x
+            self.current_y = y
+        else:
+            self.current_x = x_target
+            self.current_y = y_target
 
     def go(self, x_delta, y_delta):
-        self.current_x += x_delta
-        self.current_y += y_delta
+        if self.clip_to_bounds:
+            x = self.current_x + x_delta
+            if x < self.x_min:
+                x = self.x_min
+            elif x > self.x_max:
+                x = self.x_max
+
+            y = self.current_y + y_delta
+            if y < self.y_min:
+                y = self.y_min
+            elif y > self.y_max:
+                y = self.y_max
+
+            self.current_x = x
+            self.current_y = y
+        else:
+            self.current_x += x_delta
+            self.current_y += y_delta
 
     def lineto(self, x_target, y_target):
         self.path.append([self.current_x, self.current_y])
-        self.path.append([x_target, y_target])
+        if self.clip_to_bounds:
+            x = x_target
+            if x < self.x_min:
+                x = self.x_min
+            elif x > self.x_max:
+                x = self.x_max
+
+            y = y_target
+            if y < self.y_min:
+                y = self.y_min
+            elif y > self.y_max:
+                y = self.y_max
+
+            self.path.append([x, y])
+        else:
+            self.path.append([x_target, y_target])
         self.__plot()
         self.current_x += x_target
         self.current_y += y_target
 
     def line(self, x_delta, y_delta):
         self.path.append([self.current_x, self.current_y])
-        self.path.append([self.current_x + x_delta, self.current_y + y_delta])
+        if self.clip_to_bounds:
+            x = self.current_x + x_delta
+            if x < self.x_min:
+                x = self.x_min
+            elif x > self.x_max:
+                x = self.x_max
+
+            y = self.current_y + y_delta
+            if y < self.y_min:
+                y = self.y_min
+            elif y > self.y_max:
+                y = self.y_max
+
+            self.path.append([x, y])
+        else:
+            self.path.append([self.current_x + x_delta, self.current_y + y_delta])
+
         self.__plot()
         self.current_x += x_delta
         self.current_y += y_delta
 
     def moveto(self, x_target, y_target):
-        self.current_x = x_target
-        self.current_y = y_target
+        self.goto(x_target, y_target)
         self.__plot()
 
     def move(self, x_delta, y_delta):
-        self.current_x += x_delta
-        self.current_y += y_delta
+        self.go(x_delta, y_delta)
         self.__plot()
 
     def draw_path(self, vertex_list):
