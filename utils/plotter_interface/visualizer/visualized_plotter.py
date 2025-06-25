@@ -138,7 +138,7 @@ class VisualizedPlotter(PlotterInterface):
                 x, y = point[0], point[1]
                 if self.x_min < x < self.x_max and self.y_min < y < self.y_max:
                     # both in bounds
-                    self.path.append([round(x, 5), round(y, 5)])
+                    self.path.append([x,y])
                     if i + 1 == len(vertex_list):
                         self.__plot()
                 else:
