@@ -1,8 +1,6 @@
-from utils.plotter_interface.PlotterInterface import (
-    VISUALIZED_PLOTTER,
-    PEN_PLOTTER,
-    PlotterInterface,
-)
+from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
+from utils.plotter_interface.PlotterInterface import PlotterInterface
+from nextdraw import NextDraw
 
 import time
 from projects.complete.concentric_circles import create_concentric_circles
@@ -41,7 +39,15 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter_interface = PEN_PLOTTER
+    visualized_plotter = VisualizedPlotter(
+        clip_to_bounds=True,
+        x_min=effective_x_start(),
+        x_max=effective_x_end(),
+        y_min=effective_y_start(),
+        y_max=effective_y_end(),
+    )
+
+    plotter_interface = visualized_plotter
     plotter = setup_plotter(plotter_interface)
 
     try:

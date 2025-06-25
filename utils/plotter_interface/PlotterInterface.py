@@ -1,13 +1,28 @@
 from typing import Protocol
 from abc import abstractmethod
-from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
-from nextdraw import NextDraw
-
-VISUALIZED_PLOTTER = VisualizedPlotter()
-PEN_PLOTTER = NextDraw()
 
 
-class PlotterInterface(Protocol):
+class PlotterInterface:
+    clip_to_bounds: bool
+    x_min: float
+    x_max: float
+    y_min: float
+    y_max: float
+
+    def __init__(
+        self,
+        clip_to_bounds: bool,
+        x_min: float,
+        x_max: float,
+        y_min: float,
+        y_max: float,
+    ):
+        self.clip_to_bounds = clip_to_bounds
+        self.x_min = x_min
+        self.x_max = x_max
+        self.y_min = y_min
+        self.y_max = y_max
+
     @abstractmethod
     def disconnect(self): ...
     @abstractmethod

@@ -1,18 +1,19 @@
 from matplotlib import pyplot as plt
 from matplotlib.axes import Axes
 from config import DOC_HEIGHT, DOC_WIDTH
+from utils.plotter_interface.PlotterInterface import PlotterInterface
 
 
-class VisualizedPlotter:
+class VisualizedPlotter(PlotterInterface):
     current_x: float = 0
     current_y: float = 0
     path = []
     ax: Axes = []
 
-    def plot(self, linestyle="solid", color=None):
+    def __plot(self, line_style="solid", color=None):
         x_list = [x[0] for x in self.path]
         y_list = [y[1] for y in self.path]
-        self.ax.plot(x_list, y_list, linestyle=linestyle, color=color)
+        self.ax.plot(x_list, y_list, linestyle=line_style, color=color)
         self.path = []
 
     def connect(self):
@@ -29,12 +30,12 @@ class VisualizedPlotter:
         self.path.append([DOC_WIDTH, DOC_HEIGHT])
         self.path.append([0, DOC_HEIGHT])
         self.path.append([0, 0])
-        self.plot(linestyle="dotted", color="silver")
+        self.__plot(line_style="dotted", color="silver")
 
         return True
 
     @staticmethod
-    def disconnect():
+    def disconnect(**kwargs):
         plt.show()
 
     def goto(self, x_target, y_target):
@@ -48,35 +49,53 @@ class VisualizedPlotter:
     def lineto(self, x_target, y_target):
         self.path.append([self.current_x, self.current_y])
         self.path.append([x_target, y_target])
-        self.plot()
+        self.__plot()
         self.current_x += x_target
         self.current_y += y_target
 
     def line(self, x_delta, y_delta):
         self.path.append([self.current_x, self.current_y])
         self.path.append([self.current_x + x_delta, self.current_y + y_delta])
-        self.plot()
+        self.__plot()
         self.current_x += x_delta
         self.current_y += y_delta
 
     def moveto(self, x_target, y_target):
         self.current_x = x_target
         self.current_y = y_target
-        self.plot()
+        self.__plot()
 
     def move(self, x_delta, y_delta):
         self.current_x += x_delta
         self.current_y += y_delta
-        self.plot()
+        self.__plot()
 
     def draw_path(self, vertex_list):
-        for path in vertex_list:
-            self.path.append(path)
-
-        last_point = vertex_list[-1]
-        self.current_x = last_point[0]
-        self.current_y = last_point[1]
-        self.plot()
+        if self.clip_to_bounds:
+            clipped = False
+            for i, point in enumerate(vertex_list):
+                x, y = point[0], point[1]
+                if self.x_min < x < self.x_max and self.y_min < y < self.y_max:
+                    # both in bounds
+                    if clipped:
+                        # splice to disconnect between paths
+                        last_point = self.path[-1]
+                        self.current_x = last_point[0]
+                        self.current_y = last_point[1]
+                        self.__plot()
+                        splice = vertex_list[i:]
+                        self.draw_path(splice)
+                        return
+                    else:
+                        self.path.append(point)
+                else:
+                    clipped = True
+        else:
+            self.path += vertex_list
+            last_point = self.path[-1]
+            self.current_x = last_point[0]
+            self.current_y = last_point[1]
+            self.__plot()
 
     def turtle_pos(self):
         return self.current_pos()
@@ -106,11 +125,11 @@ class VisualizedPlotter:
         pass
 
     @staticmethod
-    def current_pen():
+    def current_pen(**kwargs):
         return False
 
     @staticmethod
-    def turtle_pen():
+    def turtle_pen(**kwargs):
         return False
 
     def interactive(self):
