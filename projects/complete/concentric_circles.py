@@ -25,8 +25,64 @@ def create_concentric_circles(plotter):
         effective_height() if orientation == "portrait" else effective_width()
     ) / 150
 
+    project = ConcentricCircles(
+        plotter=plotter,
+        center_x=center_x() - x_offset,
+        center_y=center_y() - y_offset,
+        effective_height=effective_height() / 2,
+        effective_width=effective_width() / 2,
+        effective_start_x=effective_x_start(),
+        effective_end_x=effective_x_start() + effective_width() / 2,
+        effective_start_y=effective_y_start(),
+        effective_end_y=effective_y_start() + effective_height() / 2,
+        radius=radius,
+        direction=Direction.BOTTOM_RIGHT,
+    )
+    project.create_concentric_circles()
+    project = ConcentricCircles(
+        plotter=plotter,
+        center_x=center_x() + x_offset,
+        center_y=center_y() - y_offset,
+        effective_height=effective_height() / 2,
+        effective_width=effective_width() / 2,
+        effective_start_x=center_x(),
+        effective_end_x=effective_x_end(),
+        effective_start_y=effective_y_start(),
+        effective_end_y=effective_y_start() + effective_height() / 2,
+        radius=radius,
+        direction=Direction.BOTTOM_LEFT,
+    )
+    project.create_concentric_circles()
+    project = ConcentricCircles(
+        plotter=plotter,
+        center_x=center_x() - x_offset,
+        center_y=center_y() + y_offset,
+        effective_height=effective_height() / 2,
+        effective_width=effective_width() / 2,
+        effective_start_x=effective_x_start(),
+        effective_end_x=center_x(),
+        effective_start_y=center_y(),
+        effective_end_y=effective_y_end(),
+        radius=radius,
+        direction=Direction.TOP_RIGHT,
+    )
+    project.create_concentric_circles()
+    project = ConcentricCircles(
+        plotter=plotter,
+        center_x=center_x() + x_offset,
+        center_y=center_y() + y_offset,
+        effective_height=effective_height() / 2,
+        effective_width=effective_width() / 2,
+        effective_start_x=center_x(),
+        effective_end_x=effective_x_end(),
+        effective_start_y=center_y(),
+        effective_end_y=effective_y_end(),
+        radius=radius,
+        direction=Direction.TOP_LEFT,
+    )
+    project.create_concentric_circles()
     middle_radius = radius
-    while middle_radius < effective_height():
+    while middle_radius < effective_height() / 9:
         create_circle(
             plotter=plotter,
             origin_x=center_x(),
