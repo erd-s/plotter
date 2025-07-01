@@ -1,10 +1,10 @@
 DOC_HEIGHT = 8.3
-MARGIN_TOP = 1
-MARGIN_BOTTOM = 1
+MARGIN_TOP = 0.4
+MARGIN_BOTTOM = 0.4
 
 DOC_WIDTH = 5.8
-MARGIN_LEFT = 1
-MARGIN_RIGHT = 1
+MARGIN_LEFT = 0.4
+MARGIN_RIGHT = 0.4
 
 # For 9 x 12
 # Because the pen_plotter drawing area is only 8.5" x 11":

@@ -1,3 +1,4 @@
+import random
 from utils.utils import (
     center_x,
     center_y,
@@ -10,6 +11,7 @@ from utils.utils import (
 )
 from projects.circles.concentric_circles import ConcentricCircles, Direction
 from projects.circles.circle import create_circle
+from projects.margin import draw_margin
 
 
 def create_concentric_circles(plotter):
@@ -81,6 +83,7 @@ def create_concentric_circles(plotter):
         direction=Direction.TOP_LEFT,
     )
     project.create_concentric_circles()
+
     middle_radius = radius
     while middle_radius < effective_height() / 9:
         create_circle(
@@ -92,3 +95,46 @@ def create_concentric_circles(plotter):
         middle_radius += (
             effective_height() if orientation == "portrait" else effective_width()
         ) / 120
+
+
+def create_concentric_circles_v2(plotter):
+    orientation = "portrait" if effective_height() > effective_width() else "landscape"
+
+    radius = (
+        effective_height() if orientation == "portrait" else effective_width()
+    ) / 165
+
+    middle_radius = radius
+    origin_x = random.uniform(
+        effective_x_start() + effective_width() / 4,
+        effective_x_end() - effective_width() / 4,
+    )
+    origin_y = random.uniform(
+        effective_y_start() + effective_height() / 4,
+        effective_y_end() - effective_height() / 4,
+    )
+
+    print(f'Concentric circle center origin: {origin_x}, {origin_y}')
+    while (
+        middle_radius < effective_height()
+        if orientation == "portrait"
+        else effective_width()
+    ):
+        create_circle(
+            plotter=plotter,
+            origin_x=origin_x,
+            origin_y=origin_y,
+            radius=middle_radius,
+        )
+
+        multiplicative_growth = middle_radius * 0.03
+        static_growth = (
+            effective_height() if orientation == "portrait" else effective_width()
+        ) / 125
+        middle_radius += (
+            multiplicative_growth
+            if multiplicative_growth > static_growth
+            else static_growth
+        )
+
+    draw_margin(plotter=plotter)

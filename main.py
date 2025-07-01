@@ -1,10 +1,12 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from nextdraw import NextDraw
 
 import time
-from projects.complete.concentric_circles import create_concentric_circles
+from projects.complete.concentric_circles import (
+    create_concentric_circles,
+    create_concentric_circles_v2,
+)
 
 from utils.utils import (
     DOC_WIDTH,
@@ -48,7 +50,7 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_concentric_circles(plotter)
+        create_concentric_circles_v2(plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

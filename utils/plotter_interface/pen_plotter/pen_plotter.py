@@ -162,10 +162,12 @@ class PenPlotter(PlotterInterface):
                     path_to_draw.append([x, y])
                     if i + 1 == len(vertex_list):
                         self.plotter.draw_path(path_to_draw)
-                elif len(path_to_draw) > 1:
+                elif len(path_to_draw) >= 3:
                     self.plotter.draw_path(path_to_draw)
                     self.draw_path(vertex_list[i:])
                     break
+                elif len(path_to_draw) <= 2:
+                    path_to_draw = []
         else:
             self.plotter.draw_path(vertex_list)
 

@@ -15,7 +15,9 @@ def create_circle_square_overlay_grid(plotter: PlotterInterface):
         f"Total Squares: {project.total_squares} of {grid_size * grid_size}"
     )
 
-    project = CircleOverlayGrid(density=density, width_ratio=width_ratio, grid_size=grid_size)
+    project = CircleOverlayGrid(
+        density=density, width_ratio=width_ratio, grid_size=grid_size
+    )
     project.create_object_grid(plotter=plotter)
     print(
         f"Circle Density: {round((project.total_circles / (project.total_circles + project.total_skips)), 2) * 100}%"

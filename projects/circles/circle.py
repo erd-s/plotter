@@ -10,7 +10,7 @@ def create_circle(
     radius: float,
 ):
     path_points = []
-    steps = int(radius * 50) if (int(radius * 50)) > 30 else 30
+    steps = int(radius * 100) if (int(radius * 100)) > 30 else 30
 
     # quadrant I
     for i in range(steps + 1):
