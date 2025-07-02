@@ -13,17 +13,22 @@ class ObjectGrid:
     square_center_y: float
     square_width: float
     square_height: float
-    margin: float = 0
+    square_start_x: float
+    square_end_x: float
+    square_start_y: float
+    square_end_y: float
+    inset: float = 0
     grid_size: int
 
-    def __init__(self, grid_size: int):
+    def __init__(self, grid_size: int, inset: float = 0):
         self.grid_size = grid_size
+        self.inset = inset
 
     def create_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
     ):
-        self.square_width = effective_width() / self.grid_size
-        self.square_height = effective_height() / self.grid_size
+        self.square_width = (effective_width() / self.grid_size)
+        self.square_height = (effective_height() / self.grid_size)
 
         print(f'Grid Square Width = {self.square_width}"')
         print(f'Grid Square Height = {self.square_height}"')
@@ -47,6 +52,14 @@ class ObjectGrid:
                 + (self.square_height / 2)
                 + (row * self.square_height)
             )
+            self.square_start_x = self.square_center_x - (self.square_width * 0.5)
+            self.square_end_x = self.square_center_x + (self.square_width * 0.5)
+            self.square_start_y = self.square_center_y - (self.square_height * 0.5)
+            self.square_end_y = self.square_center_y + (self.square_height * 0.5)
+
+            plotter.override_bounds(x_min=self.square_start_x + self.inset, x_max=self.square_end_x - self.inset, y_min=self.square_start_y + self.inset,
+                                    y_max=self.square_end_y - self.inset)
+
             next_square_center_x = self.square_center_x + self.square_width
 
             if i >= start_index:

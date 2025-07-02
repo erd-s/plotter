@@ -13,8 +13,7 @@ class VisualizedPlotter(PlotterInterface):
     def __plot(self, line_style="solid", color=None):
         x_list = [x[0] for x in self.path]
         y_list = [y[1] for y in self.path]
-        self.ax.plot(x_list, y_list, linestyle=line_style, color=color)
-        print(f"plotting path: {self.path}")
+        self.ax.plot(x_list, y_list, linestyle=line_style, color=color, linewidth=0.5)
         self.path = []
 
     def connect(self):

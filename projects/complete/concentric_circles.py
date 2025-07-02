@@ -100,11 +100,11 @@ def create_concentric_circles(plotter):
 def create_concentric_circles_v2(plotter):
     orientation = "portrait" if effective_height() > effective_width() else "landscape"
 
-    radius = (
+    starting_radius = (
         effective_height() if orientation == "portrait" else effective_width()
     ) / 165
 
-    middle_radius = radius
+    current_radius = starting_radius
     origin_x = random.uniform(
         effective_x_start() + effective_width() / 4,
         effective_x_end() - effective_width() / 4,
@@ -114,9 +114,9 @@ def create_concentric_circles_v2(plotter):
         effective_y_end() - effective_height() / 4,
     )
 
-    print(f'Concentric circle center origin: {origin_x}, {origin_y}')
+    print(f"Concentric circle center origin: {origin_x}, {origin_y}")
     while (
-        middle_radius < effective_height()
+        current_radius < effective_height()
         if orientation == "portrait"
         else effective_width()
     ):
@@ -124,17 +124,15 @@ def create_concentric_circles_v2(plotter):
             plotter=plotter,
             origin_x=origin_x,
             origin_y=origin_y,
-            radius=middle_radius,
+            radius=current_radius,
         )
 
-        multiplicative_growth = middle_radius * 0.03
+        multiplicative_growth = current_radius * 0.03
         static_growth = (
             effective_height() if orientation == "portrait" else effective_width()
         ) / 125
-        middle_radius += (
+        current_radius += (
             multiplicative_growth
             if multiplicative_growth > static_growth
             else static_growth
         )
-
-    draw_margin(plotter=plotter)
