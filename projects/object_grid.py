@@ -27,8 +27,8 @@ class ObjectGrid:
     def create_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
     ):
-        self.square_width = (effective_width() / self.grid_size)
-        self.square_height = (effective_height() / self.grid_size)
+        self.square_width = effective_width() / self.grid_size
+        self.square_height = effective_height() / self.grid_size
 
         print(f'Grid Square Width = {self.square_width}"')
         print(f'Grid Square Height = {self.square_height}"')
@@ -57,8 +57,12 @@ class ObjectGrid:
             self.square_start_y = self.square_center_y - (self.square_height * 0.5)
             self.square_end_y = self.square_center_y + (self.square_height * 0.5)
 
-            plotter.override_bounds(x_min=self.square_start_x + self.inset, x_max=self.square_end_x - self.inset, y_min=self.square_start_y + self.inset,
-                                    y_max=self.square_end_y - self.inset)
+            plotter.override_bounds(
+                x_min=self.square_start_x + self.inset,
+                x_max=self.square_end_x - self.inset,
+                y_min=self.square_start_y + self.inset,
+                y_max=self.square_end_y - self.inset,
+            )
 
             next_square_center_x = self.square_center_x + self.square_width
 
