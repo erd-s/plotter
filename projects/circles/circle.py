@@ -1,5 +1,6 @@
 import math
-
+import numpy as np
+from matplotlib.patches import CirclePolygon
 from utils.plotter_interface import PlotterInterface
 
 
@@ -53,5 +54,29 @@ def create_circle(
         x = x_list[i]
         y = y_list[i]
         path_points.append([x, y])
+
+    plotter.draw_path(path_points)
+
+def create_circle_v2(
+    plotter: PlotterInterface,
+    origin_x: float,
+    origin_y: float,
+    radius: float,
+):
+    circle = CirclePolygon(xy=(origin_x, origin_y), radius=radius, resolution=int(radius*500))
+    path = circle.get_path().vertices
+    transform = circle.get_patch_transform()
+    path_transformed = transform.transform(path).flat
+    x_points = []
+    y_points = []
+    for i, p in enumerate(path_transformed):
+        if i % 2 != 1:
+            x_points.append(p)
+        else:
+            y_points.append(p)
+
+    path_points = []
+    for i, x in enumerate(x_points):
+        path_points.append([x, y_points[i]])
 
     plotter.draw_path(path_points)

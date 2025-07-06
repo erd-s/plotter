@@ -6,8 +6,8 @@ from utils.plotter_interface import PlotterInterface
 
 
 def create_tunnel(plotter: PlotterInterface):
-    starting_height = 0.2
-    starting_width = 0.2
+    starting_height = 0.175
+    starting_width = 0.175
     print(f"Creating tunnel with height: {starting_height}, width: {starting_width}")
 
     iterations = 40
@@ -29,27 +29,31 @@ def create_tunnel(plotter: PlotterInterface):
     y_min = effective_y_start()
     y_max = effective_y_end()
 
-    for i in range(iterations):
-        height = starting_height + (i * i * 0.008)
-        width = starting_width + (i * i * 0.008)
+    height = starting_height
+    width = starting_width
 
-        print(f"Iteration: {i + 1} - Rectangle h: {height}, w: {width}")
+    while height <= effective_height() * 2 or width <= effective_width() * 2:
+        create_rectangle_with_bounds(
+            plotter=plotter,
+            height=height,
+            width=width,
+            center_x=effective_x_start() + effective_width() / 2,
+            center_y=effective_y_start() + effective_height() / 2,
+            x_min=x_min,
+            x_max=x_max,
+            y_min=y_min,
+            y_max=y_max,
+        )
+        multiplicative_growth = height * 0.05
+        static_growth = (effective_height()) / 100
 
-        if height - starting_height < 0.06 or width - starting_width < 0.06:
-            print(f"Iteration {i + 1} skip")
-            continue
-
-        try:
-            create_rectangle_with_bounds(
-                plotter=plotter,
-                height=height,
-                width=width,
-                center_x=center_rect_x,
-                center_y=center_rect_y,
-                x_min=x_min,
-                x_max=x_max,
-                y_min=y_min,
-                y_max=y_max,
-            )
-        except Exception as e:
-            print(e)
+        height += (
+            multiplicative_growth
+            if multiplicative_growth > static_growth
+            else static_growth
+        )
+        width += (
+            multiplicative_growth
+            if multiplicative_growth > static_growth
+            else static_growth
+        )

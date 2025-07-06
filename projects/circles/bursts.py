@@ -22,9 +22,6 @@ def create_burst(
     """
     )
 
-    rand_min = 0.7
-    rand_max = 1.1
-
     # quadrant I
     for i in range(lines_per_quadrant):
         x = (radius / lines_per_quadrant) * i

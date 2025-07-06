@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from projects.circles.circle import create_circle
+from projects.circles.circle import create_circle_v2
 from enum import Enum
 
 
@@ -58,7 +58,7 @@ class ConcentricCircles:
         out_of_bounds = False
 
         while not out_of_bounds:
-            create_circle(
+            create_circle_v2(
                 plotter=self.plotter,
                 origin_x=origin_x,
                 origin_y=origin_y,

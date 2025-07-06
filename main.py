@@ -1,12 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.circles.concentric_circles_grid import ConcentricCirclesGrid
 import time
-from projects.complete.concentric_circles import (
-    create_concentric_circles,
-    create_concentric_circles_v2,
-)
+from projects.complete.rectangle_tunnel import create_tunnel
 
 from utils.utils import (
     DOC_WIDTH,
@@ -39,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -50,8 +46,7 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        project = ConcentricCirclesGrid(grid_size=2, inset=0.025)
-        project.create_object_grid(plotter=plotter)
+        create_tunnel(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
