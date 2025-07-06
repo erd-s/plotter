@@ -84,7 +84,9 @@ def create_concentric_circles(plotter):
     project.create_concentric_circles()
 
     middle_radius = radius
-    while middle_radius < ((effective_height() if orientation == "portrait" else effective_width()) / 12):
+    while middle_radius < (
+        (effective_height() if orientation == "portrait" else effective_width()) / 12
+    ):
         create_circle_v2(
             plotter=plotter,
             origin_x=center_x(),

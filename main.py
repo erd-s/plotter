@@ -2,7 +2,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 import time
-from projects.complete.rectangle_tunnel import create_tunnel
+
 
 from utils.utils import (
     DOC_WIDTH,
@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -46,7 +46,6 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_tunnel(plotter=plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
