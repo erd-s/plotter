@@ -106,14 +106,22 @@ def create_concentric_circles_v2(plotter, centered=False):
     ) / 200
 
     current_radius = starting_radius
-    origin_x = random.uniform(
-        effective_x_start() + effective_width() / 4,
-        effective_x_end() - effective_width() / 4,
-    ) if not centered else center_x()
-    origin_y = random.uniform(
-        effective_y_start() + effective_height() / 4,
-        effective_y_end() - effective_height() / 4,
-    ) if not centered else center_y()
+    origin_x = (
+        random.uniform(
+            effective_x_start() + effective_width() / 4,
+            effective_x_end() - effective_width() / 4,
+        )
+        if not centered
+        else center_x()
+    )
+    origin_y = (
+        random.uniform(
+            effective_y_start() + effective_height() / 4,
+            effective_y_end() - effective_height() / 4,
+        )
+        if not centered
+        else center_y()
+    )
 
     print(f"Concentric circle center origin: {origin_x}, {origin_y}")
     while (

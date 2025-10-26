@@ -1,8 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.margin import draw_margin
-from projects.complete.concentric_circles import create_concentric_circles_v2
+from projects.tesselate.tesselate import create_tesselation
 import time
 
 
@@ -20,6 +19,7 @@ from utils.utils import (
 )
 
 # TODO: Fix clip to bounds for non 5.8 x 8.3 sizes, crashes on create_concentric_circles_v2
+
 
 def setup_plotter(nd: PlotterInterface):
     nd.interactive()
@@ -49,7 +49,7 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_concentric_circles_v2(plotter=plotter, centered=True)
+        create_tesselation(plotter)
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
