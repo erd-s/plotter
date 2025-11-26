@@ -43,7 +43,7 @@ def create_tesselation(plotter: PlotterInterface):
     plotter.draw_path([point_one, point_two, point_three, point_one])
     sides = [line_one, line_two, line_three]
 
-    for i in range(3):
+    for i in range(100):
         current_side = sides[i]
         print(f'current side = {current_side}')
         point_a = current_side[0]
@@ -54,26 +54,22 @@ def create_tesselation(plotter: PlotterInterface):
         print(f'{degrees} degrees')
         x = np.average([point_a[0], point_b[0]])
         y = np.average([point_a[1], point_b[1]])
+
+        if point_b[1] < point_a[1] and point_b[0] > point_a[0]:
+            y -= 0.3
+            x -= 0.3
+        elif point_b[1] > point_a[1] and point_b[0] > point_a[0]:
+            y -= 0.3
+            x += 0.3
+        elif point_b[1] > point_a[1] and point_b[0] < point_a[0]:
+            y += 0.3
+            x += 0.3
+        elif point_b[1] < point_a[1] and point_b[0] < point_a[0]:
+            y += 0.3
+            x -= 0.3
+
         new_line_one = [point_a, [x, y]]
         new_line_two = [[x, y], point_b]
-        if 0 < degrees < 90:
-            y -= 0.4
-            new_line_one = [point_a, [x, y]]
-            new_line_two = [[x, y], point_b]
-        elif 90 < degrees < 180:
-            y += 0.4
-            new_line_one = [point_a, [x, y]]
-            new_line_two = [[x, y], point_b]
-        elif -90 > degrees > -180:
-            x -= 0.4
-            new_line_one = [point_a, [x, y]]
-            new_line_two = [[x, y], point_b]
-        elif 0 > degrees > -90:
-            x += 0.4
-            new_line_one = [point_a, [x, y]]
-            new_line_two = [[x, y], point_b]
-
-
         sides.append(new_line_one)
         sides.append(new_line_two)
         path = [point_a, [x,y], point_b]
