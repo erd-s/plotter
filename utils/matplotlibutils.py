@@ -45,7 +45,7 @@ def path_from_coordinate_list(coordinate_list: [(float, float)]):
 
 def coordinate_list_from_path(path: Path):
     coordinate_list = []
-    for arr in path.iter_segments():
+    for arr in path.iter_segments(simplify=False):  # only giving 9?
         x = arr[0][0]
         y = arr[0][1]
         coordinate_list.append([x, y])
