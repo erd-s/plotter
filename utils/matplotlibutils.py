@@ -1,5 +1,6 @@
 from matplotlib.patches import Patch
-from numpy import ndarray
+from matplotlib.path import Path
+from numpy import ndarray, array
 
 
 def path_from_patch(patch: Patch):
@@ -35,3 +36,17 @@ def joined_coordinate_list(x_points: ndarray, y_points: ndarray):
         path_points.append([x, y[i]])
 
     return path_points
+
+
+def path_from_coordinate_list(coordinate_list: [(float, float)]):
+    n2_array = array(coordinate_list, dtype=float)
+    return Path(vertices=n2_array)
+
+
+def coordinate_list_from_path(path: Path):
+    coordinate_list = []
+    for arr in path.iter_segments():
+        x = arr[0][0]
+        y = arr[0][1]
+        coordinate_list.append([x, y])
+    return coordinate_list

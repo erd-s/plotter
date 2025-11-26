@@ -107,3 +107,23 @@ def create_rectangle(
 
     points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
     plotter.draw_path(points)
+
+
+def rectangle_path(
+    height: float,
+    width: float,
+    center_x: float,
+    center_y: float,
+):
+
+    ax = center_x - (width * 0.5)
+    ay = center_y - (height * 0.5)
+    bx = ax
+    by = center_y + (height * 0.5)
+    cx = center_x + (width * 0.5)
+    cy = by
+    dx = cx
+    dy = ay
+
+    points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
+    return points
