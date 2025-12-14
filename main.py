@@ -55,10 +55,7 @@ def run():
         setup_plotter(plotter)
         start_time = time.perf_counter()
         create_iterative_semicircles(
-            plotter=plotter,
-            origin_x=3.15,
-            origin_y=3.35,
-            radius=0.75
+            plotter=plotter, origin_x=3.15, origin_y=3.35, radius=0.75
         )
 
         end_time = time.perf_counter()

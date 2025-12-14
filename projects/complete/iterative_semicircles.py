@@ -34,7 +34,7 @@ def create_four_corner_iterative_semicircles(
     effective_y_end: float,
     center_x: float,
     center_y: float,
-    with_large_center: bool = True
+    with_large_center: bool = True,
 ):
     x_inset = 0.6
     y_inset = 0.65
