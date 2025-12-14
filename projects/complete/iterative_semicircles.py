@@ -1,6 +1,7 @@
 from utils.plotter_interface import PlotterInterface
 from projects.circles.semicircle import semicircle_path
 from utils.transform import rotate
+from projects.iterate_around.iterate_around import iterate_around
 
 
 def create_iterative_semicircles(
@@ -13,17 +14,7 @@ def create_iterative_semicircles(
     original_path = semicircle_path(
         origin_x=origin_x, origin_y=origin_y - radius, radius=radius
     )
-    degree = 0
-
-    for _ in range(int(360 / degree_interval)):
-        path = rotate(
-            path=original_path,
-            degrees=degree,
-            rotation_x=original_path[0][0],
-            rotation_y=original_path[0][1],
-        )
-        plotter.draw_path(path)
-        degree += degree_interval
+    iterate_around(plotter=plotter, original_path=original_path, degree_interval=degree_interval)
 
 
 def create_four_corner_iterative_semicircles(

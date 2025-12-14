@@ -43,7 +43,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -54,8 +54,8 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_iterative_semicircles(
-            plotter=plotter, origin_x=3.15, origin_y=3.35, radius=0.75
+        create_four_corner_iterative_semicircles(
+            plotter=plotter, effective_x_start=effective_x_start(), effective_x_end=effective_x_end(), effective_y_start=effective_y_start(), effective_y_end=effective_y_end(), center_x=center_x(), center_y=center_y()
         )
 
         end_time = time.perf_counter()
