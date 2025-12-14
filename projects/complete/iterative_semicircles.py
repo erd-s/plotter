@@ -1,7 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 from projects.circles.semicircle import semicircle_path
-from utils.transform import rotate
-from projects.iterate_around.iterate_around import iterate_around
+from projects.spiro.spiraled_path import create_spiraled_shape
 
 
 def create_iterative_semicircles(
@@ -14,8 +13,12 @@ def create_iterative_semicircles(
     original_path = semicircle_path(
         origin_x=origin_x, origin_y=origin_y - radius, radius=radius
     )
-    iterate_around(
-        plotter=plotter, original_path=original_path, degree_interval=degree_interval
+    create_spiraled_shape(
+        plotter=plotter,
+        shape_path=original_path,
+        shape_center_x=original_path[0][0],
+        shape_center_y=original_path[0][1],
+        degree_interval=degree_interval,
     )
 
 
