@@ -14,7 +14,9 @@ def create_iterative_semicircles(
     original_path = semicircle_path(
         origin_x=origin_x, origin_y=origin_y - radius, radius=radius
     )
-    iterate_around(plotter=plotter, original_path=original_path, degree_interval=degree_interval)
+    iterate_around(
+        plotter=plotter, original_path=original_path, degree_interval=degree_interval
+    )
 
 
 def create_four_corner_iterative_semicircles(

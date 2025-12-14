@@ -1,7 +1,10 @@
 from utils.plotter_interface import PlotterInterface
 from utils.transform import rotate
 
-def iterate_around(plotter: PlotterInterface, original_path: [(float, float)], degree_interval: int):
+
+def iterate_around(
+    plotter: PlotterInterface, original_path: [(float, float)], degree_interval: int
+):
     degree = 0
 
     for _ in range(int(360 / degree_interval)):

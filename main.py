@@ -55,7 +55,13 @@ def run():
         setup_plotter(plotter)
         start_time = time.perf_counter()
         create_four_corner_iterative_semicircles(
-            plotter=plotter, effective_x_start=effective_x_start(), effective_x_end=effective_x_end(), effective_y_start=effective_y_start(), effective_y_end=effective_y_end(), center_x=center_x(), center_y=center_y()
+            plotter=plotter,
+            effective_x_start=effective_x_start(),
+            effective_x_end=effective_x_end(),
+            effective_y_start=effective_y_start(),
+            effective_y_end=effective_y_end(),
+            center_x=center_x(),
+            center_y=center_y(),
         )
 
         end_time = time.perf_counter()
