@@ -28,6 +28,8 @@ def create_square_spiral_v2(
     center_y: float,
     height: float = 2,
     width: float = 1.5,
+    degree_interval: int = 6,
+    number_to_skip: int = 0,
 ):
     rect_path = rectangle_path(
         height=height, width=width, center_x=center_x, center_y=center_y
@@ -37,7 +39,8 @@ def create_square_spiral_v2(
         shape_path=rect_path,
         shape_center_x=center_x,
         shape_center_y=center_y,
-        degree_interval=15,
+        degree_interval=degree_interval,
+        number_to_skip=number_to_skip,
     )
 
 

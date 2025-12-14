@@ -1,7 +1,15 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.line_spiral import create_line_spirals
+from projects.complete.iterative_zig_zag import create_iterative_zig_zag
+from projects.complete.ifs.identity_alias import (
+    rebel,
+    strategist,
+    joker,
+    teenager,
+    professor,
+    big_self,
+)
 
 import time
 
@@ -50,11 +58,13 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_line_spirals(
-            plotter=plotter,
-            center_x=center_x(),
-            center_y=center_y(),
-        )
+
+        # rebel(plotter=plotter, center_x=center_x(), center_y=center_y())
+        # strategist(plotter=plotter, center_x=center_x(), center_y=center_y())
+        # joker(plotter=plotter, center_x=center_x(), center_y=center_y())
+        # teenager(plotter=plotter, center_x=center_x(), center_y=center_y())
+        # professor(plotter=plotter, center_x=center_x(), center_y=center_y())
+        big_self(plotter=plotter, center_x=center_x(), center_y=center_y())
 
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")

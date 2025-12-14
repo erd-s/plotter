@@ -5,13 +5,13 @@ from projects.spiro.spiraled_path import create_spiraled_shape
 
 def create_iterative_semicircles(
     plotter: PlotterInterface,
-    origin_x: float,
-    origin_y: float,
-    radius: float,
-    degree_interval: int = 9,
+    center_x: float,
+    center_y: float,
+    radius: float = 0.6,
+    degree_interval: int = 6,
 ):
     original_path = semicircle_path(
-        origin_x=origin_x, origin_y=origin_y - radius, radius=radius
+        origin_x=center_x, origin_y=center_y - radius, radius=radius
     )
     create_spiraled_shape(
         plotter=plotter,
@@ -37,34 +37,34 @@ def create_four_corner_iterative_semicircles(
     radius = 0.275
     create_iterative_semicircles(
         plotter=plotter,
-        origin_x=effective_x_start + x_inset,
-        origin_y=effective_y_start + y_inset,
+        center_x=effective_x_start + x_inset,
+        center_y=effective_y_start + y_inset,
         radius=radius,
     )
     create_iterative_semicircles(
         plotter=plotter,
-        origin_x=effective_x_end - x_inset,
-        origin_y=effective_y_start + y_inset,
+        center_x=effective_x_end - x_inset,
+        center_y=effective_y_start + y_inset,
         radius=radius,
     )
     create_iterative_semicircles(
         plotter=plotter,
-        origin_x=effective_x_start + x_inset,
-        origin_y=effective_y_end - y_inset,
+        center_x=effective_x_start + x_inset,
+        center_y=effective_y_end - y_inset,
         radius=radius,
     )
     create_iterative_semicircles(
         plotter=plotter,
-        origin_x=effective_x_end - x_inset,
-        origin_y=effective_y_end - y_inset,
+        center_x=effective_x_end - x_inset,
+        center_y=effective_y_end - y_inset,
         radius=radius,
     )
 
     if with_large_center:
         create_iterative_semicircles(
             plotter=plotter,
-            origin_x=center_x,
-            origin_y=center_y,
+            center_x=center_x,
+            center_y=center_y,
             radius=1,
             degree_interval=4,
         )

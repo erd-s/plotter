@@ -100,3 +100,14 @@ def run(plotter: PlotterInterface, zig_zags: int):
                 plotter.move((adjusted_x_delta * -2), 0)
 
         plotter.move(zig_width, 0)
+
+
+def create_zig_path(center_x: float, center_y: float, height: float, width: float):
+    point_a_x = center_x - (width / 2)
+    point_a_y = center_y - (height / 2)
+    point_b_x = center_x
+    point_b_y = center_y + (height / 2)
+    point_c_x = center_x + (width / 2)
+    point_c_y = center_y - (height / 2)
+
+    return [(point_a_x, point_a_y), (point_b_x, point_b_y), (point_c_x, point_c_y)]
