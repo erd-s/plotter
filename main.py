@@ -1,11 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.iterative_semicircles import (
-    create_iterative_semicircles,
-    create_four_corner_iterative_semicircles,
-)
-
+from projects.complete.line_spiral import create_line_spirals
 
 import time
 
@@ -43,7 +39,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -54,12 +50,8 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        create_four_corner_iterative_semicircles(
+        create_line_spirals(
             plotter=plotter,
-            effective_x_start=effective_x_start(),
-            effective_x_end=effective_x_end(),
-            effective_y_start=effective_y_start(),
-            effective_y_end=effective_y_end(),
             center_x=center_x(),
             center_y=center_y(),
         )
