@@ -1,7 +1,6 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.iterative_zig_zag import create_iterative_zig_zag
 from projects.complete.ifs.identity_alias import (
     rebel,
     strategist,
@@ -10,6 +9,7 @@ from projects.complete.ifs.identity_alias import (
     professor,
     big_self,
 )
+from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
 
 import time
 
@@ -47,7 +47,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -59,12 +59,14 @@ def run():
         setup_plotter(plotter)
         start_time = time.perf_counter()
 
+        draw_bottom_page_layout(plotter=plotter, draw_quarter_horizontal_line=False)
+
         # rebel(plotter=plotter, center_x=center_x(), center_y=center_y())
         # strategist(plotter=plotter, center_x=center_x(), center_y=center_y())
         # joker(plotter=plotter, center_x=center_x(), center_y=center_y())
         # teenager(plotter=plotter, center_x=center_x(), center_y=center_y())
         # professor(plotter=plotter, center_x=center_x(), center_y=center_y())
-        big_self(plotter=plotter, center_x=center_x(), center_y=center_y())
+        # big_self(plotter=plotter, center_x=center_x(), center_y=center_y())
 
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
