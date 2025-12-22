@@ -8,6 +8,7 @@ def create_iterative_semicircles(
     center_x: float,
     center_y: float,
     radius: float = 0.6,
+    open_middle_radius: float = 0,
     degree_interval: int = 6,
 ):
     original_path = semicircle_path(
@@ -16,8 +17,8 @@ def create_iterative_semicircles(
     create_spiraled_shape(
         plotter=plotter,
         shape_path=original_path,
-        shape_center_x=original_path[0][0],
-        shape_center_y=original_path[0][1],
+        shape_center_x=original_path[0][0] - open_middle_radius,
+        shape_center_y=original_path[0][1] - open_middle_radius,
         degree_interval=degree_interval,
     )
 

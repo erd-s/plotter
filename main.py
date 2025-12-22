@@ -1,14 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.ifs.identity_alias import (
-    rebel,
-    strategist,
-    joker,
-    teenager,
-    professor,
-    big_self,
-)
+from projects.complete.iterative_semicircles import create_iterative_semicircles
 from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
 
 import time
@@ -47,7 +40,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=True,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -58,8 +51,13 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-
-        draw_bottom_page_layout(plotter=plotter, draw_quarter_horizontal_line=False)
+        create_iterative_semicircles(
+            plotter=plotter,
+            center_x=3.10,
+            center_y=3.15,
+            radius=0.75,
+            open_middle_radius=0.05,
+        )
 
         # rebel(plotter=plotter, center_x=center_x(), center_y=center_y())
         # strategist(plotter=plotter, center_x=center_x(), center_y=center_y())
