@@ -1,5 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 from projects.text.text import SidewaysText
+from projects.border import draw_border
 
 
 def draw_page_title(
@@ -15,3 +16,6 @@ def draw_page_title(
         origin_y=effective_y_start + 0.2,
     )
     text.draw_text()
+
+    paths = text.text_paths()
+    draw_border(plotter=plotter, paths=paths)

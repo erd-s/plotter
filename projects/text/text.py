@@ -152,3 +152,29 @@ class SidewaysText:
                     rotation_y=origin_y_adjusted,
                 )
                 self.plotter.draw_path(rotated_path)
+
+    def text_paths(self):
+        y_adjustment_multiplier = self._letter_height + self._tracking
+        text_paths = []
+        for i, letter in enumerate(self.text):
+            if letter == " ":
+                continue
+            origin_y_adjusted = self.origin_y + (y_adjustment_multiplier * i)
+            letter_path = LetterPath(
+                letter=letter,
+                origin_x=self.origin_x,
+                origin_y=origin_y_adjusted,
+                height=self._letter_height,
+                width=self.width,
+            )
+            paths = letter_path.letter_path()
+            for path in paths:
+                rotated_path = rotate(
+                    path,
+                    degrees=90,
+                    rotation_x=self.origin_x,
+                    rotation_y=origin_y_adjusted,
+                )
+                text_paths += rotated_path
+
+        return text_paths
