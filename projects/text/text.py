@@ -10,7 +10,7 @@ class Text:
     width: float
     height: float
     _tracking: float
-    _character_width: float
+    _letter_width: float
 
     def __init__(
         self,
@@ -19,34 +19,35 @@ class Text:
         origin_x: float,
         origin_y: float,
         width: float,
-        height: float,
-        tracking: float = 0.02,
+        height: float = None,
+        tracking: float = 0.1,
     ):
         self.plotter = plotter
         self.text = text
         self.origin_x = origin_x
         self.origin_y = origin_y
         self.width = width
-        self.height = height
+
         self._tracking = tracking
-        self._character_width = width / (
-            float(len(text) + 2) + float(len(text) - 1) * tracking
-        )
+        self._letter_width = (
+            self.width - ((len(self.text) - 1) * self._tracking)
+        ) / len(text)
+        self.height = height if height else self._letter_width
 
     def write_text(self):
+        x_adjustment_multiplier = self._letter_width + self._tracking
         for i, letter in enumerate(self.text):
+            if letter == " ":
+                continue
             origin_x_adjusted = (
-                self.origin_x
-                + (self._character_width * i)
-                + (self._tracking * i)
-                + self._character_width
+                self.origin_x + (x_adjustment_multiplier * i) + self._tracking
             )
             letter_path = LetterPath(
                 letter=letter,
                 origin_x=origin_x_adjusted,
                 origin_y=self.origin_y,
                 height=self.height,
-                width=self._character_width,
+                width=self._letter_width,
             )
             paths = letter_path.letter_path()
             for path in paths:

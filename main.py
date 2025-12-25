@@ -55,14 +55,12 @@ def run():
 
         text = Text(
             plotter=plotter,
-            text="abcdefghijklmnopqrstuvwxyz",
+            text="happy holidays",
             origin_x=effective_x_start(),
             origin_y=effective_y_start(),
             width=effective_width(),
-            height=1,
         )
         text.write_text()
-
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
