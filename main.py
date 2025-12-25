@@ -1,9 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.iterative_semicircles import create_iterative_semicircles
 from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
-from projects.text.text import HorizontalText, VerticalText
+from projects.complete.ifs.page_title import draw_page_title
 
 import time
 
@@ -52,14 +51,12 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-
-        text = VerticalText(
+        draw_page_title(
             plotter=plotter,
-            text="indulge me",
-            origin_x=center_x(),
-            origin_y=effective_y_start(),
+            title="fear of abandonment",
+            effective_x_end=effective_x_end(),
+            effective_y_start=effective_y_start(),
         )
-        text.draw_text()
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
