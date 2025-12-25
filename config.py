@@ -1,10 +1,10 @@
-DOC_HEIGHT = 8.3
-MARGIN_TOP = 0
-MARGIN_BOTTOM = 0
-
-DOC_WIDTH = 5.8
-MARGIN_LEFT = 0
-MARGIN_RIGHT = 0
+# DOC_HEIGHT = 8.3
+# MARGIN_TOP = 0
+# MARGIN_BOTTOM = 0
+#
+# DOC_WIDTH = 5.8
+# MARGIN_LEFT = 0
+# MARGIN_RIGHT = 0
 
 # For 9 x 12
 # Because the pen_plotter drawing area is only 8.5" x 11":
@@ -28,6 +28,15 @@ MARGIN_RIGHT = 0
 # DOC_WIDTH = 11
 # MARGIN_LEFT = 1.1
 # MARGIN_RIGHT = 0.1
+
+# Grand Voyager Notebook Horizontal Orientation
+DOC_HEIGHT = 8.3
+MARGIN_TOP = 0.3
+MARGIN_BOTTOM = 0.3
+
+DOC_WIDTH = 11.7
+MARGIN_LEFT = 0.3
+MARGIN_RIGHT = 0.3
 
 
 # For Grand Voyager Notebook Bottom Half, Adjust Book to align with drawing space

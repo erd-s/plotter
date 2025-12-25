@@ -40,7 +40,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -54,7 +54,7 @@ def run():
         draw_page_title(
             plotter=plotter,
             title="fear of abandonment",
-            effective_x_end=effective_x_end(),
+            effective_x_start=effective_x_start(),
             effective_y_start=effective_y_start(),
         )
         end_time = time.perf_counter()
