@@ -1,11 +1,13 @@
 from utils.plotter_interface import PlotterInterface
 import itertools
+from numpy import sin, pi
 
 
 def draw_border(
     plotter: PlotterInterface,
     paths: [[(float, float)]],
     padding: float = 0.1,
+    shadow_depth: float = 0,
     angle: int = 45,
 ):
     coordinates = list(itertools.chain.from_iterable(paths))
@@ -31,3 +33,25 @@ def draw_border(
     ]
 
     plotter.draw_path(border_path)
+
+    if shadow_depth != 0:
+        alpha = angle
+        theta = 90
+        beta = 180 - angle - theta
+        alpha_radians = alpha * (pi / 180)
+        beta_radians = beta * (pi / 180)
+        x_distance = shadow_depth / (sin(alpha_radians) / sin(beta_radians))
+        a_x = min_x - x_distance
+        a_y = min_y + shadow_depth
+        b_x = a_x
+        b_y = max_y + shadow_depth
+        c_x = max_x - x_distance
+        c_y = max_y + shadow_depth
+        shadow_path_one = [[a_x, a_y], [b_x, b_y], [c_x, c_y]]
+        shadow_path_two = [[min_x, min_y], [a_x, a_y]]
+        shadow_path_three = [[min_x, max_y], [b_x, b_y]]
+        shadow_path_four = [[max_x, max_y], [c_x, c_y]]
+        plotter.draw_path(shadow_path_one)
+        plotter.draw_path(shadow_path_two)
+        plotter.draw_path(shadow_path_three)
+        plotter.draw_path(shadow_path_four)

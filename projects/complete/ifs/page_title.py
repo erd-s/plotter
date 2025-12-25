@@ -18,4 +18,4 @@ def draw_page_title(
     text.draw_text()
 
     paths = text.text_paths()
-    draw_border(plotter=plotter, paths=paths)
+    draw_border(plotter=plotter, paths=paths, shadow_depth=0.06, angle=45)
