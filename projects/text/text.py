@@ -33,7 +33,7 @@ class Text:
         ) / len(text)
         self.height = height if height else self._letter_width
 
-    def write_text(self):
+    def draw_text(self):
         x_adjustment_multiplier = self._letter_width + self._tracking
         for i, letter in enumerate(self.text):
             if letter == " ":

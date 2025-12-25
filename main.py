@@ -59,7 +59,7 @@ def run():
             origin_x=effective_x_start(),
             origin_y=effective_y_start(),
         )
-        text.write_text()
+        text.draw_text()
         end_time = time.perf_counter()
         print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
