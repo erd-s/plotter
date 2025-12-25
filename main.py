@@ -3,7 +3,7 @@ from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.iterative_semicircles import create_iterative_semicircles
 from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
-from projects.text.text import Text
+from projects.text.text import HorizontalText, VerticalText
 
 import time
 
@@ -53,10 +53,10 @@ def run():
         setup_plotter(plotter)
         start_time = time.perf_counter()
 
-        text = Text(
+        text = VerticalText(
             plotter=plotter,
-            text="happy holidays",
-            origin_x=effective_x_start(),
+            text="indulge me",
+            origin_x=center_x(),
             origin_y=effective_y_start(),
         )
         text.draw_text()
