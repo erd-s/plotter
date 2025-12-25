@@ -8,13 +8,21 @@ class GridPoints:
     _horizontal_space: float
     _vertical_space: float
 
-    def __init__(self, origin_x: float, origin_y: float, width: float, height: float):
+    def __init__(
+        self,
+        origin_x: float,
+        origin_y: float,
+        width: float,
+        height: float,
+        center_x_offset: float = 0,
+        center_y_offset: float = 0,
+    ):
         self.origin_x = origin_x
         self.origin_y = origin_y
         self.width = width
         self.height = height
-        self.center_x = self.origin_x + (self.width / 2)
-        self.center_y = self.origin_y + (self.height / 2)
+        self.center_x = self.origin_x + (self.width / 2) + center_x_offset
+        self.center_y = self.origin_y + (self.height / 2) + center_y_offset
 
     def zero(self):
         x = self.origin_x

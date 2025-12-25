@@ -18,17 +18,16 @@ class Text:
         text: str,
         origin_x: float,
         origin_y: float,
-        width: float,
+        width: float = None,
         height: float = None,
-        tracking: float = 0.1,
     ):
         self.plotter = plotter
         self.text = text
         self.origin_x = origin_x
         self.origin_y = origin_y
-        self.width = width
+        self.width = width if width else len(text) * 0.25
 
-        self._tracking = tracking
+        self._tracking = (self.width / (len(text))) / 5
         self._letter_width = (
             self.width - ((len(self.text) - 1) * self._tracking)
         ) / len(text)
@@ -39,9 +38,7 @@ class Text:
         for i, letter in enumerate(self.text):
             if letter == " ":
                 continue
-            origin_x_adjusted = (
-                self.origin_x + (x_adjustment_multiplier * i) + self._tracking
-            )
+            origin_x_adjusted = self.origin_x + (x_adjustment_multiplier * i)
             letter_path = LetterPath(
                 letter=letter,
                 origin_x=origin_x_adjusted,

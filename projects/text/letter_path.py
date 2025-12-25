@@ -18,7 +18,12 @@ class LetterPath:
         self.width = width
         self.height = height
         self._grid = GridPoints(
-            origin_x=origin_x, origin_y=origin_y, height=height, width=width
+            origin_x=origin_x,
+            origin_y=origin_y,
+            width=width,
+            height=height,
+            center_x_offset=0,
+            center_y_offset=height / 8,
         )
 
     def letter_path(self):

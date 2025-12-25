@@ -58,7 +58,6 @@ def run():
             text="happy holidays",
             origin_x=effective_x_start(),
             origin_y=effective_y_start(),
-            width=effective_width(),
         )
         text.write_text()
         end_time = time.perf_counter()
