@@ -48,22 +48,18 @@ def run():
         y_max=effective_y_end(),
     )
 
-    try:
-        setup_plotter(plotter)
-        start_time = time.perf_counter()
-        draw_page_title_left(
-            plotter=plotter,
-            title="being perfect",
-            effective_x_start=effective_x_start(),
-            effective_y_start=effective_y_start(),
-        )
-        end_time = time.perf_counter()
-        print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
+    setup_plotter(plotter)
+    start_time = time.perf_counter()
+    draw_page_title_left(
+        plotter=plotter,
+        title="dec 2025",
+        effective_x_start=effective_x_start(),
+        effective_y_start=effective_y_start(),
+    )
+    end_time = time.perf_counter()
+    print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
-        tear_down_plotter(plotter)
-    except Exception as e:
-        print(e)
-        tear_down_plotter(plotter)
+    tear_down_plotter(plotter)
 
 
 # Press the green button in the gutter to run the script.

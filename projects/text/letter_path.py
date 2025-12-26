@@ -12,7 +12,7 @@ class LetterPath:
     def __init__(
         self, letter: str, origin_x: float, origin_y: float, height: float, width: float
     ):
-        self.letter = letter
+        self.letter = letter.lower()
         self.origin_x = origin_x
         self.origin_y = origin_y
         self.width = width
@@ -79,6 +79,28 @@ class LetterPath:
             return self._y()
         elif self.letter == "z":
             return self._z()
+        elif self.letter == "0":
+            return self._zero()
+        elif self.letter == "1":
+            return self._one()
+        elif self.letter == "2":
+            return self._two()
+        elif self.letter == "3":
+            return self._three()
+        elif self.letter == "4":
+            return self._four()
+        elif self.letter == "5":
+            return self._five()
+        elif self.letter == "6":
+            return self._six()
+        elif self.letter == "7":
+            return self._seven()
+        elif self.letter == "8":
+            return self._eight()
+        elif self.letter == "9":
+            return self._nine()
+        elif self.letter == "/":
+            return self._forward_slash()
 
     def _a(self):
         path_one = [self._grid.six(), self._grid.one(), self._grid.eight()]
@@ -275,3 +297,89 @@ class LetterPath:
         return [
             [self._grid.zero(), self._grid.two(), self._grid.six(), self._grid.eight()]
         ]
+
+    def _zero(self):
+        path_one = [
+            self._grid.zero(),
+            self._grid.six(),
+            self._grid.eight(),
+            self._grid.two(),
+            self._grid.zero(),
+        ]
+        path_two = [self._grid.two(), self._grid.six()]
+        return [path_one, path_two]
+
+    def _one(self):
+        path_one = [self._grid.four(), self._grid.one(), self._grid.seven()]
+        path_two = [self._grid.one(), self._grid.three()]
+        path_three = [self._grid.six(), self._grid.eight()]
+        return [path_one, path_two, path_three]
+
+    def _two(self):
+        return [
+            [
+                self._grid.zero(),
+                self._grid.two(),
+                self._grid.five(),
+                self._grid.three(),
+                self._grid.six(),
+                self._grid.eight(),
+            ]
+        ]
+
+    def _three(self):
+        path_one = [
+            self._grid.zero(),
+            self._grid.two(),
+            self._grid.eight(),
+            self._grid.six(),
+        ]
+        path_two = [self._grid.four(), self._grid.five()]
+        return [path_one, path_two]
+
+    def _four(self):
+        path_one = [self._grid.zero(), self._grid.three(), self._grid.five()]
+        path_two = [self._grid.two(), self._grid.eight()]
+        return [path_one, path_two]
+
+    def _five(self):
+        return self._s()
+
+    def _six(self):
+        return [
+            [
+                self._grid.zero(),
+                self._grid.six(),
+                self._grid.eight(),
+                self._grid.five(),
+                self._grid.three(),
+            ]
+        ]
+
+    def _seven(self):
+        return [[self._grid.zero(), self._grid.two(), self._grid.six()]]
+
+    def _eight(self):
+        path_one = [
+            self._grid.zero(),
+            self._grid.two(),
+            self._grid.eight(),
+            self._grid.six(),
+            self._grid.zero(),
+        ]
+        path_two = [self._grid.three(), self._grid.five()]
+        return [path_one, path_two]
+
+    def _nine(self):
+        return [
+            [
+                self._grid.eight(),
+                self._grid.two(),
+                self._grid.zero(),
+                self._grid.three(),
+                self._grid.five(),
+            ]
+        ]
+
+    def _forward_slash(self):
+        return [[self._grid.six(), self._grid.two()]]
