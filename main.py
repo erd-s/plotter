@@ -2,7 +2,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
-from projects.complete.ifs.page_title import draw_page_title
+from projects.complete.ifs.page_title import draw_page_title_right, draw_page_title_left
 
 import time
 
@@ -51,9 +51,9 @@ def run():
     try:
         setup_plotter(plotter)
         start_time = time.perf_counter()
-        draw_page_title(
+        draw_page_title_left(
             plotter=plotter,
-            title="fear of abandonment",
+            title="being perfect",
             effective_x_start=effective_x_start(),
             effective_y_start=effective_y_start(),
         )
