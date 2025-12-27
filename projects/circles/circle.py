@@ -64,8 +64,13 @@ def create_circle_v2(
     origin_y: float,
     radius: float,
 ):
+    path_points = circle_path(origin_x=origin_x, origin_y=origin_y, radius=radius)
+    plotter.draw_path(path_points)
+
+
+def circle_path(origin_x: float, origin_y: float, radius: float):
     circle = CirclePolygon(
         xy=(origin_x, origin_y), radius=radius, resolution=int(radius * 500)
     )
     path_points = path_from_patch(circle)
-    plotter.draw_path(path_points)
+    return path_points

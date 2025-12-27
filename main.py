@@ -3,6 +3,7 @@ from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.ifs.bottom_page_layout import draw_bottom_page_layout
 from projects.complete.ifs.page_title import draw_page_title_right, draw_page_title_left
+from projects.circles.circle_lines import create_lined_circle
 
 import time
 
@@ -40,7 +41,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -50,11 +51,13 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_page_title_left(
+    create_lined_circle(
         plotter=plotter,
-        title="dec 2025",
-        effective_x_start=effective_x_start(),
-        effective_y_start=effective_y_start(),
+        center_origin_x=center_x(),
+        center_origin_y=center_y(),
+        radius=1,
+        line_interval=0.06,
+        angle=0,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
