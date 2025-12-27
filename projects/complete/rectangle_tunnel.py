@@ -1,7 +1,14 @@
 import random
 
 from projects.rectangles.rectangle import create_rectangle_with_bounds
-from utils.utils import *
+from utils.utils import (
+    effective_height,
+    effective_width,
+    effective_x_end,
+    effective_x_start,
+    effective_y_end,
+    effective_y_start,
+)
 from utils.plotter_interface import PlotterInterface
 
 

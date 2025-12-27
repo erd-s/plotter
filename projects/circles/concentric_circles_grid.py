@@ -2,7 +2,6 @@ from utils.plotter_interface import PlotterInterface
 from projects.circles.circle import create_circle
 from projects.object_grid import ObjectGrid
 from enum import Enum
-import random
 
 
 class Direction(Enum):
@@ -34,8 +33,8 @@ class ConcentricCirclesGrid(ObjectGrid):
         ):
             create_circle(
                 plotter=plotter,
-                origin_x=origin_x,
-                origin_y=origin_y,
+                center_origin_x=origin_x,
+                center_origin_y=origin_y,
                 radius=current_radius,
             )
 

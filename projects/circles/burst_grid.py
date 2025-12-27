@@ -38,8 +38,8 @@ class BurstGrid(ObjectGrid):
         print(f'Inside Circle Radius: {inside_circle_radius}"')
         create_circle(
             plotter=plotter,
-            origin_x=self.square_center_x,
-            origin_y=self.square_center_y,
+            center_origin_x=self.square_center_x,
+            center_origin_y=self.square_center_y,
             radius=inside_circle_radius,
         )
 
@@ -47,7 +47,7 @@ class BurstGrid(ObjectGrid):
         print(f'Outside Circle Radius: {outside_circle_radius}"')
         create_circle(
             plotter=plotter,
-            origin_x=self.square_center_x,
-            origin_y=self.square_center_y,
+            center_origin_x=self.square_center_x,
+            center_origin_y=self.square_center_y,
             radius=outside_circle_radius,
         )

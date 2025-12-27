@@ -27,8 +27,8 @@ class CircleOverlayGrid(ObjectGrid):
             self.total_circles += 1
             create_circle(
                 plotter=plotter,
-                origin_x=self.square_center_x,
-                origin_y=self.square_center_y,
+                center_origin_x=self.square_center_x,
+                center_origin_y=self.square_center_y,
                 radius=radius,
             )
         else:

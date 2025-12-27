@@ -1,7 +1,5 @@
-from projects.circles.circle import circle_path, create_circle_v2
 from utils.plotter_interface import PlotterInterface
 from utils.transform import rotate
-from math import isclose
 from math import sqrt
 
 
@@ -13,6 +11,7 @@ def create_lined_circle(
     line_interval: float,
     angle: int = 0,
 ):
+
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
@@ -41,4 +40,5 @@ def create_lined_circle(
             rotation_x=center_origin_x,
             rotation_y=center_origin_y,
         )
-        plotter.draw_path(bottom_path)
+        if bottom_path != top_path:
+            plotter.draw_path(bottom_path)

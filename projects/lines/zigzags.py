@@ -1,6 +1,3 @@
-import math
-import time
-
 from utils.plotter_interface import PlotterInterface
 from utils.utils import (
     effective_height,

@@ -60,8 +60,8 @@ class ConcentricCircles:
         while not out_of_bounds:
             create_circle_v2(
                 plotter=self.plotter,
-                origin_x=origin_x,
-                origin_y=origin_y,
+                center_origin_x=origin_x,
+                center_origin_y=origin_y,
                 radius=radius,
             )
             radius += circle_distance * 2

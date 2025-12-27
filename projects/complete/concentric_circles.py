@@ -89,8 +89,8 @@ def create_concentric_circles(plotter):
     ):
         create_circle_v2(
             plotter=plotter,
-            origin_x=center_x(),
-            origin_y=center_y(),
+            center_origin_x=center_x(),
+            center_origin_y=center_y(),
             radius=middle_radius,
         )
         middle_radius += (
@@ -131,8 +131,8 @@ def create_concentric_circles_v2(plotter, centered=False):
     ):
         create_circle_v2(
             plotter=plotter,
-            origin_x=origin_x,
-            origin_y=origin_y,
+            center_origin_x=origin_x,
+            center_origin_y=origin_y,
             radius=current_radius,
         )
 

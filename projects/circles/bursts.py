@@ -1,5 +1,4 @@
 import math
-import random
 
 from utils.plotter_interface import PlotterInterface
 

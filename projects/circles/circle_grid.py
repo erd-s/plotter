@@ -19,7 +19,7 @@ class CircleGrid(ObjectGrid):
 
             create_circle(
                 plotter=plotter,
-                origin_x=self.square_center_x + x_offset,
-                origin_y=self.square_center_y + y_offset,
+                center_origin_x=self.square_center_x + x_offset,
+                center_origin_y=self.square_center_y + y_offset,
                 radius=radius,
             )
