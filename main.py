@@ -57,7 +57,7 @@ def run():
         center_origin_y=center_y(),
         radius=1,
         line_interval=0.06,
-        angle=0,
+        angle=45,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
