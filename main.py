@@ -1,7 +1,11 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.hatched_venn import draw_hatched_venn_diagram_vertical
+from projects.complete.lined_circles import (
+    create_lined_circle_v1,
+    create_lined_circle_v2,
+)
+
 import time
 from utils.utils import (
     DOC_WIDTH,
@@ -44,17 +48,11 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    radius = 1.9
-    offset = radius / 1.5
-    line_interval = radius / 16
-    draw_hatched_venn_diagram_vertical(
-        plotter=plotter,
-        center_x=center_x(),
-        center_y=center_y(),
-        offset=offset,
-        line_interval=line_interval,
-        radius=radius,
+
+    create_lined_circle_v1(
+        plotter=plotter, center_x=center_x(), center_y=center_y(), radius=3
     )
+
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
