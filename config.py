@@ -1,3 +1,5 @@
+# A5 Vertical Orientation
+
 # DOC_HEIGHT = 8.3
 # MARGIN_TOP = 0.2
 # MARGIN_BOTTOM = 0.2
@@ -5,6 +7,16 @@
 # DOC_WIDTH = 5.8
 # MARGIN_LEFT = 0.2
 # MARGIN_RIGHT = 0.2
+
+# A5 Horizontal Orientation
+
+DOC_HEIGHT = 5.8
+MARGIN_TOP = 0.2
+MARGIN_BOTTOM = 0.2
+
+DOC_WIDTH = 8.3
+MARGIN_LEFT = 0.2
+MARGIN_RIGHT = 0.2
 
 # For 9 x 12
 # Because the pen_plotter drawing area is only 8.5" x 11":
@@ -30,13 +42,13 @@
 # MARGIN_RIGHT = 0.1
 
 # Grand Voyager Notebook Horizontal Orientation
-DOC_HEIGHT = 8.3
-MARGIN_TOP = 0.1
-MARGIN_BOTTOM = 0.1
-
-DOC_WIDTH = 11.7
-MARGIN_LEFT = 0.1
-MARGIN_RIGHT = 0.1
+# DOC_HEIGHT = 8.3
+# MARGIN_TOP = 0.1
+# MARGIN_BOTTOM = 0.1
+#
+# DOC_WIDTH = 11.7
+# MARGIN_LEFT = 0.1
+# MARGIN_RIGHT = 0.1
 
 # Grand Voyager Left Page Vertical Orientation
 # DOC_HEIGHT = 11.7

@@ -104,9 +104,10 @@ def create_rectangle(
     cy = by
     dx = cx
     dy = ay
-
     points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
     plotter.draw_path(points)
+    print(f"Rectangle width: {width}")
+    print(f"Rectangle height: {height}")
 
 
 def rectangle_path(
