@@ -10,11 +10,11 @@ from projects.border import draw_border_left, draw_border_right, draw_border_top
 
 # Use the following config for page title right:
 
-# DOC_HEIGHT = 8.3
+# DOC_HEIGHT = 8.27
 # MARGIN_TOP = 0.3
 # MARGIN_BOTTOM = 0.3
 #
-# DOC_WIDTH = 11.7
+# DOC_WIDTH = 11.69
 # MARGIN_LEFT = 0.3
 # MARGIN_RIGHT = 0.3
 
@@ -41,11 +41,11 @@ def draw_page_title_right(
 # Use the following config for page title left:
 
 
-# DOC_HEIGHT = 11.7
+# DOC_HEIGHT = 11.69
 # MARGIN_TOP = 0.3
 # MARGIN_BOTTOM = 0.3
 #
-# DOC_WIDTH = 8.3
+# DOC_WIDTH = 8.27
 # MARGIN_LEFT = 0.3
 # MARGIN_RIGHT = 0.3
 def draw_page_title_left(
