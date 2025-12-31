@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
