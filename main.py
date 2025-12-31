@@ -1,8 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.text.text import VerticalText, HorizontalText
-from projects.border import draw_border_top, draw_border_right
+from projects.complete.year_end import draw_2025
 
 import time
 from utils.utils import (
@@ -36,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -46,15 +45,7 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    text = VerticalText(
-        plotter=plotter,
-        text="jan 1 2026",
-        origin_x=effective_x_end() - 0.4,
-        origin_y=effective_y_start() + 0.2,
-    )
-    paths = text.text_paths()
-    text.draw_text()
-    draw_border_right(plotter=plotter, paths=paths, shadow_depth=0.1)
+    draw_2025(plotter=plotter, center_x=center_x(), center_y=center_y())
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

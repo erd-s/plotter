@@ -66,8 +66,7 @@ class HorizontalText:
                 width=self._letter_width,
             )
             paths = letter_path.letter_path()
-            for path in paths:
-                text_paths += path
+            text_paths += paths
 
         return text_paths
 
@@ -134,8 +133,7 @@ class VerticalText:
                 width=self.width,
             )
             paths = letter_path.letter_path()
-            for path in paths:
-                text_paths += path
+            text_paths += paths
 
         return text_paths
 
@@ -208,6 +206,7 @@ class SidewaysText:
                 width=self.width,
             )
             paths = letter_path.letter_path()
+            rotated_paths = []
             for path in paths:
                 rotated_path = rotate(
                     path,
@@ -215,7 +214,8 @@ class SidewaysText:
                     rotation_x=self.origin_x,
                     rotation_y=origin_y_adjusted,
                 )
-                text_paths += rotated_path
+                rotated_paths += rotated_path
+            text_paths += rotated_paths
 
         return text_paths
 
@@ -289,6 +289,7 @@ class HorizontalSidewaysText:
                 width=self._letter_width,
             )
             paths = letter_path.letter_path()
+            rotated_paths = []
             for path in paths:
                 rotated_path = rotate(
                     path,
@@ -296,6 +297,7 @@ class HorizontalSidewaysText:
                     rotation_x=origin_x_adjusted + self._letter_width,
                     rotation_y=self.origin_y + self.height,
                 )
-                text_paths += rotated_path
+                rotated_paths += rotated_path
+            text_paths += rotated_paths
 
         return text_paths
