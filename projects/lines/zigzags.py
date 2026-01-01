@@ -99,7 +99,7 @@ def run(plotter: PlotterInterface, zig_zags: int):
         plotter.move(zig_width, 0)
 
 
-def create_zig_path(center_x: float, center_y: float, height: float, width: float):
+def draw_zig_path(center_x: float, center_y: float, height: float, width: float):
     point_a_x = center_x - (width / 2)
     point_a_y = center_y - (height / 2)
     point_b_x = center_x

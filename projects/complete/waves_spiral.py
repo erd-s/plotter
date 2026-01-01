@@ -1,13 +1,13 @@
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.lines.wave import wave_path
-from projects.spiro.spiraled_path import create_spiraled_shape
+from projects.spiro.spiraled_path import draw_spiraled_shape
 
 
-def create_wave_spiral(
+def draw_wave_spiral(
     plotter: PlotterInterface, center_x: float, center_y: float, width: float = 1
 ):
     path = wave_path(origin_x=center_x, origin_y=center_y, width=width)
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=path,
         shape_center_x=path[0][0],

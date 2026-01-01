@@ -1,6 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 
-from projects.lines.lines import create_lines
+from projects.lines.lines import draw_lines
 from projects.object_grid import ObjectGrid
 
 
@@ -12,7 +12,7 @@ class LinesGrid(ObjectGrid):
         self.number_of_lines = number_of_lines
 
     def object_logic(self, plotter: PlotterInterface):
-        create_lines(
+        draw_lines(
             plotter=plotter,
             number_of_lines=self.number_of_lines,
             origin_x=self.square_center_x - (self.square_width / 2),

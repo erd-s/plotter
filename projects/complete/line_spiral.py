@@ -1,9 +1,9 @@
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.lines.wave import wave_path
-from projects.spiro.spiraled_path import create_spiraled_shape
+from projects.spiro.spiraled_path import draw_spiraled_shape
 
 
-def create_line_spiral(
+def draw_line_spiral(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -14,7 +14,7 @@ def create_line_spiral(
         (center_x, center_y + distance_from_center),
         (center_x, center_y + distance_from_center + length),
     ]
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=path,
         shape_center_x=center_x,
@@ -23,7 +23,7 @@ def create_line_spiral(
     )
 
 
-def create_line_spirals(
+def draw_line_spirals(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -35,7 +35,7 @@ def create_line_spirals(
         (center_x + 0.1, center_y + distance_from_center_one),
         (center_x, center_y + distance_from_center_one + length_one),
     ]
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=path,
         shape_center_x=center_x,
@@ -49,7 +49,7 @@ def create_line_spirals(
         (center_x + 0.1, center_y + distance_from_center_two),
         (center_x, center_y + distance_from_center_two + length_two),
     ]
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=path,
         shape_center_x=center_x,
@@ -63,7 +63,7 @@ def create_line_spirals(
         (center_x + 0.1, center_y + distance_from_center_three),
         (center_x, center_y + distance_from_center_three + length_three),
     ]
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=path,
         shape_center_x=center_x,

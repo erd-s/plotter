@@ -3,7 +3,7 @@ import random
 from utils.plotter_interface import PlotterInterface
 
 
-def create_cube(
+def draw_cube(
     plotter: PlotterInterface,
     origin_x: float,
     origin_y: float,

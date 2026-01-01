@@ -2,7 +2,7 @@ import random
 
 from utils.plotter_interface import PlotterInterface
 
-from projects.rectangles.rectangle import create_rectangle
+from projects.rectangles.rectangle import draw_rectangle
 from projects.object_grid import ObjectGrid
 
 
@@ -25,7 +25,7 @@ class SquareOverlayGrid(ObjectGrid):
 
         if not skip:
             self.total_squares += 1
-            create_rectangle(
+            draw_rectangle(
                 plotter=plotter,
                 height=width,
                 width=width,

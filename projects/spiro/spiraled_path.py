@@ -2,7 +2,7 @@ from utils.plotter_interface import PlotterInterface
 from utils.transform import rotate
 
 
-def create_spiraled_shape(
+def draw_spiraled_shape(
     plotter: PlotterInterface,
     shape_path: [(float, float)],
     shape_center_x: float,

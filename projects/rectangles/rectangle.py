@@ -1,7 +1,7 @@
 from utils.plotter_interface import PlotterInterface
 
 
-def create_rectangle_with_bounds(
+def draw_rectangle_with_bounds(
     plotter: PlotterInterface,
     height: float,
     width: float,
@@ -89,7 +89,7 @@ def create_rectangle_with_bounds(
             plotter.lineto(xe, ye)
 
 
-def create_rectangle(
+def draw_rectangle(
     plotter: PlotterInterface,
     height: float,
     width: float,

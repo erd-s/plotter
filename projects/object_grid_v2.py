@@ -17,6 +17,9 @@ class ObjectGridV2:
     origin_y: float
     width: float
     height: float
+    current_index: int = 0
+    current_row: int = 0
+    current_column: int = 0
 
     def __init__(
         self,
@@ -36,7 +39,7 @@ class ObjectGridV2:
         self.height = height - inset * 2
         self.inset = inset
 
-    def create_object_grid(
+    def draw_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
     ):
         self.square_width = self.width / self.grid_size_horizontal
@@ -51,14 +54,18 @@ class ObjectGridV2:
         )
 
         iteration = 0
-        row = 0
-        column = 0
+
         for i in range(self.grid_size_horizontal * self.grid_size_vertical):
+            self.current_index = i
             self.square_center_x = (
-                self.origin_x + (self.square_width / 2) + (column * self.square_width)
+                self.origin_x
+                + (self.square_width / 2)
+                + (self.current_column * self.square_width)
             )
             self.square_center_y = (
-                self.origin_y + (self.square_height / 2) + (row * self.square_height)
+                self.origin_y
+                + (self.square_height / 2)
+                + (self.current_row * self.square_height)
             )
             self.square_start_x = self.square_center_x - (self.square_width * 0.5)
             self.square_end_x = self.square_center_x + (self.square_width * 0.5)
@@ -82,17 +89,17 @@ class ObjectGridV2:
 
             if (i + 1) % self.grid_size_horizontal == 0:
                 # move left and down
-                row += 1
-                column = 0
+                self.current_row += 1
+                self.current_column = 0
                 plotter.moveto(
                     self.origin_x + (self.square_width / 2),
                     self.origin_y
-                    + (row * self.square_height)
+                    + (self.current_row * self.square_height)
                     - (self.square_height / 2),
                 )
             else:
                 # move right
-                column += 1
+                self.current_column += 1
                 plotter.moveto(next_square_center_x, self.square_center_y)
 
     def object_logic(self, plotter: PlotterInterface):

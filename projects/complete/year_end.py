@@ -1,9 +1,9 @@
 from utils.plotter_interface import PlotterInterface
 from projects.circles.circle_lines import (
-    create_lined_circle_right_half,
-    create_lined_circle_bottom_half,
+    draw_lined_circle_right_half,
+    draw_lined_circle_bottom_half,
 )
-from projects.rectangles.rectangle import create_rectangle
+from projects.rectangles.rectangle import draw_rectangle
 from projects.text.text import HorizontalText
 from utils.transform import centered_paths
 
@@ -11,18 +11,18 @@ from utils.transform import centered_paths
 def draw_2025(
     plotter: PlotterInterface, center_x: float, center_y: float, radius: float = 1.75
 ):
-    create_lined_circle_right_half(
+    draw_lined_circle_right_half(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y,
+        center_x=center_x,
+        center_y=center_y,
         radius=radius,
         line_interval=0.1,
         angle=-90,
     )
-    create_lined_circle_bottom_half(
+    draw_lined_circle_bottom_half(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y,
+        center_x=center_x,
+        center_y=center_y,
         radius=radius,
         line_interval=0.05,
     )
@@ -38,7 +38,7 @@ def draw_2025(
     )
 
     for i in range(number_of_borders):
-        create_rectangle(
+        draw_rectangle(
             plotter=plotter,
             height=(height + distance * i),
             width=(width + distance * i),

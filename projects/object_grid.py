@@ -24,7 +24,7 @@ class ObjectGrid:
         self.grid_size = grid_size
         self.inset = inset
 
-    def create_object_grid(
+    def draw_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
     ):
         self.square_width = effective_width() / self.grid_size

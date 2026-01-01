@@ -3,7 +3,7 @@ import math
 from utils.plotter_interface import PlotterInterface
 
 
-def create_burst(
+def draw_burst(
     plotter: PlotterInterface,
     origin_x: float,
     origin_y: float,

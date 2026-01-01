@@ -3,10 +3,10 @@ from utils.transform import rotate
 from math import sqrt
 
 
-def create_lined_circle(
+def draw_lined_circle(
     plotter: PlotterInterface,
-    center_origin_x: float,
-    center_origin_y: float,
+    center_x: float,
+    center_y: float,
     radius: float,
     line_interval: float,
     angle: int = 0,
@@ -15,39 +15,39 @@ def create_lined_circle(
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
-        y = center_origin_y - line_interval * i
+        y = center_y - line_interval * i
         y_distance_to_center = line_interval * i
         x_distance_to_center = sqrt(
             abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
         )
-        start_x = center_origin_x - x_distance_to_center
-        end_x = center_origin_x + x_distance_to_center
+        start_x = center_x - x_distance_to_center
+        end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
         top_path = rotate(
             [point_a, point_b],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
 
         plotter.draw_path(top_path)
-        point_c = [start_x, center_origin_y + y_distance_to_center]
-        point_d = [end_x, center_origin_y + y_distance_to_center]
+        point_c = [start_x, center_y + y_distance_to_center]
+        point_d = [end_x, center_y + y_distance_to_center]
         bottom_path = rotate(
             [point_c, point_d],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         if bottom_path != top_path:
             plotter.draw_path(bottom_path)
 
 
-def create_lined_circle_top_half(
+def draw_lined_circle_top_half(
     plotter: PlotterInterface,
-    center_origin_x: float,
-    center_origin_y: float,
+    center_x: float,
+    center_y: float,
     radius: float,
     line_interval: float,
     angle: int = 0,
@@ -56,28 +56,28 @@ def create_lined_circle_top_half(
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
-        y = center_origin_y - line_interval * i
+        y = center_y - line_interval * i
         y_distance_to_center = line_interval * i
         x_distance_to_center = sqrt(
             abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
         )
-        start_x = center_origin_x - x_distance_to_center
-        end_x = center_origin_x + x_distance_to_center
+        start_x = center_x - x_distance_to_center
+        end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
         top_path = rotate(
             [point_a, point_b],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         plotter.draw_path(top_path)
 
 
-def create_lined_circle_left_half(
+def draw_lined_circle_left_half(
     plotter: PlotterInterface,
-    center_origin_x: float,
-    center_origin_y: float,
+    center_x: float,
+    center_y: float,
     radius: float,
     line_interval: float,
     angle: int = 0,
@@ -86,38 +86,38 @@ def create_lined_circle_left_half(
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
-        y = center_origin_y - line_interval * i
+        y = center_y - line_interval * i
         y_distance_to_center = line_interval * i
         x_distance_to_center = sqrt(
             abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
         )
-        start_x = center_origin_x - x_distance_to_center
+        start_x = center_x - x_distance_to_center
         point_a = [start_x, y]
-        point_b = [center_origin_x, y]
+        point_b = [center_x, y]
         top_path = rotate(
             [point_a, point_b],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         plotter.draw_path(top_path)
 
-        point_c = [start_x, center_origin_y + y_distance_to_center]
-        point_d = [center_origin_x, center_origin_y + y_distance_to_center]
+        point_c = [start_x, center_y + y_distance_to_center]
+        point_d = [center_x, center_y + y_distance_to_center]
         bottom_path = rotate(
             [point_c, point_d],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         if bottom_path != top_path:
             plotter.draw_path(bottom_path)
 
 
-def create_lined_circle_bottom_half(
+def draw_lined_circle_bottom_half(
     plotter: PlotterInterface,
-    center_origin_x: float,
-    center_origin_y: float,
+    center_x: float,
+    center_y: float,
     radius: float,
     line_interval: float,
     angle: int = 0,
@@ -126,28 +126,28 @@ def create_lined_circle_bottom_half(
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
-        y = center_origin_y + line_interval * i
+        y = center_y + line_interval * i
         y_distance_to_center = line_interval * i
         x_distance_to_center = sqrt(
             abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
         )
-        start_x = center_origin_x - x_distance_to_center
-        end_x = center_origin_x + x_distance_to_center
+        start_x = center_x - x_distance_to_center
+        end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
         top_path = rotate(
             [point_a, point_b],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         plotter.draw_path(top_path)
 
 
-def create_lined_circle_right_half(
+def draw_lined_circle_right_half(
     plotter: PlotterInterface,
-    center_origin_x: float,
-    center_origin_y: float,
+    center_x: float,
+    center_y: float,
     radius: float,
     line_interval: float,
     angle: int = 0,
@@ -156,33 +156,33 @@ def create_lined_circle_right_half(
     number_of_lines_halved = round(radius / line_interval)
 
     for i in range(number_of_lines_halved):
-        y = center_origin_y - line_interval * i
+        y = center_y - line_interval * i
         y_distance_to_center = line_interval * i
         x_distance_to_center = sqrt(
             abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
         )
-        center_origin_x - x_distance_to_center
-        end_x = center_origin_x + x_distance_to_center
-        point_a = [center_origin_x, y]
+        center_x - x_distance_to_center
+        end_x = center_x + x_distance_to_center
+        point_a = [center_x, y]
         point_b = [end_x, y]
         top_path = rotate(
             [point_a, point_b],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         plotter.draw_path(top_path)
 
-        point_c = [center_origin_x, center_origin_y + y_distance_to_center]
+        point_c = [center_x, center_y + y_distance_to_center]
         point_d = [
-            center_origin_x + x_distance_to_center,
-            center_origin_y + y_distance_to_center,
+            center_x + x_distance_to_center,
+            center_y + y_distance_to_center,
         ]
         bottom_path = rotate(
             [point_c, point_d],
             degrees=angle,
-            rotation_x=center_origin_x,
-            rotation_y=center_origin_y,
+            rotation_x=center_x,
+            rotation_y=center_y,
         )
         if bottom_path != top_path:
             plotter.draw_path(bottom_path)

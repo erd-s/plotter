@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.year_end import draw_2025
+from projects.complete.deco_flar_grid import draw_deco_flair_grid
 
 import time
 from utils.utils import (
@@ -45,7 +45,13 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_2025(plotter=plotter, center_x=center_x(), center_y=center_y())
+    draw_deco_flair_grid(
+        plotter=plotter,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        width=effective_width(),
+        height=effective_height(),
+    )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

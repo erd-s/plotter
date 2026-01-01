@@ -1,9 +1,9 @@
 from projects.rectangles.rectangle import rectangle_path
-from projects.spiro.spiraled_path import create_spiraled_shape
+from projects.spiro.spiraled_path import draw_spiraled_shape
 from utils.plotter_interface import PlotterInterface
 
 
-def create_square_spiral(
+def draw_square_spiral(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -12,7 +12,7 @@ def create_square_spiral(
     rect_path = rectangle_path(
         height=height, width=height, center_x=center_x, center_y=center_y
     )
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=rect_path,
         shape_center_x=center_x,
@@ -22,7 +22,7 @@ def create_square_spiral(
     )
 
 
-def create_square_spiral_v2(
+def draw_square_spiral_v2(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -34,7 +34,7 @@ def create_square_spiral_v2(
     rect_path = rectangle_path(
         height=height, width=width, center_x=center_x, center_y=center_y
     )
-    create_spiraled_shape(
+    draw_spiraled_shape(
         plotter=plotter,
         shape_path=rect_path,
         shape_center_x=center_x,
@@ -45,12 +45,10 @@ def create_square_spiral_v2(
 
 
 def square_spiral_trio(plotter: PlotterInterface, center_x: float, center_y: float):
-    create_square_spiral(
+    draw_square_spiral(
         plotter=plotter, center_x=center_x, center_y=center_y, height=1.25
     )
-    create_square_spiral(
-        plotter=plotter, center_x=center_x, center_y=center_y, height=2
-    )
-    create_square_spiral(
+    draw_square_spiral(plotter=plotter, center_x=center_x, center_y=center_y, height=2)
+    draw_square_spiral(
         plotter=plotter, center_x=center_x, center_y=center_y, height=3.1
     )

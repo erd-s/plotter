@@ -2,7 +2,7 @@ import random
 
 from utils.plotter_interface import PlotterInterface
 
-from projects.circles.circle import create_circle
+from projects.circles.circle import draw_circle
 from projects.object_grid import ObjectGrid
 
 
@@ -25,10 +25,10 @@ class CircleOverlayGrid(ObjectGrid):
 
         if not skip:
             self.total_circles += 1
-            create_circle(
+            draw_circle(
                 plotter=plotter,
-                center_origin_x=self.square_center_x,
-                center_origin_y=self.square_center_y,
+                center_x=self.square_center_x,
+                center_y=self.square_center_y,
                 radius=radius,
             )
         else:

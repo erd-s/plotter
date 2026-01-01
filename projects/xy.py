@@ -1,7 +1,7 @@
 from utils.plotter_interface import PlotterInterface
 
 
-def create_xy(plotter: PlotterInterface, origin_x, origin_y, height, width):
+def draw_xy(plotter: PlotterInterface, origin_x, origin_y, height, width):
     print(
         f"""
     Creating XY

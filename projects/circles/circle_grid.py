@@ -1,6 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 
-from projects.circles.circle import create_circle
+from projects.circles.circle import draw_circle
 from projects.object_grid import ObjectGrid
 
 
@@ -17,9 +17,9 @@ class CircleGrid(ObjectGrid):
             x_offset = (self.square_width / -2) + ((c + 1) * radius)
             y_offset = 0
 
-            create_circle(
+            draw_circle(
                 plotter=plotter,
-                center_origin_x=self.square_center_x + x_offset,
-                center_origin_y=self.square_center_y + y_offset,
+                center_x=self.square_center_x + x_offset,
+                center_y=self.square_center_y + y_offset,
                 radius=radius,
             )

@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from projects.circles.circle import create_circle
+from projects.circles.circle import draw_circle
 from projects.object_grid import ObjectGrid
 from enum import Enum
 
@@ -31,10 +31,10 @@ class ConcentricCirclesGrid(ObjectGrid):
             if orientation == "portrait"
             else self.square_width
         ):
-            create_circle(
+            draw_circle(
                 plotter=plotter,
-                center_origin_x=origin_x,
-                center_origin_y=origin_y,
+                center_x=origin_x,
+                center_y=origin_y,
                 radius=current_radius,
             )
 

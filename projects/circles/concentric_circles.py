@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from projects.circles.circle import create_circle_v2
+from projects.circles.circle import draw_circle_v2
 from enum import Enum
 
 
@@ -49,7 +49,7 @@ class ConcentricCircles:
         self.radius = radius
         self.direction = direction
 
-    def create_concentric_circles(self):
+    def draw_concentric_circles(self):
         circle_distance = self.radius
         radius = self.radius
         origin_x = self.center_x
@@ -58,10 +58,10 @@ class ConcentricCircles:
         out_of_bounds = False
 
         while not out_of_bounds:
-            create_circle_v2(
+            draw_circle_v2(
                 plotter=self.plotter,
-                center_origin_x=origin_x,
-                center_origin_y=origin_y,
+                center_x=origin_x,
+                center_y=origin_y,
                 radius=radius,
             )
             radius += circle_distance * 2

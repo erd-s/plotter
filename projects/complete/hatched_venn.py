@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from projects.circles.circle_lines import create_lined_circle
+from projects.circles.circle_lines import draw_lined_circle
 
 
 def draw_hatched_venn_diagram_horizontal(
@@ -11,34 +11,34 @@ def draw_hatched_venn_diagram_horizontal(
     angle: int = 45,
     radius: float = 1,
 ):
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x + offset,
-        center_origin_y=center_y,
+        center_x=center_x + offset,
+        center_y=center_y,
         radius=radius,
         line_interval=line_interval,
         angle=angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x - offset,
-        center_origin_y=center_y,
+        center_x=center_x - offset,
+        center_y=center_y,
         radius=radius,
         line_interval=line_interval,
         angle=-angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x + offset,
-        center_origin_y=center_y,
+        center_x=center_x + offset,
+        center_y=center_y,
         radius=radius,
         line_interval=line_interval,
         angle=-angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x - offset,
-        center_origin_y=center_y,
+        center_x=center_x - offset,
+        center_y=center_y,
         radius=radius,
         line_interval=line_interval,
         angle=angle,
@@ -54,34 +54,34 @@ def draw_hatched_venn_diagram_vertical(
     angle: int = 45,
     radius: float = 1,
 ):
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y + offset,
+        center_x=center_x,
+        center_y=center_y + offset,
         radius=radius,
         line_interval=line_interval,
         angle=angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y - offset,
+        center_x=center_x,
+        center_y=center_y - offset,
         radius=radius,
         line_interval=line_interval,
         angle=-angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y + offset,
+        center_x=center_x,
+        center_y=center_y + offset,
         radius=radius,
         line_interval=line_interval,
         angle=-angle,
     )
-    create_lined_circle(
+    draw_lined_circle(
         plotter=plotter,
-        center_origin_x=center_x,
-        center_origin_y=center_y - offset,
+        center_x=center_x,
+        center_y=center_y - offset,
         radius=radius,
         line_interval=line_interval,
         angle=angle,

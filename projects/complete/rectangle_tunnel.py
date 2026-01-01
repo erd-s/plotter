@@ -1,6 +1,6 @@
 import random
 
-from projects.rectangles.rectangle import create_rectangle_with_bounds
+from projects.rectangles.rectangle import draw_rectangle_with_bounds
 from utils.utils import (
     effective_height,
     effective_width,
@@ -12,7 +12,7 @@ from utils.utils import (
 from utils.plotter_interface import PlotterInterface
 
 
-def create_tunnel(plotter: PlotterInterface):
+def draw_tunnel(plotter: PlotterInterface):
     starting_height = 0.175
     starting_width = 0.175
     print(f"Creating tunnel with height: {starting_height}, width: {starting_width}")
@@ -40,7 +40,7 @@ def create_tunnel(plotter: PlotterInterface):
     width = starting_width
 
     while height <= effective_height() * 2 or width <= effective_width() * 2:
-        create_rectangle_with_bounds(
+        draw_rectangle_with_bounds(
             plotter=plotter,
             height=height,
             width=width,

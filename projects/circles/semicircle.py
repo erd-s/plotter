@@ -2,7 +2,7 @@ from utils.plotter_interface import PlotterInterface
 import math
 
 
-def create_semicircle(
+def draw_semicircle(
     plotter: PlotterInterface,
     origin_x: float,
     origin_y: float,

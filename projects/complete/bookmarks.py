@@ -1,4 +1,4 @@
-from projects.rectangles.rectangle import create_rectangle
+from projects.rectangles.rectangle import draw_rectangle
 from utils.plotter_interface import PlotterInterface
 from projects.circles.circle_lines_grid import CircleLinesGrid
 
@@ -25,8 +25,8 @@ def draw_bookmarks(
             height=effective_height,
             inset=0.1,
         )
-        project.create_object_grid(plotter=plotter)
-        create_rectangle(
+        project.draw_object_grid(plotter=plotter)
+        draw_rectangle(
             plotter=plotter,
             height=effective_height,
             width=width,

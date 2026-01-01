@@ -10,10 +10,10 @@ from utils.utils import (
     effective_y_end,
 )
 from projects.circles.concentric_circles import ConcentricCircles, Direction
-from projects.circles.circle import create_circle_v2
+from projects.circles.circle import draw_circle_v2
 
 
-def create_concentric_circles(plotter):
+def draw_concentric_circles(plotter):
     orientation = "portrait" if effective_height() > effective_width() else "landscape"
 
     x_offset = (
@@ -39,7 +39,7 @@ def create_concentric_circles(plotter):
         radius=radius,
         direction=Direction.BOTTOM_RIGHT,
     )
-    project.create_concentric_circles()
+    project.draw_concentric_circles()
     project = ConcentricCircles(
         plotter=plotter,
         center_x=center_x() + x_offset,
@@ -53,7 +53,7 @@ def create_concentric_circles(plotter):
         radius=radius,
         direction=Direction.BOTTOM_LEFT,
     )
-    project.create_concentric_circles()
+    project.draw_concentric_circles()
     project = ConcentricCircles(
         plotter=plotter,
         center_x=center_x() - x_offset,
@@ -67,7 +67,7 @@ def create_concentric_circles(plotter):
         radius=radius,
         direction=Direction.TOP_RIGHT,
     )
-    project.create_concentric_circles()
+    project.draw_concentric_circles()
     project = ConcentricCircles(
         plotter=plotter,
         center_x=center_x() + x_offset,
@@ -81,16 +81,16 @@ def create_concentric_circles(plotter):
         radius=radius,
         direction=Direction.TOP_LEFT,
     )
-    project.create_concentric_circles()
+    project.draw_concentric_circles()
 
     middle_radius = radius
     while middle_radius < (
         (effective_height() if orientation == "portrait" else effective_width()) / 12
     ):
-        create_circle_v2(
+        draw_circle_v2(
             plotter=plotter,
-            center_origin_x=center_x(),
-            center_origin_y=center_y(),
+            center_x=center_x(),
+            center_y=center_y(),
             radius=middle_radius,
         )
         middle_radius += (
@@ -98,7 +98,7 @@ def create_concentric_circles(plotter):
         ) / 120
 
 
-def create_concentric_circles_v2(plotter, centered=False):
+def draw_concentric_circles_v2(plotter, centered=False):
     orientation = "portrait" if effective_height() > effective_width() else "landscape"
 
     starting_radius = (
@@ -129,10 +129,10 @@ def create_concentric_circles_v2(plotter, centered=False):
         if orientation == "portrait"
         else effective_width()
     ):
-        create_circle_v2(
+        draw_circle_v2(
             plotter=plotter,
-            center_origin_x=origin_x,
-            center_origin_y=origin_y,
+            center_x=origin_x,
+            center_y=origin_y,
             radius=current_radius,
         )
 
