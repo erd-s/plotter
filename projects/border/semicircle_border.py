@@ -15,7 +15,7 @@ def draw_semicircle_border(
     width: float,
     height: float,
 ):
-    radius = width / 30
+    radius = (width if width < height else height) / 30
     diameter = radius * 2
     horizontal_iterations = int(width / diameter)
     vertical_iterations = int(height / diameter)
@@ -26,12 +26,17 @@ def draw_semicircle_border(
     semicircle_line_interval = radius / 8
     adjusted_width = width - origin_x_adjustment * 2
     adjusted_height = height - origin_y_adjustment * 2
+    adjusted_end_x = origin_x + adjusted_width
+    adjusted_end_y = origin_y + adjusted_height
+
     print(
         f"""
     x adjustment = {origin_x_adjustment}
     y adjustment = {origin_y_adjustment}
     adjusted origin x = {adjusted_origin_x}
+    adjusted end x = {adjusted_end_x}
     adjusted origin y = {adjusted_origin_y}
+    adjusted end y = {adjusted_end_y}
     adjusted width = {adjusted_width}
     adjusted height = {adjusted_height}
     radius = {radius}
@@ -61,11 +66,7 @@ def draw_semicircle_border(
     # draw bottom
     for i in range(horizontal_iterations):
         x = adjusted_origin_x + (i * diameter) + radius
-        y = (
-            origin_y + adjusted_height + radius
-            if width < height
-            else adjusted_origin_y + adjusted_height + (radius / 2)
-        )
+        y = adjusted_end_y + radius
         draw_lined_circle_bottom_half(
             plotter=plotter,
             center_x=x,
@@ -107,11 +108,7 @@ def draw_semicircle_border(
 
     # draw right
     for i in range(vertical_iterations):
-        x = (
-            adjusted_origin_x + adjusted_width - radius
-            if width < height
-            else origin_x + adjusted_width - radius
-        )
+        x = adjusted_origin_x + adjusted_width - radius
         y = adjusted_origin_y + (i * diameter) + (radius / 2)
 
         draw_lined_circle_bottom_half(
