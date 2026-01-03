@@ -1,11 +1,9 @@
 from utils.plotter_interface import PlotterInterface
 from projects.text.text import (
-    SidewaysText,
     VerticalText,
-    HorizontalText,
     HorizontalSidewaysText,
 )
-from projects.border import draw_border_left, draw_border_right, draw_border_top
+from projects.border.border import draw_border_left, draw_border_top
 
 
 # Use the following config for page title right:

@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.deco_flar_grid import draw_deco_flair_grid
+from projects.border.semicircle_border import draw_semicircle_border
 
 import time
 from utils.utils import (
@@ -45,7 +45,7 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_deco_flair_grid(
+    draw_semicircle_border(
         plotter=plotter,
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),
