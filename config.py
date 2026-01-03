@@ -8,7 +8,7 @@ MARGIN_LEFT = 0.2
 MARGIN_RIGHT = 0.2
 
 # A5 Horizontal Orientation
-
+#
 # DOC_HEIGHT = 5.83
 # MARGIN_TOP = 0.2
 # MARGIN_BOTTOM = 0.2
