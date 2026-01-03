@@ -1,21 +1,21 @@
 # A5 Vertical Orientation
-DOC_HEIGHT = 8.27
-MARGIN_TOP = 0.2
-MARGIN_BOTTOM = 0.2
-
-DOC_WIDTH = 5.83
-MARGIN_LEFT = 0.2
-MARGIN_RIGHT = 0.2
+# DOC_HEIGHT = 8.27
+# MARGIN_TOP = 0
+# MARGIN_BOTTOM = 0
+#
+# DOC_WIDTH = 5.83
+# MARGIN_LEFT = 0
+# MARGIN_RIGHT = 0
 
 # A5 Horizontal Orientation
 #
-# DOC_HEIGHT = 5.83
-# MARGIN_TOP = 0.2
-# MARGIN_BOTTOM = 0.2
-#
-# DOC_WIDTH = 8.27
-# MARGIN_LEFT = 0.2
-# MARGIN_RIGHT = 0.2
+DOC_HEIGHT = 5.83
+MARGIN_TOP = 0
+MARGIN_BOTTOM = 0
+
+DOC_WIDTH = 8.27
+MARGIN_LEFT = 0
+MARGIN_RIGHT = 0
 
 # A4 - Grand Voyager Notebook Horizontal Orientation
 # DOC_HEIGHT = 8.27
