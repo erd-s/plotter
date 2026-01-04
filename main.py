@@ -2,7 +2,9 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.semicircle_border_square import draw_semicircle_border_square
-from projects.border.semicircle_border import draw_semicircle_border_sides_only
+from projects.circles.concentric_quarter_circle import (
+    draw_concentric_quarter_circle_bottom_right,
+)
 
 import time
 from utils.utils import (
@@ -36,7 +38,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -46,12 +48,12 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_semicircle_border_square(
+    draw_concentric_quarter_circle_bottom_right(
         plotter=plotter,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        width=effective_width(),
-        semicircles_across=8,
+        center_x=center_x(),
+        center_y=center_y(),
+        radius=1,
+        number_of_lines=5,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
