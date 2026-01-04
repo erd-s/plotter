@@ -40,7 +40,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -50,8 +50,8 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    grid_size_horizontal = 10
-    grid_size_vertical = 10
+    grid_size_horizontal = 18
+    grid_size_vertical = 18
     project = ConcentricQuarterCirclePartyGrid(
         grid_size_horizontal=grid_size_horizontal,
         grid_size_vertical=grid_size_vertical,
@@ -61,12 +61,6 @@ def run():
         height=effective_height(),
     )
     project.draw_object_grid(plotter=plotter)
-    # draw_grid_v2(
-    #     plotter=plotter,
-    #     grid_size_horizontal=grid_size_horizontal,
-    #     grid_size_vertical=grid_size_vertical,
-    # )
-
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
