@@ -31,7 +31,7 @@ class ConcentricQuarterCircleGenerator:
         self.origin_y_start = origin_y_start
         self.origin_y_end = origin_y_end
         self.number_of_lines = number_of_lines
-        self.radius = (origin_x_end - origin_x_start) * 0.45
+        self.radius = (origin_y_end - origin_y_start) * 0.5
 
     def a(self):
         draw_concentric_quarter_circle_bottom_right(
