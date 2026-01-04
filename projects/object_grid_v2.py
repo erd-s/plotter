@@ -10,7 +10,6 @@ class ObjectGridV2:
     square_end_x: float
     square_start_y: float
     square_end_y: float
-    inset: float = 0
     grid_size_horizontal: int
     grid_size_vertical: int
     origin_x: float
@@ -29,15 +28,13 @@ class ObjectGridV2:
         origin_y: float,
         width: float,
         height: float,
-        inset: float = 0,
     ):
         self.grid_size_horizontal = grid_size_horizontal
         self.grid_size_vertical = grid_size_vertical
-        self.origin_x = origin_x + inset
-        self.origin_y = origin_y + inset
-        self.width = width - inset * 2
-        self.height = height - inset * 2
-        self.inset = inset
+        self.origin_x = origin_x
+        self.origin_y = origin_y
+        self.width = width
+        self.height = height
 
     def draw_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
@@ -71,13 +68,6 @@ class ObjectGridV2:
             self.square_end_x = self.square_center_x + (self.square_width * 0.5)
             self.square_start_y = self.square_center_y - (self.square_height * 0.5)
             self.square_end_y = self.square_center_y + (self.square_height * 0.5)
-
-            plotter.override_bounds(
-                x_min=self.square_start_x,
-                x_max=self.square_end_x,
-                y_min=self.square_start_y,
-                y_max=self.square_end_y,
-            )
 
             next_square_center_x = self.square_center_x + self.square_width
 

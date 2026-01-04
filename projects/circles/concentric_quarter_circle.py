@@ -87,7 +87,7 @@ def _draw_concentric_quarter_circle(
         plotter.draw_path(path)
 
 
-def draw_concentric_quarter_circle_top_right(
+def draw_concentric_quarter_circle_bottom_left(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -104,7 +104,7 @@ def draw_concentric_quarter_circle_top_right(
     )
 
 
-def draw_concentric_quarter_circle_top_left(
+def draw_concentric_quarter_circle_bottom_right(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -121,7 +121,7 @@ def draw_concentric_quarter_circle_top_left(
     )
 
 
-def draw_concentric_quarter_circle_bottom_right(
+def draw_concentric_quarter_circle_top_left(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
@@ -138,7 +138,7 @@ def draw_concentric_quarter_circle_bottom_right(
     )
 
 
-def draw_concentric_quarter_circle_bottom_left(
+def draw_concentric_quarter_circle_top_right(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
