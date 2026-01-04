@@ -1,10 +1,7 @@
 from utils.plotter_interface import PlotterInterface
-from projects.text.text import (
-    VerticalText,
-    HorizontalSidewaysText,
-)
+from projects.text.text import VerticalText, HorizontalSidewaysText, HorizontalText
 from projects.border.border import draw_border_left, draw_border_top
-
+from utils.transform import centered_paths
 
 # Use the following config for page title right:
 
@@ -63,3 +60,15 @@ def draw_page_title_left(
 
     paths = text.text_paths()
     draw_border_left(plotter=plotter, paths=paths, shadow_depth=shadow_depth, angle=45)
+
+
+def draw_page_title_center(
+    plotter: PlotterInterface, title: str, center_x: float, origin_y: float
+):
+    text = HorizontalText(plotter=plotter, text=title, origin_x=0, origin_y=origin_y)
+    text_paths = text.text_paths()
+    centered_text_paths = centered_paths(
+        text_paths, around_x=center_x, around_y=origin_y
+    )
+    for path in centered_text_paths:
+        plotter.draw_path(path)

@@ -1,12 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.concentric_quarter_circle_party.concentric_quarter_circle_party_grid import (
-    ConcentricQuarterCirclePartyGrid,
-)
-
-from projects.grid import draw_grid, draw_grid_v2
-
+from projects.complete.ifs.page_title import draw_page_title_center
 
 import time
 from utils.utils import (
@@ -50,17 +45,13 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    grid_size_horizontal = 18
-    grid_size_vertical = 18
-    project = ConcentricQuarterCirclePartyGrid(
-        grid_size_horizontal=grid_size_horizontal,
-        grid_size_vertical=grid_size_vertical,
-        origin_x=effective_x_start(),
+
+    draw_page_title_center(
+        plotter=plotter,
+        title="jan 4 2026",
+        center_x=center_x(),
         origin_y=effective_y_start(),
-        width=effective_width(),
-        height=effective_height(),
     )
-    project.draw_object_grid(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
