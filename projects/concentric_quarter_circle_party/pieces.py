@@ -31,7 +31,7 @@ class ConcentricQuarterCircleGenerator:
         self.origin_y_start = origin_y_start
         self.origin_y_end = origin_y_end
         self.number_of_lines = number_of_lines
-        self.radius = (origin_y_end - origin_y_start) * 0.5
+        self.radius = origin_y_end - origin_y_start
 
     def a(self):
         draw_concentric_quarter_circle_bottom_right(
@@ -65,132 +65,6 @@ class ConcentricQuarterCircleGenerator:
             plotter=self.plotter,
             center_x=self.origin_x_end,
             center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def e(self):
-        draw_concentric_quarter_circle_top_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def f(self):
-        draw_concentric_quarter_circle_top_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def g(self):
-        draw_concentric_quarter_circle_top_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def h(self):
-        draw_concentric_quarter_circle_bottom_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def i(self):
-        draw_concentric_quarter_circle_top_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def j(self):
-        draw_concentric_quarter_circle_top_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_top_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-
-    def k(self):
-        draw_concentric_quarter_circle_top_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_top_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_start,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_left(
-            plotter=self.plotter,
-            center_x=self.origin_x_start,
-            center_y=self.origin_y_end,
-            radius=self.radius,
-            number_of_lines=self.number_of_lines,
-        )
-        draw_concentric_quarter_circle_bottom_right(
-            plotter=self.plotter,
-            center_x=self.origin_x_end,
-            center_y=self.origin_y_end,
             radius=self.radius,
             number_of_lines=self.number_of_lines,
         )

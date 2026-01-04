@@ -20,7 +20,7 @@ class ConcentricQuarterCirclePartyGrid(ObjectGridV2):
             number_of_lines=5,
         )
 
-        options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]
+        options = ["a", "b", "c", "d"]
 
         open_left = ["a", "d"]
         open_right = ["b", "c"]
@@ -56,19 +56,5 @@ class ConcentricQuarterCirclePartyGrid(ObjectGridV2):
                 piece_generator.c()
             case "d":
                 piece_generator.d()
-            case "e":
-                piece_generator.e()
-            case "f":
-                piece_generator.f()
-            case "g":
-                piece_generator.g()
-            case "h":
-                piece_generator.h()
-            case "i":
-                piece_generator.i()
-            case "j":
-                piece_generator.j()
-            case "k":
-                piece_generator.k()
 
         self.pieces.append(selected_option)
