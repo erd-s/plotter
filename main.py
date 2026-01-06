@@ -2,6 +2,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.ifs.page_title import draw_page_title_center
+from projects.polygon.polygon import draw_polygon
 
 import time
 from utils.utils import (
@@ -35,7 +36,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,12 +46,12 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-
-    draw_page_title_center(
+    draw_polygon(
         plotter=plotter,
-        title="jan 4 2026",
         center_x=center_x(),
-        origin_y=effective_y_start(),
+        center_y=center_y(),
+        number_of_sides=5,
+        height=1,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
