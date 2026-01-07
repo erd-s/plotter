@@ -36,7 +36,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -49,7 +49,7 @@ def run():
 
     project = PolygonObjectGrid(
         number_of_sides=12,
-        grid_size_horizontal=2,
+        grid_size_horizontal=1,
         grid_size_vertical=2,
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),

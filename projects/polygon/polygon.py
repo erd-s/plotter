@@ -53,7 +53,7 @@ def draw_polygon_star(
     angle_radians = vertex_angle * (pi / 180) / 2
     base_length = 2 * (height / 2 * tan(angle_radians))
 
-    lines_per_side = round(height / 0.75)
+    lines_per_side = 5
 
     for ns in range(number_of_sides):
         rotation_angle = ns * vertex_angle

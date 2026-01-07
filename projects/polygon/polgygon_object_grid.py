@@ -1,6 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 from projects.object_grid_v2 import ObjectGridV2
-from projects.polygon.polygon import polygon_paths, draw_polygon_star
+from projects.polygon.polygon import polygon_paths, draw_polygon_star, draw_polygon
 from utils.transform import rotate
 
 
@@ -23,16 +23,35 @@ class PolygonObjectGrid(ObjectGridV2):
         self.number_of_sides = number_of_sides
 
     def object_logic(self, plotter: PlotterInterface):
-        height = (
+        polygon_height = (
             self.square_width
             if self.square_width < self.square_height
             else self.square_height
-        ) * 0.9
+        ) * 0.8
+
+        star_height = polygon_height * 0.9
 
         draw_polygon_star(
             plotter=plotter,
             center_x=self.square_center_x,
             center_y=self.square_center_y,
             number_of_sides=self.number_of_sides,
-            height=height,
+            height=star_height,
         )
+
+        rotation_angles = [0, 45]
+        for d in rotation_angles:
+            paths = polygon_paths(
+                center_x=self.square_center_x,
+                center_y=self.square_center_y,
+                number_of_sides=self.number_of_sides,
+                height=polygon_height,
+            )
+            for path in paths:
+                rotated_path = rotate(
+                    path,
+                    degrees=d,
+                    rotation_x=self.square_center_x,
+                    rotation_y=self.square_center_y,
+                )
+                plotter.draw_path(rotated_path)
