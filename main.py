@@ -2,7 +2,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.ifs.page_title import draw_page_title_center
-from projects.polygon.polygon import draw_polygon
+from projects.polygon.polgygon_object_grid import PolygonObjectGrid
 
 import time
 from utils.utils import (
@@ -46,13 +46,18 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_polygon(
-        plotter=plotter,
-        center_x=center_x(),
-        center_y=center_y(),
-        number_of_sides=5,
-        height=1,
+
+    project = PolygonObjectGrid(
+        number_of_sides=12,
+        grid_size_horizontal=2,
+        grid_size_vertical=2,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        width=effective_width(),
+        height=effective_height(),
     )
+    project.draw_object_grid(plotter=plotter)
+
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
