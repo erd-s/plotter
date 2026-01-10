@@ -1,7 +1,7 @@
 from utils.plotter_interface import PlotterInterface
 from projects.circles.circle import draw_circle_v2
 from projects.lines.line import line_path
-from utils.transform import rotate
+from utils.transform import rotated_path
 
 
 def draw_deco_circle_flair(
@@ -40,7 +40,7 @@ def draw_deco_circle_flair(
             origin_y_end=center_y + y_offset,
             origin_y_start=center_y + y_offset,
         )
-        rotated_path = rotate(
+        rotated_path = rotated_path(
             path=path,
             degrees=degree_rotation if up else -degree_rotation,
             rotation_x=center_x,
@@ -58,7 +58,7 @@ def draw_deco_circle_flair(
                 origin_y_end=center_y + y_offset,
                 origin_y_start=center_y + y_offset,
             )
-            rotated_path_right_line = rotate(
+            rotated_path_right_line = rotated_path(
                 path=path,
                 degrees=-degree_rotation if up else degree_rotation,
                 rotation_x=center_x,

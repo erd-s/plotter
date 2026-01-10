@@ -1,7 +1,7 @@
 from utils.plotter_interface import PlotterInterface
 from projects.object_grid_v2 import ObjectGridV2
 from projects.polygon.polygon import polygon_paths, draw_polygon_star, draw_polygon
-from utils.transform import rotate
+from utils.transform import rotated_path
 
 
 class PolygonObjectGrid(ObjectGridV2):
@@ -48,7 +48,7 @@ class PolygonObjectGrid(ObjectGridV2):
                 height=polygon_height,
             )
             for path in paths:
-                rotated_path = rotate(
+                rotated_path = rotated_path(
                     path,
                     degrees=d,
                     rotation_x=self.square_center_x,

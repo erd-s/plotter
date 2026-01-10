@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from utils.transform import rotate
+from utils.transform import rotated_path
 
 
 def draw_spiraled_shape(
@@ -16,7 +16,7 @@ def draw_spiraled_shape(
     for i in range(iterations):
         if i % (number_to_skip + 1) == 0:
             total_run += 1
-            path = rotate(
+            path = rotated_path(
                 path=shape_path,
                 degrees=degree,
                 rotation_x=shape_center_x,

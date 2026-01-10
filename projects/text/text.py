@@ -1,6 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 from projects.text.letter_path import LetterPath
-from utils.transform import rotate
+from utils.transform import rotated_path
 
 
 class HorizontalText:
@@ -183,7 +183,7 @@ class SidewaysText:
             )
             paths = letter_path.letter_path()
             for path in paths:
-                rotated_path = rotate(
+                rotated_path = rotated_path(
                     path,
                     degrees=90,
                     rotation_x=self.origin_x,
@@ -208,7 +208,7 @@ class SidewaysText:
             paths = letter_path.letter_path()
             rotated_paths = []
             for path in paths:
-                rotated_path = rotate(
+                rotated_path = rotated_paths(
                     path,
                     degrees=90,
                     rotation_x=self.origin_x,
@@ -266,7 +266,7 @@ class HorizontalSidewaysText:
             )
             paths = letter_path.letter_path()
             for path in paths:
-                rotated_path = rotate(
+                rotated_path = rotated_path(
                     path,
                     degrees=-90,
                     rotation_x=origin_x_adjusted + self._letter_width,
@@ -291,7 +291,7 @@ class HorizontalSidewaysText:
             paths = letter_path.letter_path()
             rotated_paths = []
             for path in paths:
-                rotated_path = rotate(
+                rotated_path = rotated_paths(
                     path,
                     degrees=-90,
                     rotation_x=origin_x_adjusted + self._letter_width,

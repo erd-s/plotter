@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from utils.transform import rotate
+from utils.transform import rotated_path
 from math import sqrt
 
 
@@ -24,7 +24,7 @@ def draw_lined_circle(
         end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
-        top_path = rotate(
+        top_path = rotated_path(
             [point_a, point_b],
             degrees=angle,
             rotation_x=center_x,
@@ -34,7 +34,7 @@ def draw_lined_circle(
         plotter.draw_path(top_path)
         point_c = [start_x, center_y + y_distance_to_center]
         point_d = [end_x, center_y + y_distance_to_center]
-        bottom_path = rotate(
+        bottom_path = rotated_path(
             [point_c, point_d],
             degrees=angle,
             rotation_x=center_x,
@@ -65,7 +65,7 @@ def draw_lined_circle_top_half(
         end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
-        top_path = rotate(
+        top_path = rotated_path(
             [point_a, point_b],
             degrees=angle,
             rotation_x=center_x,
@@ -94,7 +94,7 @@ def draw_lined_circle_left_half(
         start_x = center_x - x_distance_to_center
         point_a = [start_x, y]
         point_b = [center_x, y]
-        top_path = rotate(
+        top_path = rotated_path(
             [point_a, point_b],
             degrees=angle,
             rotation_x=center_x,
@@ -104,7 +104,7 @@ def draw_lined_circle_left_half(
 
         point_c = [start_x, center_y + y_distance_to_center]
         point_d = [center_x, center_y + y_distance_to_center]
-        bottom_path = rotate(
+        bottom_path = rotated_path(
             [point_c, point_d],
             degrees=angle,
             rotation_x=center_x,
@@ -135,7 +135,7 @@ def draw_lined_circle_bottom_half(
         end_x = center_x + x_distance_to_center
         point_a = [start_x, y]
         point_b = [end_x, y]
-        top_path = rotate(
+        top_path = rotated_path(
             [point_a, point_b],
             degrees=angle,
             rotation_x=center_x,
@@ -165,7 +165,7 @@ def draw_lined_circle_right_half(
         end_x = center_x + x_distance_to_center
         point_a = [center_x, y]
         point_b = [end_x, y]
-        top_path = rotate(
+        top_path = rotated_path(
             [point_a, point_b],
             degrees=angle,
             rotation_x=center_x,
@@ -178,7 +178,7 @@ def draw_lined_circle_right_half(
             center_x + x_distance_to_center,
             center_y + y_distance_to_center,
         ]
-        bottom_path = rotate(
+        bottom_path = rotated_path(
             [point_c, point_d],
             degrees=angle,
             rotation_x=center_x,

@@ -3,13 +3,26 @@ from utils.matplotlibutils import path_from_coordinate_list, coordinate_list_fro
 import itertools
 
 
-def rotate(
+def rotated_path(
     path: [(float, float)], degrees: float, rotation_x: float, rotation_y: float
 ):
     mpl_path = path_from_coordinate_list(coordinate_list=path)
     rotation = transforms.Affine2D().rotate_deg_around(rotation_x, rotation_y, degrees)
     mpl_rotated_path = mpl_path.transformed(rotation)
     return coordinate_list_from_path(mpl_rotated_path)
+
+
+def rotated_paths(
+    paths: [[(float, float)]], degrees: float, rotation_x: float, rotation_y: float
+):
+    r_ps = []
+    for path in paths:
+        r_p = rotated_path(
+            path=path, degrees=degrees, rotation_x=rotation_x, rotation_y=rotation_y
+        )
+        r_ps.append(r_p)
+
+    return r_ps
 
 
 def centered_paths(paths: [[(float, float)]], around_x: float, around_y: float):
