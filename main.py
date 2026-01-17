@@ -1,7 +1,10 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.bingo_card import draw_bingo_card
+from projects.complete.circle_circle import (
+    draw_circles_circle_v2_left,
+    draw_circles_circle_v2_right,
+)
 
 import time
 from utils.utils import (
@@ -35,7 +38,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,8 +48,9 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_bingo_card(
-        plotter=plotter, center_x=center_x(), center_y=center_y(), title="2026"
+    # draw_circles_circle_v2_left(plotter=plotter, center_x=center_x(), center_y=center_y())
+    draw_circles_circle_v2_right(
+        plotter=plotter, center_x=center_x(), center_y=center_y()
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
