@@ -1,10 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.circle_circle import (
-    draw_circles_circle_v2_left,
-    draw_circles_circle_v2_right,
-)
+from projects.complete.line_spiral import draw_line_spiral_v2
 
 import time
 from utils.utils import (
@@ -48,10 +45,7 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    # draw_circles_circle_v2_left(plotter=plotter, center_x=center_x(), center_y=center_y())
-    draw_circles_circle_v2_right(
-        plotter=plotter, center_x=center_x(), center_y=center_y()
-    )
+    draw_line_spiral_v2(plotter=plotter, center_x=center_x(), center_y=center_y())
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
