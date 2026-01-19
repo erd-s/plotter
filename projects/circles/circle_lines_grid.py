@@ -6,7 +6,7 @@ from projects.circles.circle_lines import draw_lined_circle
 
 
 class CircleLinesGrid(ObjectGridV2):
-    def __object_logic(self, plotter: PlotterInterface):
+    def object_logic(self, plotter: PlotterInterface):
         radius = (
             self.square_width / 2.5
             if self.square_width < self.square_height

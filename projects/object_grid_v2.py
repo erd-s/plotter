@@ -28,13 +28,14 @@ class ObjectGridV2:
         origin_y: float,
         width: float,
         height: float,
+        inset: float = 0,
     ):
         self.grid_size_horizontal = grid_size_horizontal
         self.grid_size_vertical = grid_size_vertical
-        self.origin_x = origin_x
-        self.origin_y = origin_y
-        self.width = width
-        self.height = height
+        self.origin_x = origin_x + inset
+        self.origin_y = origin_y + inset
+        self.width = width - (inset * 2)
+        self.height = height - (inset * 2)
 
     def draw_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None

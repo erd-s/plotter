@@ -27,49 +27,28 @@ def draw_line_spirals(
     plotter: PlotterInterface,
     center_x: float,
     center_y: float,
+    number_of_circles: int = 3,
+    degree_interval: int = 3,
 ):
     gap = 0.02
     distance_from_center_one = 0.25
-    length_one = 0.5
-    path = [
-        (center_x + 0.1, center_y + distance_from_center_one),
-        (center_x, center_y + distance_from_center_one + length_one),
-    ]
-    draw_spiraled_shape(
-        plotter=plotter,
-        shape_path=path,
-        shape_center_x=center_x,
-        shape_center_y=center_y,
-        degree_interval=3,
-    )
+    length = 0.5
 
-    distance_from_center_two = gap + distance_from_center_one + length_one
-    length_two = 0.5
-    path = [
-        (center_x + 0.1, center_y + distance_from_center_two),
-        (center_x, center_y + distance_from_center_two + length_two),
-    ]
-    draw_spiraled_shape(
-        plotter=plotter,
-        shape_path=path,
-        shape_center_x=center_x,
-        shape_center_y=center_y,
-        degree_interval=3,
-    )
-
-    distance_from_center_three = gap + distance_from_center_two + length_two
-    length_three = 0.5
-    path = [
-        (center_x + 0.1, center_y + distance_from_center_three),
-        (center_x, center_y + distance_from_center_three + length_three),
-    ]
-    draw_spiraled_shape(
-        plotter=plotter,
-        shape_path=path,
-        shape_center_x=center_x,
-        shape_center_y=center_y,
-        degree_interval=3,
-    )
+    for i in range(number_of_circles):
+        total_distance_from_center = (
+            (i + 1) * (length + gap)
+        ) + distance_from_center_one
+        path = [
+            (center_x + 0.1, center_y + total_distance_from_center - length),
+            (center_x, center_y + total_distance_from_center),
+        ]
+        draw_spiraled_shape(
+            plotter=plotter,
+            shape_path=path,
+            shape_center_x=center_x,
+            shape_center_y=center_y,
+            degree_interval=degree_interval,
+        )
 
 
 def draw_spike_spiral(plotter: PlotterInterface, center_x: float, center_y: float):
