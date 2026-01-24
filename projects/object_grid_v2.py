@@ -77,14 +77,15 @@ class ObjectGridV2:
             next_square_center_x = self.square_center_x + self.square_width
 
             if i >= start_index:
+                if self.draw_grid_lines:
+                    draw_rectangle(
+                        plotter=plotter,
+                        height=self.square_height,
+                        width=self.square_width,
+                        center_x=self.square_center_x,
+                        center_y=self.square_center_y,
+                    )
                 self.object_logic(plotter=plotter)
-                draw_rectangle(
-                    plotter=plotter,
-                    height=self.square_height,
-                    width=self.square_width,
-                    center_x=self.square_center_x,
-                    center_y=self.square_center_y,
-                )
                 iteration += 1
             if iterations == iteration:
                 return
