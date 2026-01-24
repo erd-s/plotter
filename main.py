@@ -2,6 +2,8 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.complete.bookmarks import draw_bookmarks
+from projects.twirl.twirl_shape_index import TwirlShapeIndex
+from projects.grid import draw_grid_v2
 
 import time
 from utils.utils import (
@@ -45,13 +47,17 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_bookmarks(
-        plotter=plotter,
-        effective_x_start=effective_x_start(),
-        effective_y_start=effective_y_start(),
-        effective_width=effective_width(),
-        effective_height=effective_height(),
+    index = TwirlShapeIndex(
+        grid_size_horizontal=3,
+        grid_size_vertical=3,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        width=effective_width(),
+        height=effective_height(),
+        inset=0.2,
+        draw_grid_lines=True,
     )
+    index.draw_object_grid(plotter=plotter)
 
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")

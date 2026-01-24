@@ -1,4 +1,5 @@
 from utils.plotter_interface import PlotterInterface
+from projects.rectangles.rectangle import draw_rectangle
 
 
 class ObjectGridV2:
@@ -19,6 +20,7 @@ class ObjectGridV2:
     current_index: int = 0
     current_row: int = 0
     current_column: int = 0
+    draw_grid_lines: bool
 
     def __init__(
         self,
@@ -29,6 +31,7 @@ class ObjectGridV2:
         width: float,
         height: float,
         inset: float = 0,
+        draw_grid_lines: bool = False,
     ):
         self.grid_size_horizontal = grid_size_horizontal
         self.grid_size_vertical = grid_size_vertical
@@ -36,6 +39,7 @@ class ObjectGridV2:
         self.origin_y = origin_y + inset
         self.width = width - (inset * 2)
         self.height = height - (inset * 2)
+        self.draw_grid_lines = draw_grid_lines
 
     def draw_object_grid(
         self, plotter: PlotterInterface, start_index=0, iterations: int = None
@@ -74,6 +78,13 @@ class ObjectGridV2:
 
             if i >= start_index:
                 self.object_logic(plotter=plotter)
+                draw_rectangle(
+                    plotter=plotter,
+                    height=self.square_height,
+                    width=self.square_width,
+                    center_x=self.square_center_x,
+                    center_y=self.square_center_y,
+                )
                 iteration += 1
             if iterations == iteration:
                 return
