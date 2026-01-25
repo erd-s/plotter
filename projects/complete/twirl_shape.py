@@ -3,7 +3,7 @@ from utils.plotter_interface import PlotterInterface
 from projects.twirl.twirl_shapes import TwirlShapes
 
 
-# requires grid rectangles to be square, and 4x6 grid, example config:
+# requires grid rectangles to be square, and 2:3 grid, example config:
 # DOC_HEIGHT = 8.27
 # MARGIN_TOP = 0.235
 # MARGIN_BOTTOM = 0.235
@@ -21,24 +21,24 @@ class TwirlShape(ObjectGridV2):
             end_y=self.square_end_y,
         )
 
-        match self.current_index:
-            case 0:
+        if self.current_column == 0:
+            if self.current_row == 0:
                 shapes.draw_a()
-            case 1 | 2:
-                shapes.draw_b()
-            case 3:
-                shapes.draw_c()
-            case 4 | 8 | 12 | 16:
-                shapes.draw_d()
-            case 5 | 6 | 9 | 10 | 13 | 14 | 17 | 18:
-                shapes.draw_e()
-            case 7 | 11 | 15 | 19:
-                shapes.draw_f()
-            case 20:
+            elif self.current_row == self.grid_size_vertical - 1:
                 shapes.draw_g()
-            case 21 | 22:
-                shapes.draw_h()
-            case 23:
+            else:
+                shapes.draw_d()
+        elif self.current_column == self.grid_size_horizontal - 1:
+            if self.current_row == 0:
+                shapes.draw_c()
+            elif self.current_row == self.grid_size_vertical - 1:
                 shapes.draw_i()
-            case 24:
-                shapes.draw_j()
+            else:
+                shapes.draw_f()
+        else:
+            if self.current_row == 0:
+                shapes.draw_b()
+            elif self.current_row == self.grid_size_vertical - 1:
+                shapes.draw_h()
+            else:
+                shapes.draw_e()
