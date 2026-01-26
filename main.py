@@ -1,7 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.twirl_shape import TwirlShape
+from projects.circles.circle_lines import draw_dashed_line_circle
+from projects.circles.circle import draw_circle
 
 import time
 from utils.utils import (
@@ -35,7 +36,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,17 +46,16 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    index = TwirlShape(
-        grid_size_horizontal=16,
-        grid_size_vertical=24,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        width=effective_width(),
-        height=effective_height(),
-        draw_grid_lines=False,
+    print(f"Center = {center_x()}, {center_y()}")
+    draw_dashed_line_circle(
+        plotter=plotter,
+        center_x=center_x(),
+        center_y=center_y(),
+        radius=2,
+        line_interval=0.05,
+        angle=45,
     )
-    index.draw_object_grid(plotter=plotter)
-
+    # draw_circle(plotter=plotter, center_x=center_x(), center_y=center_y(), radius=1)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
