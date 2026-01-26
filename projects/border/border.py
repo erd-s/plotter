@@ -8,7 +8,7 @@ def draw_border_left(
     paths: [[(float, float)]],
     padding: float = 0.1,
     shadow_depth: float = 0,
-    angle: int = 45,
+    angle: float = 45,
 ):
     coordinates = list(itertools.chain.from_iterable(paths))
     x_coordinates = []
@@ -62,7 +62,7 @@ def draw_border_right(
     paths: [[(float, float)]],
     padding: float = 0.1,
     shadow_depth: float = 0,
-    angle: int = 45,
+    angle: float = 45,
 ):
     coordinates = list(itertools.chain.from_iterable(paths))
     x_coordinates = []
@@ -116,7 +116,7 @@ def draw_border_top(
     paths: [[(float, float)]],
     padding: float = 0.1,
     shadow_depth: float = 0,
-    angle: int = 45,
+    angle: float = 45,
 ):
     coordinates = list(itertools.chain.from_iterable(paths))
     x_coordinates = []

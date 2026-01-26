@@ -10,7 +10,7 @@ def draw_lined_circle(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     number_of_lines = round((radius * 2) / line_interval)
 
@@ -40,7 +40,7 @@ def draw_lined_circle_top_half(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     paths = lined_circle_top_half_paths(
         center_x=center_x,
@@ -58,7 +58,7 @@ def lined_circle_top_half_paths(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
 
     number_of_lines_halved = round(radius / line_interval)
@@ -91,7 +91,7 @@ def draw_lined_circle_left_half(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     paths = lined_circle_top_left_paths(
         center_x=center_x,
@@ -109,7 +109,7 @@ def lined_circle_top_left_paths(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     number_of_lines_halved = round(radius / line_interval)
     paths = []
@@ -151,7 +151,7 @@ def draw_lined_circle_bottom_half(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     paths = lined_circle_top_bottom_paths(
         center_x=center_x,
@@ -169,7 +169,7 @@ def lined_circle_top_bottom_paths(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     number_of_lines_halved = round(radius / line_interval)
     paths = []
@@ -201,7 +201,7 @@ def draw_lined_circle_right_half(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     paths = lined_circle_top_right_paths(
         center_x=center_x,
@@ -219,7 +219,7 @@ def lined_circle_top_right_paths(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
     number_of_lines_halved = round(radius / line_interval)
     paths = []
@@ -264,7 +264,7 @@ def draw_dashed_line_circle(
     center_y: float,
     radius: float,
     line_interval: float,
-    angle: int = 0,
+    angle: float = 0,
 ):
 
     number_of_lines = round((radius * 2) / line_interval)

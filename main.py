@@ -36,7 +36,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -53,7 +53,7 @@ def run():
         center_y=center_y(),
         radius=2,
         line_interval=0.05,
-        angle=45,
+        angle=23.5,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
