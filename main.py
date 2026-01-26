@@ -55,7 +55,6 @@ def run():
         line_interval=0.05,
         angle=45,
     )
-    # draw_circle(plotter=plotter, center_x=center_x(), center_y=center_y(), radius=1)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
