@@ -1,8 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.circles.circle_lines import draw_dashed_line_circle
-from projects.circles.circle import draw_circle
+from projects.complete.prophecy import draw_mark_phases
 
 import time
 from utils.utils import (
@@ -46,14 +45,12 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    print(f"Center = {center_x()}, {center_y()}")
-    draw_dashed_line_circle(
+    draw_mark_phases(
         plotter=plotter,
-        center_x=center_x(),
-        center_y=center_y(),
-        radius=2,
-        line_interval=0.05,
-        angle=23.5,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        height=effective_height(),
+        width=effective_width(),
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")

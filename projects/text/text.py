@@ -206,16 +206,16 @@ class SidewaysText:
                 width=self.width,
             )
             paths = letter_path.letter_path()
-            rotated_paths = []
+            rotated_text_paths = []
             for path in paths:
-                rotated_path = rotated_paths(
+                rotated_text_path = rotated_path(
                     path,
                     degrees=90,
                     rotation_x=self.origin_x,
                     rotation_y=origin_y_adjusted,
                 )
-                rotated_paths += rotated_path
-            text_paths += rotated_paths
+                rotated_text_paths += rotated_text_path
+            text_paths += rotated_text_paths
 
         return text_paths
 
