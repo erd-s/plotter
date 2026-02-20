@@ -6,6 +6,15 @@ from projects.concentric_quarter_circle_party.pieces import (
 
 from projects.object_grid_v2 import ObjectGridV2
 
+# A4 Horizontal 30 x 20 grid size
+# DOC_HEIGHT = 8.27
+# MARGIN_TOP = 1.135
+# MARGIN_BOTTOM = 1.135
+#
+# DOC_WIDTH = 11.69
+# MARGIN_LEFT = 1.345
+# MARGIN_RIGHT = 1.345
+
 
 class ConcentricQuarterCirclePartyGrid(ObjectGridV2):
     pieces = []

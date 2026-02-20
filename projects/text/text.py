@@ -266,13 +266,13 @@ class HorizontalSidewaysText:
             )
             paths = letter_path.letter_path()
             for path in paths:
-                rotated_path = rotated_path(
+                rotated_text_path = rotated_path(
                     path,
                     degrees=-90,
                     rotation_x=origin_x_adjusted + self._letter_width,
                     rotation_y=self.origin_y + self.height,
                 )
-                self.plotter.draw_path(rotated_path)
+                self.plotter.draw_path(rotated_text_path)
 
     def text_paths(self):
         x_adjustment_multiplier = self._letter_width + self._tracking
@@ -291,13 +291,13 @@ class HorizontalSidewaysText:
             paths = letter_path.letter_path()
             rotated_paths = []
             for path in paths:
-                rotated_path = rotated_paths(
+                rotated_text_path = rotated_path(
                     path,
                     degrees=-90,
                     rotation_x=origin_x_adjusted + self._letter_width,
                     rotation_y=self.origin_y + self.height,
                 )
-                rotated_paths += rotated_path
+                rotated_paths += rotated_text_path
             text_paths += rotated_paths
 
         return text_paths
