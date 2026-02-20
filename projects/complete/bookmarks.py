@@ -23,7 +23,7 @@ def draw_bookmarks(
             origin_y=effective_y_start,
             width=width,
             height=effective_height,
-            inset=0.1,
+            margin=0.1,
         )
         project.draw_object_grid(plotter=plotter)
         draw_rectangle(

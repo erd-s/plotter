@@ -30,15 +30,15 @@ class ObjectGridV2:
         origin_y: float,
         width: float,
         height: float,
-        inset: float = 0,
+        margin: float = 0,
         draw_grid_lines: bool = False,
     ):
         self.grid_size_horizontal = grid_size_horizontal
         self.grid_size_vertical = grid_size_vertical
-        self.origin_x = origin_x + inset
-        self.origin_y = origin_y + inset
-        self.width = width - (inset * 2)
-        self.height = height - (inset * 2)
+        self.origin_x = origin_x + margin
+        self.origin_y = origin_y + margin
+        self.width = width - (margin * 2)
+        self.height = height - (margin * 2)
         self.draw_grid_lines = draw_grid_lines
 
     def draw_object_grid(

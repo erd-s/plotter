@@ -127,8 +127,6 @@ def draw_rectangle_with_origin(
     dy = ay
     points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
     plotter.draw_path(points)
-    print(f"Rectangle width: {width}")
-    print(f"Rectangle height: {height}")
 
 
 def rectangle_path(
@@ -149,3 +147,27 @@ def rectangle_path(
 
     points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
     return points
+
+
+def draw_filled_rectangle_with_origin(
+    plotter: PlotterInterface,
+    origin_x: float,
+    origin_y: float,
+    height: float,
+    width: float,
+    pen_width_mm: float,
+):
+    pen_width_in = (pen_width_mm * 0.039) * 0.7
+    iterations = int(height / (pen_width_in * 2)) + 1
+
+    for i in range(iterations):
+        ax = origin_x + (i * pen_width_in)
+        ay = origin_y + (i * pen_width_in)
+        bx = ax
+        by = origin_y + height - (i * pen_width_in)
+        cx = origin_x + width - (i * pen_width_in)
+        cy = by
+        dx = cx
+        dy = ay
+        points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
+        plotter.draw_path(points)

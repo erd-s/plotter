@@ -74,3 +74,24 @@ def circle_path(origin_x: float, origin_y: float, radius: float):
     )
     path_points = path_from_patch(circle)
     return path_points
+
+
+def draw_filled_circle(
+    plotter: PlotterInterface,
+    center_x: float,
+    center_y: float,
+    radius: float,
+    pen_width_mm: float,
+):
+    pen_width_in = (pen_width_mm * 0.039) * 0.7
+    iterations = int(radius / pen_width_in) + 1
+
+    for i in range(iterations):
+        iter_radius = radius - (i * pen_width_in)
+        if round(iter_radius, 2) != 0:
+            draw_circle(
+                plotter=plotter,
+                center_x=center_x,
+                center_y=center_y,
+                radius=iter_radius,
+            )

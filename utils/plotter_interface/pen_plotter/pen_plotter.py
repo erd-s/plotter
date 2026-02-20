@@ -21,6 +21,7 @@ class PenPlotter(PlotterInterface):
             y_max=y_max,
         )
         self.plotter = NextDraw()
+        self.plotter.options.speed_pendown = 5
 
     def disconnect(self):
         self.plotter.penup()

@@ -18,6 +18,6 @@ def draw_deco_flair_grid(
         origin_y=origin_y,
         width=width,
         height=height,
-        inset=0,
+        margin=0,
     )
     project.draw_object_grid(plotter=plotter)

@@ -58,6 +58,37 @@ def draw_grid_v2(
             plotter.lineto(effective_x_end(), effective_y_end())
 
 
+def draw_grid_v3(
+    plotter: PlotterInterface,
+    grid_size_horizontal: int,
+    grid_size_vertical: int,
+    origin_x: float,
+    origin_y: float,
+    height: float,
+    width: float,
+):
+    sq_width = width / grid_size_horizontal
+    sq_height = height / grid_size_vertical
+
+    # vertical
+    for i in range(grid_size_vertical):
+        current_y = origin_y + (sq_height * i)
+        plotter.moveto(origin_x, current_y)
+        plotter.lineto(origin_x + width, current_y)
+        if i == grid_size_vertical - 1:
+            plotter.moveto(origin_x, origin_y + height)
+            plotter.lineto(origin_x + width, origin_y + height)
+
+    # horizontal
+    for i in range(grid_size_horizontal):
+        current_x = origin_x + (sq_width * i)
+        plotter.moveto(current_x, origin_y)
+        plotter.lineto(current_x, origin_y + height)
+        if i == grid_size_horizontal - 1:
+            plotter.moveto(origin_x + width, origin_y)
+            plotter.lineto(origin_x + width, origin_y + height)
+
+
 def square_width(grid_size_horizontal: int):
     return effective_width() / grid_size_horizontal
 
