@@ -2,10 +2,10 @@ import random
 from utils.plotter_interface import PlotterInterface
 from projects.block_party.pieces import PieceGenerator
 
-from projects.object_grid import ObjectGrid
+from projects.object_grid_v2 import ObjectGridV2
 
 
-class BlockPartyGrid(ObjectGrid):
+class BlockPartyGrid(ObjectGridV2):
     pieces = []
 
     def object_logic(self, plotter: PlotterInterface):
@@ -21,10 +21,10 @@ class BlockPartyGrid(ObjectGrid):
         above = ""
         left = ""
 
-        if index >= self.grid_size:
-            above = self.pieces[index - self.grid_size]
+        if self.current_row != 0:
+            above = self.pieces[index - self.grid_size_horizontal]
 
-        if index % self.grid_size != 0:
+        if self.current_column != 0:
             left = self.pieces[index - 1]
 
         open_bottom = ["a", "b", "f", "g", "k", "n", "o", "p", "q"]
@@ -55,8 +55,8 @@ class BlockPartyGrid(ObjectGrid):
         else:
             options = closed_top_closed_left
 
-        is_in_right_column = (index + 1) % self.grid_size == 0
-        is_in_bottom_row = index >= (self.grid_size * self.grid_size) - self.grid_size
+        is_in_right_column = self.current_column == self.grid_size_horizontal - 1
+        is_in_bottom_row = self.current_row == self.grid_size_vertical - 1
         is_last = is_in_right_column and is_in_bottom_row
 
         if is_last:
