@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.block_party import draw_block_party
+from projects.complete.filled_circle_grid import draw_filled_circle_grid_v2
 
 import time
 from utils.utils import (
@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,12 +45,15 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_block_party(
+    draw_filled_circle_grid_v2(
         plotter=plotter,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        width=effective_width(),
-        height=effective_height(),
+        grid_size_horizontal=10,
+        grid_size_vertical=15,
+        center_x=center_x(),
+        center_y=center_y(),
+        width=effective_width() - 1,
+        height=effective_height() - 1,
+        pen_width_mm=0.5,
     )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
