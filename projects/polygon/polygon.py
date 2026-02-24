@@ -16,8 +16,39 @@ def draw_polygon(
         number_of_sides=number_of_sides,
         height=height,
     )
+    paths_to_draw = []
     for path in paths:
-        plotter.draw_path(path)
+        paths_to_draw.append(path[0])
+
+    # close path
+    paths_to_draw.append(paths_to_draw[0])
+    plotter.draw_path(paths_to_draw)
+
+
+def draw_filled_polygon(
+    plotter: PlotterInterface,
+    center_x: float,
+    center_y: float,
+    number_of_sides: int,
+    height: float,
+    pen_width_mm: float,
+):
+    pen_width_in = (pen_width_mm * 0.039) * 0.7
+    iterations = int(height / pen_width_in) + 1
+    for i in range(iterations):
+        paths = polygon_paths(
+            center_x=center_x,
+            center_y=center_y,
+            number_of_sides=number_of_sides,
+            height=height - (i * pen_width_in),
+        )
+        paths_to_draw = []
+        for path in paths:
+            paths_to_draw.append(path[0])
+
+        # close path
+        paths_to_draw.append(paths_to_draw[0])
+        plotter.draw_path(paths_to_draw)
 
 
 def polygon_paths(
@@ -29,7 +60,7 @@ def polygon_paths(
 
     paths = []
     for i in range(number_of_sides):
-        rotation_angle = i * vertex_angle
+        rotation_angle = i * -vertex_angle
         y = center_y + height / 2
         x_start = center_x - base_length / 2
         x_end = center_x + base_length / 2
