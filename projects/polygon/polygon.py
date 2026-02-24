@@ -34,10 +34,10 @@ def polygon_paths(
         x_start = center_x - base_length / 2
         x_end = center_x + base_length / 2
         path = [[x_start, y], [x_end, y]]
-        rotated_path = rotated_path(
+        rotated_polygon_path = rotated_path(
             path=path, degrees=rotation_angle, rotation_x=center_x, rotation_y=center_y
         )
-        paths.append(rotated_path)
+        paths.append(rotated_polygon_path)
 
     return paths
 
@@ -62,10 +62,10 @@ def draw_polygon_star(
             y_end = center_y + height / 2
             x_end = center_x - (base_length / 2) + ((base_length / lines_per_side) * i)
             path = [[center_x, center_y], [x_end, y_end]]
-            rotated_path = rotated_path(
+            rotated_polygon_path = rotated_path(
                 path=path,
                 degrees=rotation_angle,
                 rotation_x=center_x,
                 rotation_y=center_y,
             )
-            plotter.draw_path(rotated_path)
+            plotter.draw_path(rotated_polygon_path)

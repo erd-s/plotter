@@ -106,8 +106,6 @@ def draw_rectangle(
     dy = ay
     points = [[ax, ay], [bx, by], [cx, cy], [dx, dy], [ax, ay]]
     plotter.draw_path(points)
-    print(f"Rectangle width: {width}")
-    print(f"Rectangle height: {height}")
 
 
 def draw_rectangle_with_origin(

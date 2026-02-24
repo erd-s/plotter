@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.filled_circle_grid import draw_filled_circle_grid_v2
+from projects.honeycomb_grid.honeycomb_grid import HoneycombGrid
 
 import time
 from utils.utils import (
@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,16 +45,16 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_filled_circle_grid_v2(
-        plotter=plotter,
+    width_adjustment = effective_width() * 0.1
+    project = HoneycombGrid(
         grid_size_horizontal=10,
-        grid_size_vertical=15,
-        center_x=center_x(),
-        center_y=center_y(),
-        width=effective_width() - 1,
-        height=effective_height() - 1,
-        pen_width_mm=0.5,
+        grid_size_vertical=14,
+        origin_x=effective_x_start() + (width_adjustment / 2),
+        origin_y=effective_y_start(),
+        width=effective_width() - width_adjustment,
+        height=effective_height(),
     )
+    project.draw_object_grid(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

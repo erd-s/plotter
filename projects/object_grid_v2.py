@@ -1,5 +1,5 @@
 from utils.plotter_interface import PlotterInterface
-from projects.rectangles.rectangle import draw_rectangle
+from projects.grid import draw_grid_v3
 
 
 class ObjectGridV2:
@@ -50,6 +50,17 @@ class ObjectGridV2:
         print(f'Grid Square Width = {self.square_width}"')
         print(f'Grid Square Height = {self.square_height}"')
 
+        if self.draw_grid_lines:
+            draw_grid_v3(
+                plotter=plotter,
+                grid_size_horizontal=self.grid_size_horizontal,
+                grid_size_vertical=self.grid_size_vertical,
+                origin_x=self.origin_x,
+                origin_y=self.origin_y,
+                height=self.height,
+                width=self.width,
+            )
+
         plotter.move(
             self.origin_x + (self.square_width / 2),
             self.origin_y + (self.square_height / 2),
@@ -77,14 +88,6 @@ class ObjectGridV2:
             next_square_center_x = self.square_center_x + self.square_width
 
             if i >= start_index:
-                if self.draw_grid_lines:
-                    draw_rectangle(
-                        plotter=plotter,
-                        height=self.square_height,
-                        width=self.square_width,
-                        center_x=self.square_center_x,
-                        center_y=self.square_center_y,
-                    )
                 self.object_logic(plotter=plotter)
                 iteration += 1
             if iterations == iteration:
