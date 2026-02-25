@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.honeycomb_grid import draw_honeycomb_grid
+from projects.complete.insect_eye import draw_insect_eye_filled
 
 import time
 from utils.utils import (
@@ -45,16 +45,15 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_honeycomb_grid(
+    draw_insect_eye_filled(
         plotter=plotter,
-        grid_size_horizontal=15,
-        grid_size_vertical=18,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        width=effective_width(),
-        height=effective_height(),
+        center_x=center_x(),
+        center_y=center_y(),
+        initial_radius=0.275,
+        iterations=11,
         pen_width_mm=0.38,
     )
+
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

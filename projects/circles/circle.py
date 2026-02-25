@@ -10,6 +10,24 @@ def draw_circle(
     center_y: float,
     radius: float,
 ):
+    path_points = circle_path(center_x=center_x, center_y=center_y, radius=radius)
+    plotter.draw_path(path_points)
+
+
+def draw_circle_v2(
+    plotter: PlotterInterface,
+    center_x: float,
+    center_y: float,
+    radius: float,
+):
+    circle = CirclePolygon(
+        xy=(center_x, center_y), radius=radius, resolution=int(radius * 500)
+    )
+    path_points = path_from_patch(circle)
+    plotter.draw_path(path_points)
+
+
+def circle_path(center_x: float, center_y: float, radius: float):
     path_points = []
     steps = int(radius * 100) if (int(radius * 100)) > 30 else 30
 
@@ -55,24 +73,6 @@ def draw_circle(
         y = y_list[i]
         path_points.append([x, y])
 
-    plotter.draw_path(path_points)
-
-
-def draw_circle_v2(
-    plotter: PlotterInterface,
-    center_x: float,
-    center_y: float,
-    radius: float,
-):
-    path_points = circle_path(origin_x=center_x, origin_y=center_y, radius=radius)
-    plotter.draw_path(path_points)
-
-
-def circle_path(origin_x: float, origin_y: float, radius: float):
-    circle = CirclePolygon(
-        xy=(origin_x, origin_y), radius=radius, resolution=int(radius * 500)
-    )
-    path_points = path_from_patch(circle)
     return path_points
 
 
@@ -95,3 +95,26 @@ def draw_filled_circle(
                 center_y=center_y,
                 radius=iter_radius,
             )
+
+
+def filled_circle_paths(
+    center_x: float,
+    center_y: float,
+    radius: float,
+    pen_width_mm: float,
+):
+    pen_width_in = (pen_width_mm * 0.039) * 0.7
+    iterations = int(radius / pen_width_in) + 1
+
+    circle_paths = []
+    for i in range(iterations):
+        iter_radius = radius - (i * pen_width_in)
+        if round(iter_radius, 2) != 0:
+            path = circle_path(
+                center_x=center_x,
+                center_y=center_y,
+                radius=iter_radius,
+            )
+            circle_paths.append(path)
+
+    return circle_paths
