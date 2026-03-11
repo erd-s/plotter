@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.insect_eye import draw_insect_eye_filled
+from projects.complete.squiggles import draw_squiggle_columns
 
 import time
 from utils.utils import (
@@ -45,15 +45,13 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_insect_eye_filled(
+    draw_squiggle_columns(
         plotter=plotter,
         center_x=center_x(),
-        center_y=center_y(),
-        initial_radius=0.275,
-        iterations=11,
-        pen_width_mm=0.38,
+        effective_y_start=effective_y_start(),
+        effective_height=effective_height(),
+        effective_width=effective_width(),
     )
-
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
