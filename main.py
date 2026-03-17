@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.squiggles import draw_squiggle_columns
+from projects.squiggle_fill.squiggle_fill_grid import SquiggleGrid
 
 import time
 from utils.utils import (
@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,13 +45,16 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_squiggle_columns(
-        plotter=plotter,
-        center_x=center_x(),
-        effective_y_start=effective_y_start(),
-        effective_height=effective_height(),
-        effective_width=effective_width(),
+    project = SquiggleGrid(
+        grid_size_horizontal=6,
+        grid_size_vertical=6,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        width=effective_width(),
+        height=effective_height(),
+        inset=0.03,
     )
+    project.draw_object_grid(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
