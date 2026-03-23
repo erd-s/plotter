@@ -1,7 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.squiggle_fill.squiggle_fill_grid import SquiggleGrid
+from projects.notecard.record_notecards import RecordNoteCard
+from projects.grid import draw_grid_v2
 
 import time
 from utils.utils import (
@@ -45,16 +46,14 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    project = SquiggleGrid(
-        grid_size_horizontal=6,
-        grid_size_vertical=6,
+    project = RecordNoteCard(
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),
         width=effective_width(),
         height=effective_height(),
-        inset=0.03,
+        padding=0.1,
     )
-    project.draw_object_grid(plotter=plotter)
+    project.draw_notecard(plotter=plotter, title="notes")
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
