@@ -2,6 +2,7 @@ from utils.plotter_interface import PlotterInterface
 from projects.text.text import HorizontalText
 from utils.transform import centered_paths
 from projects.rectangles.rectangle import draw_rectangle
+import math
 
 
 class NoteCard:
@@ -31,8 +32,8 @@ class NoteCard:
         self.number_of_cards = number_of_cards
 
     def draw_notecard(self, plotter: PlotterInterface, title: str = None):
-        cards_per_row = self.number_of_cards / 2
-        cards_per_column = self.number_of_cards / 2
+        cards_per_row = math.ceil(self.number_of_cards / 2)
+        cards_per_column = 2
         card_width = (self.width - (self.padding * (cards_per_row - 1))) / cards_per_row
         card_height = (
             self.height - (self.padding * (cards_per_column - 1))
@@ -127,7 +128,7 @@ class NoteCard:
             self.current_column += 1
 
             # end of row 1, shift down
-            if self.current_column == (self.number_of_cards / 2):
+            if self.current_column >= (self.number_of_cards / 2):
                 self.current_column = 0
                 self.current_row = 1
 

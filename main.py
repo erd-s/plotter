@@ -50,6 +50,7 @@ def run():
         origin_y=effective_y_start(),
         width=effective_width(),
         height=effective_height(),
+        number_of_cards=4,
         padding=0.5,
     )
     project.draw_notecard(plotter=plotter)
