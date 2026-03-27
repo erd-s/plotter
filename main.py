@@ -2,7 +2,6 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.notecard.record_notecards import RecordNoteCard
-from projects.grid import draw_grid_v2
 
 import time
 from utils.utils import (
@@ -51,9 +50,9 @@ def run():
         origin_y=effective_y_start(),
         width=effective_width(),
         height=effective_height(),
-        padding=0.1,
+        padding=0.5,
     )
-    project.draw_notecard(plotter=plotter, title="notes")
+    project.draw_notecard(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
