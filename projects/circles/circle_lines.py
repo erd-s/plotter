@@ -1,6 +1,6 @@
 from utils.plotter_interface import PlotterInterface
 from utils.transform import rotated_path
-from math import sqrt
+from math import sqrt, ceil
 import random
 
 
@@ -12,16 +12,21 @@ def draw_lined_circle(
     line_interval: float,
     angle: float = 0,
 ):
-    number_of_lines = round((radius * 2) / line_interval)
+    number_of_lines = ceil((radius * 2) / line_interval)
 
     for i in range(number_of_lines):
-        y = center_y - radius + (line_interval * i)
-        y_distance_to_center = radius - (line_interval * i)
+        y = round(center_y - radius + (line_interval * i), 4)
+        y_distance_to_center = round(radius - (line_interval * i), 4)
         x_distance_to_center = sqrt(
-            abs((y_distance_to_center * y_distance_to_center) - (radius * radius))
+            abs(
+                (y_distance_to_center * y_distance_to_center)
+                - round((radius * radius), 4)
+            )
         )
         start_x = center_x - x_distance_to_center
         end_x = center_x + x_distance_to_center
+        if abs(end_x - start_x) < 0.01:
+            continue
         point_a = [start_x, y]
         point_b = [end_x, y]
         top_path = rotated_path(

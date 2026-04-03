@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.notecard.record_notecards import RecordNoteCard
+from projects.weeks_grid.weeks_grid import WeeksGrid
 
 import time
 from utils.utils import (
@@ -35,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = VisualizedPlotter(
+    plotter = PenPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -45,15 +45,22 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    project = RecordNoteCard(
+
+    weeks_grid = WeeksGrid(
+        weeks=2,
+        vertical_lines=24,
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),
-        width=effective_width(),
         height=effective_height(),
-        number_of_cards=4,
-        padding=0.5,
+        width=effective_width(),
+        column_one_width=1,
+        padding=0.3,
+        with_shadow=False,
     )
-    project.draw_notecard(plotter=plotter)
+    # weeks_grid.draw_header_column(plotter=plotter)
+    # weeks_grid.draw_header_rows(plotter=plotter)
+    weeks_grid.draw_week_sections(plotter=plotter)
+
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
