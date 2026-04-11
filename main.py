@@ -58,7 +58,7 @@ def run():
         with_shadow=False,
     )
     # weeks_grid.draw_header_column(plotter=plotter)
-    # weeks_grid.draw_header_rows(plotter=plotter)
+    # weeks_grid.draw_header_rows(plotter=plotter, boxes_per_day=2)
     weeks_grid.draw_week_sections(plotter=plotter)
 
     end_time = time.perf_counter()

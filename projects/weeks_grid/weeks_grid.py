@@ -79,7 +79,7 @@ class WeeksGrid:
             angle=self.shadow_angle,
         )
 
-    def draw_header_rows(self, plotter: PlotterInterface):
+    def draw_header_rows(self, plotter: PlotterInterface, boxes_per_day: int = 1):
         for w in range(self.weeks):
             header_origin_x = (
                 self.week_origin_x + (self.week_column_width * w) + (self.padding * w)
@@ -88,7 +88,7 @@ class WeeksGrid:
             header_height = self.cell_height
             draw_grid_v3(
                 plotter=plotter,
-                grid_size_horizontal=7,
+                grid_size_horizontal=7 * boxes_per_day,
                 grid_size_vertical=1,
                 origin_x=header_origin_x,
                 origin_y=self.origin_y,
