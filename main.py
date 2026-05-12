@@ -1,7 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.circle_flower import draw_circle_flower
+from projects.complete.mermaid_scales import draw_mermaid_scales
+from projects.margin import draw_margin
 
 import time
 from utils.utils import (
@@ -45,7 +46,13 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_circle_flower(plotter=plotter, center_x=center_x(), center_y=center_y())
+    draw_mermaid_scales(
+        plotter=plotter,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        height=effective_height(),
+        width=effective_width(),
+    )
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
