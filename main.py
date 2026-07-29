@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.mermaid_scales import draw_mermaid_scales
+from projects.dnd.item_sheet import draw_item_sheet
 from projects.margin import draw_margin
 
 import time
@@ -46,7 +46,7 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-    draw_mermaid_scales(
+    draw_item_sheet(
         plotter=plotter,
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),

@@ -73,27 +73,3 @@ def draw_item_sheet(
             height=effect_height,
             width=effect_width,
         )
-
-        # char_width = 0.15
-        #
-        # item_name_title = "item"
-        # attune_text = HorizontalText(
-        #     plotter=plotter,
-        #     text=item_name_title,
-        #     origin_x=name_and_uses_origin_x + 0.1,
-        #     origin_y=title_origin_y,
-        #     width=len(item_name_title) * char_width,
-        #     height=0.1,
-        # )
-        # attune_text.draw_text()
-        #
-        # desc_name_title = "description"
-        # attune_text = HorizontalText(
-        #     plotter=plotter,
-        #     text=desc_name_title,
-        #     origin_x=effect_origin_x + 0.1,
-        #     origin_y=title_origin_y,
-        #     width=len(desc_name_title) * char_width,
-        #     height=0.1,
-        # )
-        # attune_text.draw_text()
