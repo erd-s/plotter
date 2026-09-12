@@ -1,7 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.complete.cqc_grid import CQCGrid
+from projects.dash_block.dash_block import DashBlock
 
 import time
 from utils.utils import (
@@ -45,20 +45,17 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-
-    project = CQCGrid(
-        grid_size_horizontal=5,
-        grid_size_vertical=5,
+    project = DashBlock(
+        grid_size_horizontal=3,
+        grid_size_vertical=4,
         origin_x=effective_x_start(),
         origin_y=effective_y_start(),
         width=effective_width(),
         height=effective_height(),
-        number_of_lines=10,
-        margin=0,
-        inset=0,
-        draw_grid_lines=False,
+        inset=0.2,
+        draw_grid_lines=True,
     )
-    project.draw_object_grid(plotter=plotter)
+    project.draw_object_grid(plotter=plotter, iterations=11)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
