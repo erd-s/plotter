@@ -6,10 +6,10 @@ from projects.dash_block.dash_line import DashLine
 class DashBlock(ObjectGridV2):
     def object_logic(self, plotter: PlotterInterface):
         line = DashLine(
-            origin_x=self.square_start_x,
+            plotter=plotter,
+            origin_x=self.square_center_x,
             origin_y=self.square_start_y,
-            height=self.square_height,
-            width=self.square_width,
+            length=self.square_height,
             vertical_orientation=True,
         )
 

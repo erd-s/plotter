@@ -1,26 +1,40 @@
+from utils.plotter_interface import PlotterInterface
+
+
 class DashLine:
+    plotter: PlotterInterface
     origin_x: float
     origin_y: float
-    height: float
-    width: float
+    length: float
     vertical_orientation: bool
 
     def __init__(
         self,
+        plotter: PlotterInterface,
         origin_x: float,
         origin_y: float,
-        height: float,
-        width: float,
+        length: float,
         vertical_orientation: bool,
     ):
+        self.plotter = plotter
         self.origin_x = origin_x
         self.origin_y = origin_y
-        self.height = height
-        self.width = width
+        self.length = length
         self.vertical_orientation = vertical_orientation
 
     def draw_variant_a(self):
-        pass
+        spacing = self.length / 10
+        number_of_dashes = 3
+        number_of_spaces = number_of_dashes - 1
+        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        dash_length = total_length_minus_spacing / number_of_dashes
+
+        for i in range(3):
+            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_end_y = dash_origin_y + dash_length
+            point_a = [self.origin_x, dash_origin_y]
+            point_b = [self.origin_x, dash_end_y]
+            self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_b(self):
         pass

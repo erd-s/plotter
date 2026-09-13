@@ -52,7 +52,7 @@ def run():
         origin_y=effective_y_start(),
         width=effective_width(),
         height=effective_height(),
-        inset=0.2,
+        inset=0.1,
         draw_grid_lines=True,
     )
     project.draw_object_grid(plotter=plotter, iterations=11)
