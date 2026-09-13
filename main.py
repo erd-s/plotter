@@ -1,7 +1,8 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.dash_block.dash_block import DashBlock
+from projects.dash_block.dash_block import DashBlockGrid
+from projects.margin import draw_margin
 
 import time
 from utils.utils import (
@@ -46,17 +47,22 @@ def run():
     setup_plotter(plotter)
     start_time = time.perf_counter()
 
-    project = DashBlock(
-        grid_size_horizontal=3,
-        grid_size_vertical=4,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        width=effective_width(),
-        height=effective_height(),
+    height = 1.5
+    width = 5
+
+    project = DashBlockGrid(
+        grid_size_horizontal=1,
+        grid_size_vertical=1,
+        origin_x=center_x() - (width / 2),
+        origin_y=center_y() - (height / 2),
+        width=width,
+        height=height,
         inset=0.1,
-        draw_grid_lines=True,
+        space_between_lines=0,
+        pen_width_mm=0.45,
+        draw_grid_lines=False,
     )
-    project.draw_object_grid(plotter=plotter, iterations=11)
+    project.draw_object_grid(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 

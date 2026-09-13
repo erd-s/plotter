@@ -7,6 +7,7 @@ class DashLine:
     origin_y: float
     length: float
     vertical_orientation: bool
+    spacing: float
 
     def __init__(
         self,
@@ -21,157 +22,161 @@ class DashLine:
         self.origin_y = origin_y
         self.length = length
         self.vertical_orientation = vertical_orientation
+        self.spacing = length / 12
 
     def draw_variant_a(self):
-        spacing = self.length / 10
         number_of_dashes = 3
         number_of_spaces = number_of_dashes - 1
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
         dash_length = total_length_minus_spacing / number_of_dashes
 
         for i in range(number_of_dashes):
-            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_origin_y = self.origin_y + ((dash_length + self.spacing) * i)
             dash_end_y = dash_origin_y + dash_length
             point_a = [self.origin_x, dash_origin_y]
             point_b = [self.origin_x, dash_end_y]
             self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_b(self):
-        spacing = self.length / 10
+
         number_of_spaces = 4
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
-        short_dash_length = spacing / 1.5
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
+        short_dash_length = self.spacing / 1.5
         big_dash_length = (total_length_minus_spacing - (short_dash_length * 3)) / 2
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, big_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, big_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
 
     def draw_variant_c(self):
-        spacing = self.length / 10
+
         short_dash_length = self.length / 6
-        long_dash_length = self.length - spacing - short_dash_length
+        long_dash_length = self.length - self.spacing - short_dash_length
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, long_dash_length)
 
     def draw_variant_d(self):
-        spacing = self.length / 10
+
         short_dash_length = self.length / 6
-        long_dash_length = self.length - spacing - short_dash_length
+        long_dash_length = self.length - self.spacing - short_dash_length
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, long_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
 
     def draw_variant_e(self):
-        spacing = self.length / 10
+
         number_of_spaces = 4
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
-        short_dash_length = spacing / 1.5
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
+        short_dash_length = self.spacing / 1.5
         big_dash_length = (total_length_minus_spacing - (short_dash_length * 3)) / 2
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, big_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, big_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
 
     def draw_variant_f(self):
-        spacing = self.length / 10
+
         number_of_dashes = 4
         number_of_spaces = number_of_dashes - 1
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
         dash_length = total_length_minus_spacing / number_of_dashes
 
         for i in range(number_of_dashes):
-            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_origin_y = self.origin_y + ((dash_length + self.spacing) * i)
             dash_end_y = dash_origin_y + dash_length
             point_a = [self.origin_x, dash_origin_y]
             point_b = [self.origin_x, dash_end_y]
             self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_g(self):
-        spacing = self.length / 10
-        short_dash_length = spacing / 2
-        long_dash_length = self.length - (spacing * 2) - (short_dash_length * 2)
+
+        short_dash_length = self.spacing / 2
+        long_dash_length = self.length - (self.spacing * 2) - (short_dash_length * 2)
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, long_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
 
     def draw_variant_h(self):
-        spacing = self.length / 10
-        short_dash_length = spacing / 2
-        long_dash_length = (self.length - (spacing * 2) - (short_dash_length)) / 2
+
+        short_dash_length = self.spacing / 2
+        long_dash_length = (self.length - (self.spacing * 2) - (short_dash_length)) / 2
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, long_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, long_dash_length)
 
     def draw_variant_i(self):
-        spacing = self.length / 10
+
         number_of_spaces = 4
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
-        short_dash_length = spacing / 1.5
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
+        short_dash_length = self.spacing / 1.5
         big_dash_length = (total_length_minus_spacing - (short_dash_length * 3)) / 2
 
         self.plotter.moveto(self.origin_x, self.origin_y)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, short_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, big_dash_length)
-        self.plotter.move(0, spacing)
+        self.plotter.move(0, self.spacing)
         self.plotter.line(0, big_dash_length)
 
     def draw_variant_j(self):
-        spacing = self.length / 10
+
         number_of_dashes = 6
         number_of_spaces = number_of_dashes - 1
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
         dash_length = total_length_minus_spacing / number_of_dashes
 
         for i in range(number_of_dashes):
-            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_origin_y = self.origin_y + ((dash_length + self.spacing) * i)
             dash_end_y = dash_origin_y + dash_length
             point_a = [self.origin_x, dash_origin_y]
             point_b = [self.origin_x, dash_end_y]
             self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_k(self):
-        spacing = self.length / 10
+
         number_of_dashes = 7
         number_of_spaces = number_of_dashes - 1
-        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        total_length_minus_spacing = self.length - (self.spacing * number_of_spaces)
         dash_length = total_length_minus_spacing / number_of_dashes
 
         for i in range(number_of_dashes):
-            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_origin_y = self.origin_y + ((dash_length + self.spacing) * i)
             dash_end_y = dash_origin_y + dash_length
             point_a = [self.origin_x, dash_origin_y]
             point_b = [self.origin_x, dash_end_y]
             self.plotter.draw_path([point_a, point_b])
+
+    def draw_variant_l(self):
+        self.plotter.moveto(self.origin_x, self.origin_y)
+        self.plotter.line(0, self.length)
