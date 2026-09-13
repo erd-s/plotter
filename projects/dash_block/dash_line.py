@@ -149,7 +149,29 @@ class DashLine:
         self.plotter.line(0, big_dash_length)
 
     def draw_variant_j(self):
-        pass
+        spacing = self.length / 10
+        number_of_dashes = 6
+        number_of_spaces = number_of_dashes - 1
+        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        dash_length = total_length_minus_spacing / number_of_dashes
+
+        for i in range(number_of_dashes):
+            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_end_y = dash_origin_y + dash_length
+            point_a = [self.origin_x, dash_origin_y]
+            point_b = [self.origin_x, dash_end_y]
+            self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_k(self):
-        pass
+        spacing = self.length / 10
+        number_of_dashes = 7
+        number_of_spaces = number_of_dashes - 1
+        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        dash_length = total_length_minus_spacing / number_of_dashes
+
+        for i in range(number_of_dashes):
+            dash_origin_y = self.origin_y + ((dash_length + spacing) * i)
+            dash_end_y = dash_origin_y + dash_length
+            point_a = [self.origin_x, dash_origin_y]
+            point_b = [self.origin_x, dash_end_y]
+            self.plotter.draw_path([point_a, point_b])
