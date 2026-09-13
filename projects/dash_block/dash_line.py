@@ -37,7 +37,22 @@ class DashLine:
             self.plotter.draw_path([point_a, point_b])
 
     def draw_variant_b(self):
-        pass
+        spacing = self.length / 10
+        number_of_spaces = 4
+        total_length_minus_spacing = self.length - (spacing * number_of_spaces)
+        short_dash_length = spacing / 1.5
+        big_dash_length = (total_length_minus_spacing - (short_dash_length * 3)) / 2
+
+        self.plotter.moveto(self.origin_x, self.origin_y)
+        self.plotter.line(0, short_dash_length)
+        self.plotter.move(0, spacing)
+        self.plotter.line(0, big_dash_length)
+        self.plotter.move(0, spacing)
+        self.plotter.line(0, short_dash_length)
+        self.plotter.move(0, spacing)
+        self.plotter.line(0, big_dash_length)
+        self.plotter.move(0, spacing)
+        self.plotter.line(0, short_dash_length)
 
     def draw_variant_c(self):
         pass
