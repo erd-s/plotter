@@ -45,6 +45,7 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
+
     project = DashBlock(
         grid_size_horizontal=3,
         grid_size_vertical=4,
