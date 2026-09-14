@@ -1,8 +1,7 @@
 from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlotter
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
-from projects.dash_block.dash_block import DashBlockGrid
-from projects.margin import draw_margin
+from projects.weeks_grid.weeks_grid_v2 import WeeksGridV2
 
 import time
 from utils.utils import (
@@ -36,7 +35,7 @@ def tear_down_plotter(plotter):
 
 
 def run():
-    plotter = PenPlotter(
+    plotter = VisualizedPlotter(
         clip_to_bounds=False,
         x_min=effective_x_start(),
         x_max=effective_x_end(),
@@ -46,23 +45,19 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
-
-    height = 1.8
-    width = 7
-
-    project = DashBlockGrid(
-        grid_size_horizontal=1,
-        grid_size_vertical=1,
-        origin_x=center_x() - (width / 2),
-        origin_y=center_y() - (height / 2),
-        width=width,
-        height=height,
-        inset=0.025,
-        space_between_lines=0.05,
-        pen_width_mm=0.5,
-        draw_grid_lines=False,
+    project = WeeksGridV2(
+        weeks=1,
+        top_section_lines=10,
+        bottom_section_lines=10,
+        origin_x=effective_x_start(),
+        origin_y=effective_y_start(),
+        height=effective_height(),
+        width=effective_width(),
+        padding=0.2,
     )
-    project.draw_object_grid(plotter=plotter)
+    project.draw_header_column_top_section(plotter=plotter, draw_grid=False)
+    project.draw_top_section(plotter=plotter, draw_grid=False)
+    project.draw_header_rows_top_section(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
