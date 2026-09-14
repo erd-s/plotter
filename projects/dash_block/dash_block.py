@@ -142,7 +142,7 @@ class DashBlockIndex(ObjectGridV2):
 
 
 class DashBlockGrid(ObjectGridV2):
-    space_between_lines: int
+    space_between_lines: float
     pen_width_in: float
 
     def __init__(
@@ -151,7 +151,7 @@ class DashBlockGrid(ObjectGridV2):
         grid_size_vertical: int,
         origin_x: float,
         origin_y: float,
-        space_between_lines: int,
+        space_between_lines: float,
         pen_width_mm: float,
         width: float,
         height: float,

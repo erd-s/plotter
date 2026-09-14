@@ -47,8 +47,8 @@ def run():
     setup_plotter(plotter)
     start_time = time.perf_counter()
 
-    height = 1.5
-    width = 5
+    height = 1.8
+    width = 7
 
     project = DashBlockGrid(
         grid_size_horizontal=1,
@@ -57,9 +57,9 @@ def run():
         origin_y=center_y() - (height / 2),
         width=width,
         height=height,
-        inset=0.1,
-        space_between_lines=0,
-        pen_width_mm=0.45,
+        inset=0.025,
+        space_between_lines=0.05,
+        pen_width_mm=0.5,
         draw_grid_lines=False,
     )
     project.draw_object_grid(plotter=plotter)
