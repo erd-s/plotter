@@ -40,7 +40,11 @@ class WeeksGridV2:
         self.bottom_section_lines = bottom_section_lines
         self.origin_x = origin_x
         self.origin_y = origin_y
-        self.height = height - self.space_between_sections
+        self.height = height - (
+            self.space_between_sections
+            if top_section_lines == 0 or bottom_section_lines == 0
+            else 0
+        )
         self.width = width
         self.padding = padding
         self.column_one_width = column_one_width
@@ -129,7 +133,7 @@ class WeeksGridV2:
                     + self.column_one_width
                     + self.padding
                     + ((self.week_column_width / 7) * d)
-                    + (self.column_one_width / 2)
+                    + (self.week_column_width / 7) / 2
                     - (text_width / 2)
                 )
                 text_origin_y = self.origin_y + (text_width)
@@ -198,6 +202,9 @@ class WeeksGridV2:
                         plotter.line(line_width, 0)
 
     def draw_bottom_section(self, plotter: PlotterInterface, draw_grid: bool):
+        if self.bottom_section_lines == 0:
+            return
+
         for w in range(self.weeks):
             week_origin_x = (
                 self.week_origin_x + (self.week_column_width * w) + (self.padding * w)
@@ -209,13 +216,13 @@ class WeeksGridV2:
                 + (self.cell_height * self.top_section_lines)
                 + self.space_between_sections
             )
-            week_height = self.cell_height * self.top_section_lines
+            week_height = self.cell_height * self.bottom_section_lines
 
             if draw_grid:
                 draw_grid_v3(
                     plotter=plotter,
                     grid_size_horizontal=7,
-                    grid_size_vertical=self.top_section_lines,
+                    grid_size_vertical=self.bottom_section_lines,
                     origin_x=week_origin_x,
                     origin_y=week_origin_y,
                     height=week_height,
@@ -244,7 +251,7 @@ class WeeksGridV2:
                 )
             else:
                 # draw lines
-                for i in range(self.top_section_lines):
+                for i in range(self.bottom_section_lines):
                     for windex in range(7):
                         line_spacing = self.column_one_width * 0.1
                         line_origin_x = (
@@ -260,6 +267,9 @@ class WeeksGridV2:
     def draw_header_column_bottom_section(
         self, plotter: PlotterInterface, draw_grid: bool
     ):
+        if self.bottom_section_lines == 0:
+            return
+
         if draw_grid:
             header_origin_x = self.origin_x
             header_origin_y = (
@@ -269,11 +279,11 @@ class WeeksGridV2:
                 + (self.cell_height * self.top_section_lines)
                 + self.space_between_sections
             )
-            header_height = self.cell_height * self.top_section_lines
+            header_height = self.cell_height * self.bottom_section_lines
             draw_grid_v3(
                 plotter=plotter,
                 grid_size_horizontal=1,
-                grid_size_vertical=self.top_section_lines,
+                grid_size_vertical=self.bottom_section_lines,
                 origin_x=header_origin_x,
                 origin_y=header_origin_y,
                 height=header_height,

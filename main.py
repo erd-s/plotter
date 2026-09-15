@@ -46,14 +46,16 @@ def run():
 
     setup_plotter(plotter)
     start_time = time.perf_counter()
+    inset = 0.2
     project = WeeksGridV2(
         weeks=1,
         top_section_lines=10,
-        bottom_section_lines=10,
-        origin_x=effective_x_start() + 0.2,
-        origin_y=effective_y_start() + 0.2,
-        height=effective_height() - 0.4,
-        width=effective_width() - 0.4,
+        bottom_section_lines=0,
+        origin_x=effective_x_start() + inset,
+        origin_y=effective_y_start() + inset,
+        height=effective_height() - (inset * 2),
+        width=effective_width() - (inset * 2),
+        column_one_width=1.25,
         padding=0.2,
     )
     project.draw_header_column_top_section(plotter=plotter, draw_grid=False)

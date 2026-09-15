@@ -67,6 +67,8 @@ def draw_grid_v3(
     height: float,
     width: float,
 ):
+    if grid_size_horizontal == 0 or grid_size_vertical == 0:
+        return
     sq_width = width / grid_size_horizontal
     sq_height = height / grid_size_vertical
 
