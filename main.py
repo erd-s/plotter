@@ -2,6 +2,7 @@ from utils.plotter_interface.visualizer.visualized_plotter import VisualizedPlot
 from utils.plotter_interface.pen_plotter.pen_plotter import PenPlotter
 from utils.plotter_interface.PlotterInterface import PlotterInterface
 from projects.weeks_grid.weeks_grid_v2 import WeeksGridV2
+from projects.margin import draw_margin
 
 import time
 from utils.utils import (
@@ -49,15 +50,18 @@ def run():
         weeks=1,
         top_section_lines=10,
         bottom_section_lines=10,
-        origin_x=effective_x_start(),
-        origin_y=effective_y_start(),
-        height=effective_height(),
-        width=effective_width(),
+        origin_x=effective_x_start() + 0.2,
+        origin_y=effective_y_start() + 0.2,
+        height=effective_height() - 0.4,
+        width=effective_width() - 0.4,
         padding=0.2,
     )
     project.draw_header_column_top_section(plotter=plotter, draw_grid=False)
     project.draw_top_section(plotter=plotter, draw_grid=False)
-    project.draw_header_rows_top_section(plotter=plotter)
+    project.draw_header_row_top_section(plotter=plotter)
+    project.draw_bottom_section(plotter=plotter, draw_grid=True)
+    project.draw_header_column_bottom_section(plotter=plotter, draw_grid=True)
+    draw_margin(plotter=plotter)
     end_time = time.perf_counter()
     print(f"Time Elapsed: {end_time - start_time:0.2f} seconds.")
 
