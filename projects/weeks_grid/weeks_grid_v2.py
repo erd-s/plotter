@@ -40,11 +40,7 @@ class WeeksGridV2:
         self.bottom_section_lines = bottom_section_lines
         self.origin_x = origin_x
         self.origin_y = origin_y
-        self.height = height - (
-            self.space_between_sections
-            if top_section_lines == 0 or bottom_section_lines == 0
-            else 0
-        )
+        self.height = height - self.space_between_sections
         self.width = width
         self.padding = padding
         self.column_one_width = column_one_width
@@ -135,8 +131,10 @@ class WeeksGridV2:
                     + ((self.week_column_width / 7) * d)
                     + (self.week_column_width / 7) / 2
                     - (text_width / 2)
+                    + (self.week_column_width * w)
+                    + (self.padding * w)
                 )
-                text_origin_y = self.origin_y + (text_width)
+                text_origin_y = self.origin_y + text_width
                 text = HorizontalText(
                     plotter=plotter,
                     text=text,

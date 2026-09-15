@@ -48,9 +48,9 @@ def run():
     start_time = time.perf_counter()
     inset = 0.2
     project = WeeksGridV2(
-        weeks=1,
+        weeks=3,
         top_section_lines=10,
-        bottom_section_lines=0,
+        bottom_section_lines=6,
         origin_x=effective_x_start() + inset,
         origin_y=effective_y_start() + inset,
         height=effective_height() - (inset * 2),
